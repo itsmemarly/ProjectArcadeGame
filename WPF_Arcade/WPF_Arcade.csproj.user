@@ -7,7 +7,37 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="Game.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Close game.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Credits.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Highscores.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="You lost.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="You won.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Save game.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Options.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tutorial.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Welcome.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\maxme\Documents\GitHub\ProjectArcadeGame\WPF_Arcade\App.xaml
-11407045341
+111522058515
 
-568285174
+151832239965
 192-1533232326
-MainWindow.xaml;
+Close game.xaml;Credits.xaml;Game.xaml;Highscores.xaml;Menu.xaml;Options.xaml;Save game.xaml;Tutorial.xaml;Welcome.xaml;You lost.xaml;You won.xaml;
 
 False
 
