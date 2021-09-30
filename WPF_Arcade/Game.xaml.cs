@@ -28,6 +28,7 @@ namespace WPF_Arcade
         public static int worldWith = 30; //width of the gameworld in tiles
         public static int worldHeight = 16; //height of the gameworld in tiles
         public  int worldSeed = 1215; //seed used to generate the world
+        // Kaja, waarom is worldSeed specifiek 1215?
 
         private static int stoneWeight = 51; //number between 0-100 used to determine how much stone to generate versus air. 
         private Rectangle[,] tileMap = new Rectangle[worldWith, worldHeight]; 
@@ -41,6 +42,7 @@ namespace WPF_Arcade
                 for (int y = 0; y < noise.GetLength(1); y++)
                 {
                     //first we get the value for the 12 surrounding points.
+                    // Kaja, waarop niet voor de 28 omringende punten i.p.v. slechts 12 omringende punten?
                     float[] surroundingPoints  = new float[] {
                     generatePsuedoRandomValue(x + 1, y, worldSeed, 100),
                     generatePsuedoRandomValue(x - 1, y, worldSeed, 100),
@@ -72,6 +74,7 @@ namespace WPF_Arcade
             //to generate a unique value with strong variance we simply combine the x, y and seed into a string and take the hash
             //then we take the modulo of that hash and our desired range to get a number smaller than that range
             //we also use Math.abs to make sure the number is positive
+            // Kaja, mag ik vragen waarom input afhangt van x, y en seed, en niet simpelweg genomen is van https://docs.microsoft.com/en-us/dotnet/api/system.random?view=net-5.0?
             string input = (x.ToString() + y.ToString() + seed.ToString());
             return Math.Abs(input.GetHashCode()) % maxValue;
         }
@@ -87,12 +90,13 @@ namespace WPF_Arcade
                 for (int y = 0; y < tileMap.GetLength(1); y++)
                 {
                     //if the noise is smaller than the weighted value, add stone, otherwise add nothing
+                    // Kaja, dit snap ik niet.
                     if (noise[x, y] < stoneWeight)
                     {
                         tileMap[x, y] = newTile();
                         addRectangleAtPosition(tileMap[x, y], x * tileSize, y * tileSize);
                     }
-                    
+
                 }
             }
         }
@@ -111,8 +115,8 @@ namespace WPF_Arcade
             Rectangle tile = new Rectangle
             {
                 Tag = "tile",
-                Height = 64,
-                Width = 64,
+                Height = 64, // Kaja, ik zou hier tileSize van maken
+                Width = 64, // Kaja, ik zou hier tileSize van maken
                 Fill = Brushes.White,
                 Stroke = Brushes.Red
             };
