@@ -384,11 +384,12 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-# JetBrains Rider
+# JetBrains Riderg
 .idea/
 *.sln.iml
 
 # Extra ignore rules added by Kaja
-*.nuget.cache
-*.assets.cache
-*.GeneratedMSBuildEditorConfig.editorconfig
+# Ignore chache files and user specific VS files
+*.[Cc]ache
+*.suo
+
