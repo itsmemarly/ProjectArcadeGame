@@ -76,7 +76,6 @@ namespace WPF_Arcade
             map2.PopulateMap();
 
             //we also need to define the tiles we're using
-            Tile stone = new Tile("stone", 64);
 
             //now we loop over every tile in the level
             for (int x = 0; x < tileMap.GetLength(0); x++)
@@ -92,8 +91,8 @@ namespace WPF_Arcade
                     {
                         //first we add stone to the tilemap
                         //we also call Create to add the object to the xaml of the game screen
+                        Tile stone = new Tile("stone", 64, x, y, worldCanvas);                       
                         tileMap[x, y] = stone;
-                        tileMap[x, y].Create(x, y, worldCanvas);
                     }
                 }
             }
@@ -102,12 +101,22 @@ namespace WPF_Arcade
 
         public void Clear()
         {
-
+            for (int x = 0; x < tileMap.GetLength(0); x++)
+            {
+                for (int y = 0; y < tileMap.GetLength(1); y++)
+                {
+                    if (tileMap[x, y] != null)
+                    {
+                        tileMap[x, y].Destroy();
+                    }
+                }
+            }
         }
 
         public void RandomSeed()
         {
-
+            Random r = new Random();
+            worldSeed = r.Next().ToString();
         }
 
         //not accesible functionality
