@@ -29,7 +29,7 @@ namespace WPF_Arcade
             worldHeight = height;
             worldSeed = seed;
             worldCanvas = world;
-            tileMap = new Tile[worldWidth, worldHeight];
+            tileMap = new Tile[width, height];
         }
 
         //methods to set values
@@ -57,16 +57,17 @@ namespace WPF_Arcade
         //accesible functionality
 
         //weightmap1 and weightmap2 determine what the range is for each map, and thus how strong their influence is on the final terrain generation
-        //the for more information about the resolution check NoiseMap.cs
-        //the airWeight determines how likely each tile is to be empty/ air
+        //for more information about the resolution check NoiseMap.cs
+        //the airWeight determines how likely each tile is to be empty/air
 
         public void Generate(int weightMap1, float resolutionMap1, int weightMap2, float resolutionMap2, int airWeight)
         {
             //first we make two noise maps with differing weights and resolutions.
             //combining two different maps gives us finer control over aspects of the terrain
             //it also makes more interesting terrain.
-            //a map with a hight resolution will make big open/ closed areas with lower local variance
-            //a map with a low resolution will give a higher local variance with less cohesion. Think small open/ closed areas
+            //a map with a high resolution will make big open/closed areas with lower local variance
+            //a map with a low resolution will give a higher local variance with less cohesion.
+            //Just think small open/closed areas
             map1 = new NoiseMap(worldWidth, worldHeight, weightMap1, resolutionMap1, worldSeed);
             map2 = new NoiseMap(worldWidth, worldHeight, weightMap2, resolutionMap2, worldSeed);
 
@@ -83,11 +84,10 @@ namespace WPF_Arcade
                 for (int y = 0; y < tileMap.GetLength(1); y++)
                 {
                     //first we add together the values of the different noisemaps in this position to calculate the cumulative value
-                    //since the noise maps are floats we fist cast them to ints before combining them
                     float totalNoiseAtPosition = map1.GetNoiseAt(x, y) + map2.GetNoiseAt(x, y);
 
                     //this combined value is a range of 0 to weightMap1 + weightMap2
-                    //to create empty areas we simply ignore all the tiles where the noise does not exceed a certain valeu
+                    //to create empty areas we simply ignore all the tiles where the noise does not exceed a certain value
                     if (totalNoiseAtPosition > airWeight)
                     {
                         //first we add stone to the tilemap

@@ -16,16 +16,21 @@ namespace WPF_Arcade
     {
         private string tileType;
         private int tileSize;
+        private Canvas tileCanvas;
 
-        public Tile(string type, int size)
+        public Tile(string type, int size, Canvas canvas)
         {
             tileType = type;
             tileSize = size;
+            tileCanvas = canvas;
         }
 
-       
+       public void Destroy()
+       {
 
-        public void Create(int x, int y, Canvas canvas)
+       }
+
+        public void Create(int x, int y)
         {
             Rectangle tile = new Rectangle
             {
@@ -38,7 +43,7 @@ namespace WPF_Arcade
 
             Canvas.SetLeft(tile, x * tileSize);
             Canvas.SetTop(tile, y * tileSize);
-            canvas.Children.Add(tile);
+            tileCanvas.Children.Add(tile);
         }
     }
 }
