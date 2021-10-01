@@ -15,6 +15,9 @@ namespace WPF_Arcade
     /// <summary>
     /// Interaction logic for Game.xaml
     /// </summary>
+    /// 
+
+    //TODO: refactor this mess!!
     public partial class Game : Window
     {
         public Game()
@@ -27,51 +30,63 @@ namespace WPF_Arcade
         public static int tileSize = 64; //size of each tile in pixels
         public static int worldWith = 30; //width of the gameworld in tiles
         public static int worldHeight = 16; //height of the gameworld in tiles
-        public  int worldSeed = 1215; //seed used to generate the world
+        public int worldSeed = 1215; //seed used to generate the world
 
-        private static int stoneWeight = 51; //number between 0-100 used to determine how much stone to generate versus air. 
-        private Rectangle[,] tileMap = new Rectangle[worldWith, worldHeight]; 
+        private static int stoneWeight = 60; //number between 0-100 used to determine how much stone to generate versus air. A higher number means more stone
+        private Rectangle[,] tileMap = new Rectangle[worldWith, worldHeight];
+
+        Random r = new Random();
         
 
-        private void populate2DArrayWithSmoothNoise(int[,] noise)
+        private void populate2DArrayWithSmoothNoise(int[,] noise, float scale)
         {
+            int seed = r.Next(1, 1000);
             //loop over the entire array and for each int: 
             for (int x = 0; x < noise.GetLength(0); x++)
             {
                 for (int y = 0; y < noise.GetLength(1); y++)
                 {
-                    //first we get the value for the 12 surrounding points.
-                    float[] surroundingPoints  = new float[] {
-                    generatePsuedoRandomValue(x + 1, y, worldSeed, 100),
-                    generatePsuedoRandomValue(x - 1, y, worldSeed, 100),
-                    generatePsuedoRandomValue(x, y + 1, worldSeed, 100),
-                    generatePsuedoRandomValue(x, y - 1, worldSeed, 100),
-                    generatePsuedoRandomValue(x + 1, y + 1, worldSeed, 100),
-                    generatePsuedoRandomValue(x - 1, y - 1, worldSeed, 100),
-                    generatePsuedoRandomValue(x - 1, y + 1, worldSeed, 100),
-                    generatePsuedoRandomValue(x + 2, y, worldSeed, 100),
-                    generatePsuedoRandomValue(x - 2, y, worldSeed, 100),
-                    generatePsuedoRandomValue(x, y + 2, worldSeed, 100),
-                    generatePsuedoRandomValue(x, y - 2, worldSeed, 100) };
-
-
-                    //and then we take the average of these points for our position to create smooth noise
-                    float sum = 0;
-                    for (int i = 0; i < surroundingPoints.Length; i++)
-                    {
-                        sum += surroundingPoints[i];
-                    }
-
-                    noise[x, y] = (int)(sum / surroundingPoints.Length);
+                   //generate two noise values each at a different resolution and combine the layers for more interesting generation
+                    noise[x, y] = (int)getSmoothNoiseInRange(x, y, 2, seed, 75)+ (int)getSmoothNoiseInRange(x, y, 3, seed+1, 25);
                 }
             }
         }
 
-        private float generatePsuedoRandomValue(float x, float y, float seed, float maxValue)
+        private float getSmoothNoiseInRange(int x, int y, float scale, int seed, int maxValue)
         {
-            //to generate a unique value with strong variance we simply combine the x, y and seed into a string and take the hash
-            //then we take the modulo of that hash and our desired range to get a number smaller than that range
-            //we also use Math.abs to make sure the number is positive
+            //generate the four nearest data points
+            float bottomRight = generatePsuedoRandomValue(Math.Floor(x / scale), Math.Floor(y / scale), seed, maxValue);
+            float topRight = generatePsuedoRandomValue(Math.Floor(x / scale), Math.Ceiling(y / scale), seed, maxValue);
+            float bottomLeft = generatePsuedoRandomValue(Math.Ceiling(x / scale), Math.Ceiling(y / scale), seed, maxValue);
+            float topLeft = generatePsuedoRandomValue(Math.Ceiling(x / scale), Math.Floor(y / scale), seed, maxValue);
+
+            float distance = y / scale - Convert.ToSingle(Math.Floor(y / scale));
+            float a = sineInterpolate(bottomRight, topRight, distance);
+
+
+            float b = sineInterpolate(topLeft, bottomLeft, distance);
+            distance = x / scale - Convert.ToSingle(Math.Floor(x / scale));
+            return sineInterpolate(a, b, distance);
+        }
+
+        //decided to be fancy and use sine interpolation to smooth out my noise for hopefully some nicer shapes
+        //used the writeup here as a reference for my implementation, go read it if you want to understand the math: http://paulbourke.net/miscellaneous/interpolation/
+        //if you don't care about the math you just need to know that this helps me smooth out the noise
+        private float sineInterpolate(float input1, float input2, float step)
+
+        {
+            double stepd = (double)step;
+            double stepSquared = step * step;
+            float stepSmooth = Convert.ToSingle(1 - Math.Cos(stepd * Math.PI)) / 2;
+
+            return input1 * (1 - stepSmooth) + input2 * stepSmooth;
+        }
+
+        //to generate a unique value with strong variance we simply combine the x, y and seed into a string and take the hash
+        //then we take the modulo of that hash and our desired range to get a number smaller than that range
+        //we also use Math.abs to make sure the number is positive
+        private float generatePsuedoRandomValue(double x, double y, float seed, float maxValue)
+        {
             string input = (x.ToString() + y.ToString() + seed.ToString());
             return Math.Abs(input.GetHashCode()) % maxValue;
         }
@@ -80,7 +95,7 @@ namespace WPF_Arcade
         {
             //generate smooth noise
             int[,] noise = new int[worldWith, worldHeight];
-            populate2DArrayWithSmoothNoise(noise);
+            populate2DArrayWithSmoothNoise(noise, 8);
 
             for (int x = 0; x < tileMap.GetLength(0); x++)
             {
@@ -90,6 +105,9 @@ namespace WPF_Arcade
                     if (noise[x, y] < stoneWeight)
                     {
                         tileMap[x, y] = newTile();
+                        BrushConverter bc = new BrushConverter();
+                        Brush brush = (Brush)bc.ConvertFrom("#0000" + (noise[x, y] + 16).ToString("X"));
+                        tileMap[x, y].Fill = brush;
                         addRectangleAtPosition(tileMap[x, y], x * tileSize, y * tileSize);
                     }
                     
@@ -114,10 +132,15 @@ namespace WPF_Arcade
                 Height = 64,
                 Width = 64,
                 Fill = Brushes.White,
-                Stroke = Brushes.Red
+                //Stroke = Brushes.Red
             };
 
             return tile;
+        }
+
+        public void emptyTileMap()
+        {
+
         }
 
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
