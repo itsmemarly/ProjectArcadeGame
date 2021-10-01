@@ -1,0 +1,30 @@
+﻿<Window x:Class="SpelAfsluiten.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpelAfsluiten"
+        mc:Ignorable="d"
+        Title="SpelAfsluiten" Height="450" Width="800"
+        Background="Black">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Spel afsluiten" Foreground="White" FontFamily="OCR A Extended" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
+        <Label Grid.Row="1" Content="Weet je zeker dat je het spel wilt afsluiten?" Foreground="White" FontFamily="OCR A Extended" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+        <Grid Grid.Row=" 3" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Ja " FontFamily="OCR A Extended" FontSize="30" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0" Click="JaSluitAf"></Button>
+            <Button Grid.Column="1" Content="Nee" FontFamily="OCR A Extended" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0" Click="NeeSluitNietAf"></Button>
+        </Grid>
+    </Grid>
+</Window>

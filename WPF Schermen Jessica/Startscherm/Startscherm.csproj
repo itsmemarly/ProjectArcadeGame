@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="C:\Users\jessi\OneDrive\Documents\GitHub\ProjectArcadeGame\Startscherm\MainWindow.xaml" Link="MainWindow.xaml" />
+  </ItemGroup>
+
+</Project>
