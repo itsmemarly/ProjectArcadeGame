@@ -102,6 +102,7 @@ namespace WPF_Arcade
                 for (int y = 0; y < tileMap.GetLength(1); y++)
                 {
                     //if the noise is smaller than the weighted value, add stone, otherwise add nothing
+                    // Kaja, dit snap ik niet.
                     if (noise[x, y] < stoneWeight)
                     {
                         tileMap[x, y] = newTile();
@@ -110,7 +111,7 @@ namespace WPF_Arcade
                         tileMap[x, y].Fill = brush;
                         addRectangleAtPosition(tileMap[x, y], x * tileSize, y * tileSize);
                     }
-                    
+
                 }
             }
         }
@@ -129,8 +130,8 @@ namespace WPF_Arcade
             Rectangle tile = new Rectangle
             {
                 Tag = "tile",
-                Height = 64,
-                Width = 64,
+                Height = 64, // Kaja, ik zou hier tileSize van maken
+                Width = 64, // Kaja, ik zou hier tileSize van maken
                 Fill = Brushes.White,
                 //Stroke = Brushes.Red
             };
