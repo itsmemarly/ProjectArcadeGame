@@ -6,10 +6,10 @@ namespace WPF_Arcade
 {
     public class NoiseMap
     {
-        private float[,] map;
-        private int mapHeight;
-        private int mapWidth;
-        private int mapMaxValue;
+        private readonly float[,] map;
+        private readonly int mapHeight;
+        private readonly int mapWidth;
+        private readonly int mapMaxValue;
         private float mapResolution;
         private string mapSeed;
 
@@ -93,10 +93,11 @@ namespace WPF_Arcade
 
             //then another two points
             float b = SineInterpolate(topLeft, bottomLeft, distance);
-            distance = x / scale - Convert.ToSingle(Math.Floor(x / scale));
-            
+
+
             //and finally interpolates between these points to get the value of the current point.
             //I don't know if this results in prefect accuracy but it's good enough for our application
+            distance = x / scale - Convert.ToSingle(Math.Floor(x / scale));
             return SineInterpolate(a, b, distance);
         }
 
