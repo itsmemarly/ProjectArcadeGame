@@ -17,16 +17,20 @@ namespace WPF_Arcade
     {
         private readonly int worldWidth; //width of the gameworld in tiles
         private readonly int worldHeight; //height of the gameworld in tiles
+        private readonly int worldTileSize;
         private readonly Canvas worldCanvas;
         private string worldSeed; //seed used to generate the world
         private NoiseMap map1;
         private NoiseMap map2;
         private Tile[,] tileMap;
 
-        public TileMap(int width, int height, string seed, Canvas world)
+        private readonly Random r = new Random();
+
+        public TileMap(int width, int height, int tileSize, string seed, Canvas world)
         {
             worldWidth = width;
             worldHeight = height;
+            worldTileSize = tileSize;
             worldSeed = seed;
             worldCanvas = world;
             tileMap = new Tile[width, height];
@@ -60,7 +64,7 @@ namespace WPF_Arcade
         //for more information about the resolution check NoiseMap.cs
         //the airWeight determines how likely each tile is to be empty/air
 
-        public void Generate(int weightMap1, float resolutionMap1, int weightMap2, float resolutionMap2, int airWeight)
+        public void Generate(int weightMap1, float resolutionMap1, int weightMap2, float resolutionMap2, int airWeight, int gemWeight)
         {
             //first we make two noise maps with differing weights and resolutions.
             //combining two different maps gives us finer control over aspects of the terrain
@@ -89,10 +93,17 @@ namespace WPF_Arcade
                     //to create empty areas we simply ignore all the tiles where the noise does not exceed a certain value
                     if (totalNoiseAtPosition > airWeight)
                     {
-                        //first we add stone to the tilemap
-                        //we also call Create to add the object to the xaml of the game screen
-                        Tile stone = new Tile("stone", 64, x, y, worldCanvas);                       
-                        tileMap[x, y] = stone;
+                        Tile tile;
+                        if (map1.GeneratePsuedoRandomValue(x, y, 100) < gemWeight)
+                        {
+                            tile = new Tile("gem", worldTileSize, x, y, worldCanvas, GameImageBitmaps.gem);
+                        }
+                        else
+                        {
+                            //make a new stone tile and add it to the tilemap
+                            tile = new Tile("stone", worldTileSize, x, y, worldCanvas, GameImageBitmaps.stone);
+                        }
+                        tileMap[x, y] = tile;
                     }
                 }
             }
@@ -115,7 +126,7 @@ namespace WPF_Arcade
 
         public void RandomSeed()
         {
-            Random r = new Random();
+            
             worldSeed = r.Next().ToString();
         }
 

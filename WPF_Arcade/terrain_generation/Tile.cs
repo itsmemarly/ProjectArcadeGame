@@ -19,10 +19,11 @@ namespace WPF_Arcade
         private Canvas tileCanvas;
         private int tileX;
         private int tileY;
-        private Rectangle tile;
+        private BitmapImage tileBitmap;
+        private Image tileImage;
         // Mogelijk tileImage (XML as property van de Tile)
 
-        public Tile(string type, int size, int x, int y, Canvas canvas) // Todo: Image specificeren
+        public Tile(string type, int size, int x, int y, Canvas canvas, BitmapImage bitmap) 
         {
             // Coordinates of new Tile
             tileX = x;
@@ -36,24 +37,24 @@ namespace WPF_Arcade
             tileSize = size;
 
             // Visual properties of new Tile
-            tile = new Rectangle
+            tileImage = new Image
             {
-                Tag = "tile",
+                Tag = tileType,
                 Height = tileSize,
                 Width = tileSize,
-                Fill = Brushes.White,
-                Stroke = Brushes.Red
-            };            
-            Canvas.SetLeft(tile, x * tileSize);
-            Canvas.SetTop(tile, y * tileSize);
+                Source = bitmap
+            };
+
+            Canvas.SetLeft(tileImage, x * tileSize);
+            Canvas.SetTop(tileImage, y * tileSize);
 
             // Manual implementation of new Tile
-            tileCanvas.Children.Add(tile);
+            tileCanvas.Children.Add(tileImage);
         }
 
        public void Destroy()
        {
-            tileCanvas.Children.Remove(tile);
+            tileCanvas.Children.Remove(tileImage);
        }
     }
 }

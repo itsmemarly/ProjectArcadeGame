@@ -101,13 +101,25 @@ namespace WPF_Arcade
             return SineInterpolate(a, b, distance);
         }
 
+        //a simple method that combines the imputs in a string and then generates a hash value for that string
+        //this is desirable because hashvalues have strong variance in output with slight variance in input
+        //a string with only a single differing letter will generate a widely differing number as output
+        //the hash value will be an interger anywhere in the range of possible integers
+        //that's why we use Math.Abs to make it positive and we take the modulo of the range to ensure it's below the desired maximum
+        //we use this instead of Random() because we want the information to be chaotic but it still needs to be predictable
+        public float GeneratePsuedoRandomValue(double x, double y, float maxValue)
+        {
+            string input = x.ToString() + y.ToString() + mapSeed;
+            return Math.Abs(input.GetHashCode()) % maxValue;
+        }
+
+
         //not accessable functionality
 
         //this is the cosine interpolation used to generate the data between the random data points
         //if you want to understand the math I reccomend this amazing writeup: http://paulbourke.net/miscellaneous/interpolation/
         //basically we're calculating a desired point on a cosine wave that intersects with the two given datapoints
         private float SineInterpolate(float input1, float input2, float step)
-
         {
             double stepd = (double)step;
             double stepSquared = step * step;
@@ -115,18 +127,5 @@ namespace WPF_Arcade
 
             return input1 * (1 - stepSmooth) + input2 * stepSmooth;
         }
-
-        //a simple method that combines the imputs in a string and then generates a hash value for that string
-        //this is desirable because hashvalues have strong variance in output with slight variance in input
-        //a string with only a single differing letter will generate a widely differing number as output
-        //the hash value will be an interger anywhere in the range of possible integers
-        //that's why we use Math.Abs to make it positive and we take the modulo of the range to ensure it's below the desired maximum
-        //we use this instead of Random() because we want the information to be chaotic but it still needs to be predictable
-        private float GeneratePsuedoRandomValue(double x, double y, float maxValue)
-        {
-            string input = x.ToString() + y.ToString() + mapSeed;
-            return Math.Abs(input.GetHashCode()) % maxValue;
-        }
-
     }
 }
