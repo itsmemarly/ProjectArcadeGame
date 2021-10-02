@@ -21,5 +21,6 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        
     }
 }

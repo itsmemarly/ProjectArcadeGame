@@ -21,5 +21,9 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            // Go to main menu
+        }
     }
 }
