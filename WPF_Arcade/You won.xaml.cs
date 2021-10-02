@@ -21,9 +21,11 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
-        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        private void HoofdMenu_Click(object sender, RoutedEventArgs e)
         {
             // Go back to main menu
+            Menu menu = new Menu();
+            menu.Visibility = Visibility.Visible;
         }
 
         private void QuitGame_Click(object sender, RoutedEventArgs e)

@@ -8,7 +8,7 @@
         Title="Startscherm" 
         Background="Black"
         Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="MyGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>

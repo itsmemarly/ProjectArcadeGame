@@ -20,21 +20,27 @@ namespace WPF_Arcade
         public Startscherm()
         {
             InitializeComponent();
+            MyGrid.Focus();
         }
 
         private void ButtonStartSpel(object sender, RoutedEventArgs e)
         {
-
+            Game game = new Game();
+            Close();
+            game.Visibility = Visibility.Visible;
         }
 
         private void ButtonLaadVorigSpel(object sender, RoutedEventArgs e)
         {
-
+            // Vorig spel laden
+            Close();
         }
 
         private void ButtonUitleg(object sender, RoutedEventArgs e)
         {
-
+            Tutorial tutorial = new Tutorial();
+            Close();
+            tutorial.Visibility = Visibility.Visible;
         }
 
         private void ButtonOpties(object sender, RoutedEventArgs e)
@@ -44,12 +50,16 @@ namespace WPF_Arcade
 
         private void ButtonHighScore(object sender, RoutedEventArgs e)
         {
-
+            Highscore highscore = new Highscore();
+            Close();
+            highscore.Visibility = Visibility.Visible;
         }
 
         private void ButtonCredits(object sender, RoutedEventArgs e)
         {
-
+            Credits credits = new Credits();
+            Close();
+            credits.Visibility = Visibility.Visible;
         }
     }
 }

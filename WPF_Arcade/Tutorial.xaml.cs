@@ -24,6 +24,9 @@ namespace WPF_Arcade
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             //Start the game
+            Game game = new Game();
+            Close();
+            game.Visibility = Visibility.Visible;
         }
     }
 }
