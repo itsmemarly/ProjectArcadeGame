@@ -21,5 +21,9 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        private void StartGame_Click(object sender, RoutedEventArgs e)
+        {
+            //Start the game
+        }
     }
 }

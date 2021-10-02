@@ -21,5 +21,14 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            // Go back to main menu
+        }
+
+        private void QuitGame_Click(object sender, RoutedEventArgs e)
+        {
+            // Quit the game
+        }
     }
 }
