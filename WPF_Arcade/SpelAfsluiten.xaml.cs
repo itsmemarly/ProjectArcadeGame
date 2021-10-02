@@ -13,16 +13,21 @@ using System.Windows.Shapes;
 namespace WPF_Arcade
 {
     /// <summary>
-    /// Interaction logic for Highscore.xaml
+    /// Interaction logic for SpelAfsluiten.xaml
     /// </summary>
-    public partial class Highscore : Window
+    public partial class SpelAfsluiten : Window
     {
-        public Highscore()
+        public SpelAfsluiten()
         {
             InitializeComponent();
         }
 
-        private void TerugNaarMenu(object sender, RoutedEventArgs e)
+        private void JaSluitAf(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NeeSluitNietAf(object sender, RoutedEventArgs e)
         {
 
         }

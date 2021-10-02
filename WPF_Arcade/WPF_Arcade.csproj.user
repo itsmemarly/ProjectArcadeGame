@@ -10,12 +10,24 @@
     <Compile Update="Load Screen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SpelAfsluiten.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Startscherm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Load Screen.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SpelAfsluiten.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Startscherm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

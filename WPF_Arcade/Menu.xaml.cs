@@ -21,5 +21,30 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+
+        private void TerugNaarSpel(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Opslaan(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Opties(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TerugNaarStartscherm(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SpelAfsluiten(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
