@@ -27,21 +27,21 @@ namespace Spelladenversie_2
 
         private void LoadGame1_Click(object sender, RoutedEventArgs e)
         {
-
+            //Load game 1
         }
         private void LoadGame2_Click(object sender, RoutedEventArgs e)
         {
-
+            //Load game 2
         }
 
         private void LoadGame3_Click(object sender, RoutedEventArgs e)
         {
-
+            //Load game 3
         }
 
         private void MainMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            //Back to main menu
         }
     }
 }

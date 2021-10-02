@@ -12,8 +12,14 @@
             <RowDefinition Height="225"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Content="Uitleg" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
-        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,-7,0" FontFamily="OCR A Extended" Width="700" Foreground="White"> 
+
+        <!--Title Explenation-->
+        <Label Content="Uitleg" HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
+
+        <!--Explenation-->
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Margin="0,0,-7,0" FontFamily="OCR A Extended" Width="700" Foreground="White"> 
 
             What is Lorem Ipsum?<LineBreak/><LineBreak/>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.<LineBreak/>
@@ -25,6 +31,9 @@
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
         </TextBlock>
-        <Button Grid.Row="2" Content="Start Spel" Margin="300,20,300,20" FontFamily="OCR A Extended" Click="StartGame_Click" FontSize="20" Width="200" Height="40" />
+
+        <!--Button StartGame-->
+        <Button Grid.Row="2" Content="Start Spel" Margin="300,20,300,20" FontFamily="OCR A Extended"
+                Click="StartGame_Click" FontSize="20" Width="200" Height="40" />
     </Grid>
 </Window>
