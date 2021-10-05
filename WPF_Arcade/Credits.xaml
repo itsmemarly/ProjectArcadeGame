@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Arcade"
         mc:Ignorable="d"
-        Title="Credits" Height="450" Width="800">
+        Title="Credits" Height="450" Width="800" Background="Black">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Credits Title-->
+        <Label Content="Credits" HorizontalAlignment="Center" VerticalAlignment="Center" 
+               FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
+
+        <!--Dev Title-->
+        <Label Grid.Row="1" Content="Development Team" FontSize="20" Margin="30,0,0,0"
+               FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+
+        <!--Dev's-->
+        <TextBlock Grid.Row="2" Margin="45,0,0,0" FontFamily="OCR A Extended" VerticalAlignment="Center" Foreground="#FFDDDDDD">
+            Marleen Reiding<LineBreak></LineBreak>
+            Kaja Trijsburg<LineBreak></LineBreak>
+            Jessica Kronenman<LineBreak></LineBreak>
+            Koen Evers<LineBreak></LineBreak>
+            Maximiliaan Meeuwis
+        </TextBlock>
+
+        <!--Special Title-->
+        <Label Grid.Row="3" Content="Speciale dank aan" FontSize="20" Margin="30,10,0,0"
+               FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+
+        <!--Specials-->
+        <TextBlock Grid.Row="4" Margin="45,0,0,0" FontFamily="OCR A Extended" 
+                   VerticalAlignment="Center" Foreground="#FFDDDDDD">
+            Nigel Terpstra<LineBreak></LineBreak>
+            Bryan Koolman
+        </TextBlock>
+
+        <!--Button MainMenu-->
+        <Button Grid.Row="5" Content="Hoofdmenu" Margin="300,0,300,0" FontFamily="OCR A Extended"
+                Height="40" FontSize="18" Click="MainMenu_Click" Foreground="Black"></Button>
     </Grid>
 </Window>

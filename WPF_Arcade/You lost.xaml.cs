@@ -21,5 +21,15 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+
+        private void TerugNaarMenu(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void StopHetSpel(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

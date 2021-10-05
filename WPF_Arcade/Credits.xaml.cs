@@ -21,5 +21,11 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Visibility = Visibility.Visible;
+        }
     }
 }

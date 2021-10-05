@@ -13,20 +13,23 @@ using System.Windows.Shapes;
 namespace WPF_Arcade
 {
     /// <summary>
-    /// Interaction logic for Tutorial.xaml
+    /// Interaction logic for SpelAfsluiten.xaml
     /// </summary>
-    public partial class Tutorial : Window
+    public partial class SpelAfsluiten : Window
     {
-        public Tutorial()
+        public SpelAfsluiten()
         {
             InitializeComponent();
         }
-        private void StartGame_Click(object sender, RoutedEventArgs e)
+
+        private void JaSluitAf(object sender, RoutedEventArgs e)
         {
-            //Start the game
-            Game game = new Game();
-            Close();
-            game.Visibility = Visibility.Visible;
+
+        }
+
+        private void NeeSluitNietAf(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

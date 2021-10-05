@@ -21,5 +21,12 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+
+        private void TerugNaarMenu(object sender, RoutedEventArgs e)
+        {
+            Menu menu = new Menu();
+            Close();
+            menu.Visibility = Visibility.Visible;
+        }
     }
 }
