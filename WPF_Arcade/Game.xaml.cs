@@ -15,11 +15,43 @@ namespace WPF_Arcade
     /// <summary>
     /// Interaction logic for Game.xaml
     /// </summary>
+    /// 
+
+    //TODO: refactor this mess!!
     public partial class Game : Window
     {
+        TileMap terrain;
+        
         public Game()
         {
             InitializeComponent();
+            GameWorld.Focus();
+            terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
+            terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+        }
+
+        private void GameWorld_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.R:
+                    terrain.Clear();
+                    terrain.RandomSeed();
+                    terrain.Generate(75, 2, 25, 3, 40, 10);
+                    break;
+
+                default:
+                    break;
+
+            }
+        }
+
+        private void GameWorld_KeyUp(object sender, KeyEventArgs e)
+        {
+
         }
     }
+
 }
+
+
