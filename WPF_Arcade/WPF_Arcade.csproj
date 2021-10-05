@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\goblin 64px.png" />
     <None Remove="Images\screenshotgame.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\goblin 64px.png" />
     <Resource Include="Images\screenshotgame.png" />
   </ItemGroup>
 
