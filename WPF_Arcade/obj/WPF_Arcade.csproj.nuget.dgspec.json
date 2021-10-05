@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj": {}
+    "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj": {
+    "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
+        "projectUniqueName": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
         "projectName": "WPF_Arcade",
-        "projectPath": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
-        "packagesPath": "C:\\Users\\maxme\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\obj\\",
+        "projectPath": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
+        "packagesPath": "C:\\Users\\kajat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\maxme\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kajat\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

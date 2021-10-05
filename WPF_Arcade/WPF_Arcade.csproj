@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Media\ArcadeGame mockup.png" />
+    <None Remove="Media\Sprites\bat 16px.png" />
+    <None Remove="Media\Sprites\bat 32px.png" />
+    <None Remove="Media\Sprites\bat 64px.png" />
+    <None Remove="Media\Sprites\bat_16px.png" />
+    <None Remove="Media\Sprites\bat_32px.png" />
+    <None Remove="Media\Sprites\bat_64px.png" />
+    <None Remove="Media\Sprites\gem vein 16px.png" />
+    <None Remove="Media\Sprites\gem vein 32px.png" />
+    <None Remove="Media\Sprites\gem vein 64px.png" />
+    <None Remove="Media\Sprites\gem_vein_16px.png" />
+    <None Remove="Media\Sprites\gem_vein_32px.png" />
+    <None Remove="Media\Sprites\gem_vein_64px.png" />
+    <None Remove="Media\Sprites\goblin 16px.png" />
+    <None Remove="Media\Sprites\goblin 32px.png" />
+    <None Remove="Media\Sprites\goblin 64px.png" />
+    <None Remove="Media\Sprites\goblin_16px.png" />
+    <None Remove="Media\Sprites\goblin_32px.png" />
+    <None Remove="Media\Sprites\goblin_64px.png" />
+    <None Remove="Media\Sprites\player 16px.png" />
+    <None Remove="Media\Sprites\player 32px.png" />
+    <None Remove="Media\Sprites\player 64px.png" />
+    <None Remove="Media\Sprites\player_16px.png" />
+    <None Remove="Media\Sprites\player_64px.png" />
+    <None Remove="Media\Sprites\playe_ 32px.png" />
+    <None Remove="Media\Sprites\stone 16px.png" />
+    <None Remove="Media\Sprites\stone 32px.png" />
+    <None Remove="Media\Sprites\stone 64px.png" />
+    <None Remove="Media\Sprites\stone_16px.png" />
+    <None Remove="Media\Sprites\stone_32px.png" />
+    <None Remove="Media\Sprites\stone_64px.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Media\ArcadeGame mockup.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Media\Sprites\bat_16px.png" />
+    <Resource Include="Media\Sprites\bat_32px.png" />
+    <Resource Include="Media\Sprites\bat_64px.png" />
+    <Resource Include="Media\Sprites\gem_vein_16px.png" />
+    <Resource Include="Media\Sprites\gem_vein_32px.png" />
+    <Resource Include="Media\Sprites\gem_vein_64px.png" />
+    <Resource Include="Media\Sprites\goblin_16px.png" />
+    <Resource Include="Media\Sprites\goblin_32px.png" />
+    <Resource Include="Media\Sprites\goblin_64px.png" />
+    <Resource Include="Media\Sprites\player_16px.png" />
+    <Resource Include="Media\Sprites\player_64px.png" />
+    <Resource Include="Media\Sprites\playe_ 32px.png" />
+    <Resource Include="Media\Sprites\stone_16px.png" />
+    <Resource Include="Media\Sprites\stone_32px.png" />
+    <Resource Include="Media\Sprites\stone_64px.png" />
+  </ItemGroup>
+
+</Project>
