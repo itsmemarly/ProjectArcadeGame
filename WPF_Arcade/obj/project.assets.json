@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\kajat\\.nuget\\packages\\": {}
+    "C:\\Users\\maxme\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
+      "projectUniqueName": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
       "projectName": "WPF_Arcade",
-      "projectPath": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
-      "packagesPath": "C:\\Users\\kajat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kajat\\Documents\\Repositories\\ProjectArcadeGame\\WPF_Arcade\\obj\\",
+      "projectPath": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\WPF_Arcade.csproj",
+      "packagesPath": "C:\\Users\\maxme\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\maxme\\Documents\\GitHub\\ProjectArcadeGame\\WPF_Arcade\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kajat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maxme\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
