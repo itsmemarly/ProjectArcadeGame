@@ -94,7 +94,7 @@ namespace WPF_Arcade
         {
             int playerTileX = playerX / playerSize;
             int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX -1, playerTileY))
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX + 1, playerTileY))
             {
                 playerX += playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -111,7 +111,7 @@ namespace WPF_Arcade
         {
             int playerTileX = playerX / playerSize;
             int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX + 1, playerTileY))
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX - 1, playerTileY))
             {
                 playerX -= playerSize;
                 playerActionPoints -= playerMoveCost;
