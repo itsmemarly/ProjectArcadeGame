@@ -45,27 +45,31 @@ namespace WPF_Arcade
 
                 // wat doet de speler in zijn beurt-op welke volgorde, en welke loops heb je hiervoor nodig
                 /*
+                 * "Richting van pikhouweel" nog te bespreken
+                 * "Tegenspelers" moet nog besproken worden
+                 * "Enemies verminderen highscore van speler bij aanval naar speler" nog te bespreken
+                 * 
                  * Speler doet op zijn beurt:
                  * * Naar links lopen:
-                 * *  Als speler op linkerpijl toetst:
+                 * *  Als speler op "A" toetst:
                  * *   Pikhouweel naar links richten;
                  * *   Terwijl Speler[x-1] geen monster/enemy/gem/stone heeft: 
                  * *       Speler[x--];
                  * *    
                  * 
                  * * Naar rechts lopen:
-                 * *  Als speler op rechterpijl toetst:
+                 * *  Als speler op "D" toetst:
                  * *   Pikhouweel naar rechts richten;
                  * *   Terwijl Speler[x+1] geen monster/enemy/gem/stone houdt: 
                  * *       Speler[x++];
                  *        
                  * * Naar beneden lopen:
-                 * *  Als speler op benedenpijl toetst:
+                 * *  Als speler op "S" toetst:
                  * *   Terwijl Speler[y-1] geen monster/enemy/gem/stone houdt: 
                  * *       Speler[y--];
                  * 
                  * * Naar boven lopen:
-                 * *  Als speler op bovenpijl toetst:
+                 * *  Als speler op "W" toetst:
                  * *   Terwijl Speler[y+1] geen monster/enemy/gem/stone houdt: 
                  * *       Speler[y++];
                  * 
@@ -84,6 +88,7 @@ namespace WPF_Arcade
                  * *    Anders als speler[x-1] == gem:
                  * *     Speler[x-1] = "leegte";
                  * *     Speler[Aantal_gems]++;
+                 * * Dit geldt ook voor naar boven en beneden pikhouweel gebruiken
                  * 
                  * * Tegenspeler rechts van speler doden met pikhouweel, mits pikhouweel naar rechts gericht is:
                  * *  Als ingedrukte knop "K" is && pikhouweel naar recht gericht is && Speler[x+1] == tegenspeler:
