@@ -59,7 +59,7 @@ namespace WPF_Arcade
         {
             int playerTileX = playerX / playerSize;
             int playerTileY = playerY / playerSize;
-            if (playerActionPoints > playerMoveCost && !playerMap.IsTile(playerTileX, playerTileY - 1))
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX, playerTileY - 1))
             {
                 playerY -= playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -71,6 +71,57 @@ namespace WPF_Arcade
                 return false;     
             }
 
+        }
+
+        public bool MoveDown()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX, playerTileY + 1))
+            {
+                playerY += playerSize;
+                playerActionPoints -= playerMoveCost;
+                Canvas.SetTop(playerImage, playerY);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool MoveRight()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX -1, playerTileY))
+            {
+                playerX += playerSize;
+                playerActionPoints -= playerMoveCost;
+                Canvas.SetLeft(playerImage, playerX);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool MoveLeft()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX + 1, playerTileY))
+            {
+                playerX -= playerSize;
+                playerActionPoints -= playerMoveCost;
+                Canvas.SetLeft(playerImage, playerX);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //public bool DestroyTile() 

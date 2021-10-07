@@ -28,9 +28,9 @@ namespace WPF_Arcade
             InitializeComponent();
             GameWorld.Focus();
             terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-            //terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+            terrain.Generate(75, 2, 6, 3, 40, 10); //fill the tilemap with terrain
 
-            player = new Player(128, 128, 3, GameImageBitmaps.player, GameWorld, 64, terrain);
+            player = new Player(128, 256, 30, GameImageBitmaps.player, GameWorld, 64, terrain);
         }
 
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
@@ -46,6 +46,19 @@ namespace WPF_Arcade
                 case Key.W:
                     player.MoveUp();
                     break;
+
+                case Key.S:
+                    player.MoveDown();
+                    break;
+
+                case Key.D:
+                    player.MoveRight();
+                    break;
+
+                case Key.A:
+                    player.MoveLeft();
+                    break;
+
                 default:
                     break;
 
