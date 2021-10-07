@@ -60,6 +60,12 @@ namespace WPF_Arcade
 
         //accesible functionality
 
+        public bool IsTile(int x, int y)
+        {
+            return tileMap[x, y] != null;
+            
+        }
+
         //weightmap1 and weightmap2 determine what the range is for each map, and thus how strong their influence is on the final terrain generation
         //for more information about the resolution check NoiseMap.cs
         //the airWeight determines how likely each tile is to be empty/air
