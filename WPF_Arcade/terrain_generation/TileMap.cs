@@ -79,6 +79,11 @@ namespace WPF_Arcade
             tileMap[x, y] = null;
         }
 
+        public void DeleteTileAtScreenCoordinate(int x, int y)
+        {
+            DeleteTile(ToTileCoordinate(x), ToTileCoordinate(y));
+        }
+
         //weightmap1 and weightmap2 determine what the range is for each map, and thus how strong their influence is on the final terrain generation
         //for more information about the resolution check NoiseMap.cs
         //the airWeight determines how likely each tile is to be empty/air
