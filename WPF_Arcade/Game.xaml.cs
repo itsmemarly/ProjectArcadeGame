@@ -21,30 +21,29 @@ namespace WPF_Arcade
     public partial class Game : Window
     {
         TileMap terrain;
-
-        public static int beurten = 0;
+        public static bool doelBehaald;
         
         public Game()
         {
             InitializeComponent();
             GameWorld.Focus();
-            Games(beurten);
+            GameRonde();
             
         }
 
         /// <summary>
-        /// Maakt spel per beurt totdat alle beurten op zijn
+        /// Maakt en draait spel totdat een van beide spelers het doel heeft behaald.
         /// </summary>
-        /// <param name="aantalBeurten">aantal beurten dat er gespeeld zal worden</param>
-        private void Games(int aantalBeurten)
-        {
-            for (int i = 0; i < aantalBeurten; i++)
-            {
-                terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-                terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+        private void GameRonde()
+        {   
+            terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
+            terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
 
+            doelBehaald = false;
+            while (!doelBehaald)
+            {
                 // wat doet de speler in zijn beurt-op welke volgorde, en welke loops heb je hiervoor nodig
-                /*
+                /* "aantalBeurten" nog te bespreken
                  * "Richting van pikhouweel" nog te bespreken
                  * "Tegenspelers" moet nog besproken worden
                  * "Enemies verminderen highscore van speler bij aanval naar speler" nog te bespreken
@@ -110,6 +109,9 @@ namespace WPF_Arcade
                  * *  Als ingedrukte knop "K" is && pikhouweel naar links gericht is && Speler[x-1] == enemy:
                  * *    Speler[x-1] = "leegte";
                  * 
+                 * * Doel behalen:
+                 * *  Als Speler1.DoelBehaald() || Speler2.DoelBehaald():
+                 * *   doelBehaald = true;
                 */
             }
         }
