@@ -59,7 +59,10 @@ namespace WPF_Arcade
         }
 
         //accesible functionality
-
+        public int ToTileCoordinate(int x)
+        {
+            return x / worldTileSize;
+        } 
         public bool IsTile(int x, int y)
         {
             return tileMap[x, y] != null;
