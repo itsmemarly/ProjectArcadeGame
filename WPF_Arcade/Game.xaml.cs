@@ -59,8 +59,21 @@ namespace WPF_Arcade
                     player.MoveLeft();
                     break;
 
+                case Key.C:
+                    player.DestroyTileRight();
+                    break;
+
+                case Key.Q:
+                    player.DestroyTileLeft();
+                    break;
+
                 case Key.E:
-                    player.DestroyTile();
+                    player.DestroyTileUp();
+                    break;
+
+                case Key.Z:
+                    player.DestroyTileDown();
+                    break;
 
                 default:
                     break;

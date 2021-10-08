@@ -128,12 +128,65 @@ namespace WPF_Arcade
         {
             int playerTileX = playerX / playerSize;
             int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX +1, playerTileY)
+            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX +1, playerTileY))
             {
-                playerMap.DeleteTile(playerTileX - 1, playerTileY);
+                playerMap.DeleteTile(playerTileX + 1, playerTileY);
+                return true;
 
             }
+            else
+            {
+                return false;
+            }
         }
+        public bool DestroyTileLeft()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX - 1, playerTileY))
+            {
+                playerMap.DeleteTile(playerTileX - 1, playerTileY);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DestroyTileUp()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX , playerTileY -1))
+            {
+                playerMap.DeleteTile(playerTileX , playerTileY -1);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DestroyTileDown()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX, playerTileY + 1))
+            {
+                playerMap.DeleteTile(playerTileX, playerTileY + 1);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         //public bool Attack() 
         //{
