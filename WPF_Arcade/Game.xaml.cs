@@ -30,7 +30,7 @@ namespace WPF_Arcade
             terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
             terrain.Generate(75, 2, 6, 3, 40, 10); //fill the tilemap with terrain
 
-            player = new Player(128, 256, 6, GameImageBitmaps.player, GameWorld, 64, terrain);
+            player = new Player(128, 256, 30, GameImageBitmaps.player, GameWorld, 64, terrain);
         }
 
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
