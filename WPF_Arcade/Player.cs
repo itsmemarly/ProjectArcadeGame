@@ -57,9 +57,8 @@ namespace WPF_Arcade
 
         public bool MoveUp()
         {
-            int playerTileX = playerX / playerSize;
-            int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX, playerTileY - 1))
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY - playerSize);
+            if (playerActionPoints >= playerMoveCost && !targetTileExist)
             {
                 playerY -= playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -75,9 +74,8 @@ namespace WPF_Arcade
 
         public bool MoveDown()
         {
-            int playerTileX = playerX / playerSize;
-            int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX, playerTileY + 1))
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY + playerSize);
+            if (playerActionPoints >= playerMoveCost && !targetTileExist)
             {
                 playerY += playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -92,9 +90,8 @@ namespace WPF_Arcade
 
         public bool MoveRight()
         {
-            int playerTileX = playerX / playerSize;
-            int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX + 1, playerTileY))
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX + playerSize, playerY);
+            if (playerActionPoints >= playerMoveCost && !targetTileExist)
             {
                 playerX += playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -109,9 +106,8 @@ namespace WPF_Arcade
 
         public bool MoveLeft()
         {
-            int playerTileX = playerX / playerSize;
-            int playerTileY = playerY / playerSize;
-            if (playerActionPoints >= playerMoveCost && !playerMap.IsTile(playerTileX - 1, playerTileY))
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX - playerSize, playerY);
+            if (playerActionPoints >= playerMoveCost && !targetTileExist)
             {
                 playerX -= playerSize;
                 playerActionPoints -= playerMoveCost;
@@ -124,10 +120,65 @@ namespace WPF_Arcade
             }
         }
 
-        //public bool DestroyTile() 
-        //{
+        public bool DestroyTileRight()
+        {
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX + playerSize, playerY);
+            if (playerActionPoints >= playerMoveCost && targetTileExist)
+            {
+                playerMap.DeleteTileAtScreenCoordinate(playerX + playerSize, playerY);
+                return true;
 
-        //}
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool DestroyTileLeft()
+        {
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX - playerSize, playerY);
+            if (playerActionPoints >= playerMoveCost && targetTileExist)
+            {
+                playerMap.DeleteTileAtScreenCoordinate(playerX - playerSize, playerY);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DestroyTileUp()
+        {
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY - playerSize);
+            if (playerActionPoints >= playerMoveCost && targetTileExist)
+            {
+                playerMap.DeleteTileAtScreenCoordinate(playerX , playerY - playerSize);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DestroyTileDown()
+        {
+            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY + playerSize);
+            if (playerActionPoints >= playerMoveCost && targetTileExist)
+            {
+                playerMap.DeleteTileAtScreenCoordinate(playerX, playerY + playerSize);
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         //public bool Attack() 
         //{
