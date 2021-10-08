@@ -124,10 +124,16 @@ namespace WPF_Arcade
             }
         }
 
-        //public bool DestroyTile() 
-        //{
+        public bool DestroyTileRight()
+        {
+            int playerTileX = playerX / playerSize;
+            int playerTileY = playerY / playerSize;
+            if (playerActionPoints >= playerMoveCost && playerMap.IsTile(playerTileX +1, playerTileY)
+            {
+                playerMap.DeleteTile(playerTileX - 1, playerTileY);
 
-        //}
+            }
+        }
 
         //public bool Attack() 
         //{

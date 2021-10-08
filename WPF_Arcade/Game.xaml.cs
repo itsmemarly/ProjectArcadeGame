@@ -59,6 +59,9 @@ namespace WPF_Arcade
                     player.MoveLeft();
                     break;
 
+                case Key.E:
+                    player.DestroyTile();
+
                 default:
                     break;
 
