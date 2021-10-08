@@ -62,7 +62,11 @@ namespace WPF_Arcade
         public int ToTileCoordinate(int x)
         {
             return x / worldTileSize;
-        } 
+        }
+        public bool isTileAtScreenCoordinate(int x, int y)
+        {
+            return IsTile(ToTileCoordinate(x), ToTileCoordinate(y));
+        }
         public bool IsTile(int x, int y)
         {
             return tileMap[x, y] != null;
