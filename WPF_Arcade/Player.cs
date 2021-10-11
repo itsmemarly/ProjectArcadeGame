@@ -26,6 +26,7 @@ namespace WPF_Arcade
         private readonly Image playerImage;
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
+        private readonly int playerStartActionPoints;
 
         public Player(int x, int y, int actions, BitmapImage bitmap, Canvas canvas, int size, TileMap map)
         {
@@ -36,7 +37,7 @@ namespace WPF_Arcade
             playerCanvas = canvas;
             playerMap = map;
             playerSize = size;
-
+            playerStartActionPoints = actions;
             playerImage = new Image
             {
                 Tag = "playerImage",
@@ -49,8 +50,13 @@ namespace WPF_Arcade
             playerCanvas.Children.Add(playerImage);
         }
 
-        //getters
+        
 
+        //getters
+        public int Actionpoints()
+        {
+            return playerActionPoints;
+        }
 
 
         //public void doStuff()
@@ -176,6 +182,11 @@ namespace WPF_Arcade
             {
                 return false;
             }
+        }
+
+        public void ResetActionPoints()
+        {
+            playerActionPoints = playerStartActionPoints;
         }
 
 

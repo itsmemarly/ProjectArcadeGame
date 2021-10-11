@@ -21,23 +21,42 @@ namespace WPF_Arcade
     public partial class Game : Window
     {
         TileMap terrain;
+        EntityManager entityManager;
         public static bool doelBehaald;
         
         public Game()
         {
             InitializeComponent();
             GameWorld.Focus();
-            GameRonde();
+            
+            terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
+            terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+
+            List<Enemy> enemyList = new List<Enemy>();
+            enemyList.Add(new Enemy(64, 64, 1, 64, GameImageBitmaps.goblin, GameWorld, terrain)); //add new enemy
+
+            List<Player> playerList = new List<Player>();
+            playerList.Add(new Player(128, 64, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 1
+            playerList.Add(new Player(128, 128, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 2
+            entityManager = new EntityManager(enemyList, playerList, terrain.Seed().GetHashCode());
+            
+
+           
+
+           /// GameRonde(); ///
+            
             
         }
+
+        
+
 
         /// <summary>
         /// Maakt en draait spel totdat een van beide spelers het doel heeft behaald.
         /// </summary>
         private void GameRonde()
         {   
-            terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-            terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+           
 
             doelBehaald = false;
             while (!doelBehaald)
@@ -125,11 +144,15 @@ namespace WPF_Arcade
                     terrain.RandomSeed();
                     terrain.Generate(75, 2, 25, 3, 40, 10);
                     break;
+                case Key.Y:
+                    entityManager.TakeEnemyTurns();
+                    break;
 
                 default:
                     break;
 
             }
+            entityManager.TakePlayerAction(e.Key);
         }
 
         private void GameWorld_KeyUp(object sender, KeyEventArgs e)

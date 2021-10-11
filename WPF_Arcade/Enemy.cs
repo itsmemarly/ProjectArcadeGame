@@ -9,7 +9,7 @@ namespace WPF_Arcade
         private int enemyX;
         private int enemyY;
         private int enemyHealth;
-        private readonly int enemyMoveCost = 2;
+        private readonly int enemyMoveCost = 1;
         private readonly int enemyAttackCost = 2;
         private readonly int enemySize;
 
@@ -100,7 +100,7 @@ namespace WPF_Arcade
 
         private bool CanMoveTo(bool targetTileExists)
         {
-            return enemyActionPoints > enemyMoveCost && !targetTileExists;
+            return enemyActionPoints >= enemyMoveCost && !targetTileExists;
         }
 
         private void MoveTo(int destinationX, int destinationY)
