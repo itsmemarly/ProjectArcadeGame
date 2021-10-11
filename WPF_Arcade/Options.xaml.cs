@@ -31,7 +31,7 @@ namespace WPF_Arcade
 
         private void MasterVolumeCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            // MasterVolume is 0
+            MainWindow.MasterVolume = 0;
         }
 
         private void MasterVolumeCheckBox_Checked(object sender, RoutedEventArgs e)
