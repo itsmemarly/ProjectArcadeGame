@@ -58,6 +58,11 @@ namespace WPF_Arcade
             return worldSeed;
         }
 
+        public int TileSize()
+        {
+            return worldTileSize;
+        }
+
         //accesible functionality
         public int ToTileCoordinate(int x)
         {
