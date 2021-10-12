@@ -75,6 +75,8 @@ namespace WPF_Arcade
                     player.DestroyTileDown();
                     break;
 
+             
+
                 default:
                     break;
 
