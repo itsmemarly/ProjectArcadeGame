@@ -67,7 +67,11 @@ namespace WPF_Arcade
                     EndTurn(ActivePlayer());
                     break;
 
+<<<<<<< Updated upstream
                     case Key.W:
+=======
+                case Key.W:
+>>>>>>> Stashed changes
                     ActivePlayer().MoveUp();
                     EndTurn(ActivePlayer());
                     break;
@@ -81,16 +85,23 @@ namespace WPF_Arcade
                     ActivePlayer().DestroyTileRight();
                     EndTurn(ActivePlayer());
                     break;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 case Key.C:
                     ActivePlayer().DestroyTileDown();
                     EndTurn(ActivePlayer());
                     break;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                 case Key.Z:
                     ActivePlayer().DestroyTileLeft();
                     EndTurn(ActivePlayer());
                     break;
+<<<<<<< Updated upstream
 
                 case Key.Q:
                     ActivePlayer().DestroyTileLeft();
@@ -98,6 +109,12 @@ namespace WPF_Arcade
                     break;
 
 
+=======
+                case Key.Q:
+                    ActivePlayer().DestroyTileUp();
+                    EndTurn(ActivePlayer());
+                    break;
+>>>>>>> Stashed changes
                 default: 
                     break;
 
