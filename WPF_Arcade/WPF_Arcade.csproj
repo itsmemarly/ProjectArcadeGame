@@ -30,8 +30,8 @@
     <None Remove="Media\Sprites\player 32px.png" />
     <None Remove="Media\Sprites\player 64px.png" />
     <None Remove="Media\Sprites\player_16px.png" />
+    <None Remove="Media\Sprites\player_32px.png" />
     <None Remove="Media\Sprites\player_64px.png" />
-    <None Remove="Media\Sprites\playe_ 32px.png" />
     <None Remove="Media\Sprites\stone 16px.png" />
     <None Remove="Media\Sprites\stone 32px.png" />
     <None Remove="Media\Sprites\stone 64px.png" />
@@ -54,8 +54,8 @@
     <Resource Include="Media\Sprites\goblin_32px.png" />
     <Resource Include="Media\Sprites\goblin_64px.png" />
     <Resource Include="Media\Sprites\player_16px.png" />
+    <Resource Include="Media\Sprites\player_32px.png" />
     <Resource Include="Media\Sprites\player_64px.png" />
-    <Resource Include="Media\Sprites\playe_ 32px.png" />
     <Resource Include="Media\Sprites\stone_16px.png" />
     <Resource Include="Media\Sprites\stone_32px.png" />
     <Resource Include="Media\Sprites\stone_64px.png" />
