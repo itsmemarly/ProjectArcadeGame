@@ -126,7 +126,6 @@ namespace WPF_Arcade
         }
 
         //Move to removes set ammount of action points and moves the player
-
         private void MoveTo(int destinationX, int destinationY)
         {
             playerY = destinationY;

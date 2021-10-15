@@ -43,48 +43,24 @@ namespace WPF_Arcade
             enemyCanvas.Children.Add(enemyImage);
         }
 
-        public void takeTurn()
+        public bool MoveUp()
         {
-
+            return MoveIfValid(enemyX, enemyY - enemySize);
         }
 
-        public void MoveUp()
+        public bool MoveDown()
         {
-            bool targetTileExists = enemyTileMap.isTileAtScreenCoordinate(enemyX, enemyY - enemySize);
-
-            if (enemyActionPoints > enemyMoveCost && !targetTileExists)
-            {
-                MoveTo(enemyX, enemyY - enemySize);
-            }
+            return MoveIfValid(enemyX, enemyY + enemySize);
         }
 
-        public void MoveDown()
+        public bool MoveLeft()
         {
-            bool targetTileExists = enemyTileMap.isTileAtScreenCoordinate(enemyX, enemyY + enemySize);
-
-            if (CanMoveTo(targetTileExists))
-            {
-                MoveTo(enemyX, enemyY + enemySize);
-            }
+            return MoveIfValid(enemyX - enemySize, enemyY);
         }
 
-        public void MoveLeft()
+        public bool MoveRight()
         {
-            bool targetTileExists = enemyTileMap.isTileAtScreenCoordinate(enemyX - enemySize, enemyY);
-
-            if (CanMoveTo(targetTileExists))
-            {
-                MoveTo(enemyX - enemySize, enemyY);
-            }
-        }
-        public void MoveRight()
-        {
-            bool targetTileExists = enemyTileMap.isTileAtScreenCoordinate(enemyX + enemySize, enemyY);
-
-            if (CanMoveTo(targetTileExists))
-            {
-                MoveTo(enemyX + enemySize, enemyY);
-            }
+            return MoveIfValid(enemyX + enemySize, enemyY);
         }
 
         public void Attack()
@@ -92,15 +68,19 @@ namespace WPF_Arcade
 
         }
 
-        public void DoStuff()
+        //private methods
+        private bool CanMoveTo(int destinationX, int destinationY)
         {
-            
-        
-        }
-
-        private bool CanMoveTo(bool targetTileExists)
-        {
-            return enemyActionPoints >= enemyMoveCost && !targetTileExists;
+            //first check if the destination is in the level
+            if (enemyTileMap.IsScreenCoordinateInLevel(destinationX, destinationY))
+            {
+                //if the destination is within the level, check if there's not a tile there and if the player has enough action points to move.
+                if (!enemyTileMap.isTileAtScreenCoordinate(destinationX, destinationY) && enemyActionPoints >= enemyMoveCost)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private void MoveTo(int destinationX, int destinationY)
@@ -111,6 +91,18 @@ namespace WPF_Arcade
             Canvas.SetLeft(enemyImage, enemyX);
             Canvas.SetTop(enemyImage, enemyY);
             
+        }
+
+        private bool MoveIfValid(int destinationX, int destinationY)
+        {
+            bool isMoveValid = CanMoveTo(destinationX, destinationY);
+
+            if (isMoveValid)
+            {
+                MoveTo(destinationX, destinationY);
+            }
+
+            return isMoveValid;
         }
     }
 }
