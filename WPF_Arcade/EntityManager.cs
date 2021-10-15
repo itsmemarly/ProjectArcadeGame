@@ -16,13 +16,13 @@ namespace WPF_Arcade
     {
         private List<Enemy> managerEnemyList;
         private List<Player> managerPlayerList;
-        private int managerSeed;
+        private string managerSeed;
         private int managerRandomCount = int.MinValue;
         private int activePlayerIndex = 0;
 
        
 
-        public EntityManager(List<Enemy> enemyList, List<Player> playerList, int seed ) {
+        public EntityManager(List<Enemy> enemyList, List<Player> playerList, string seed ) {
             managerEnemyList = enemyList;
             managerPlayerList = playerList;
             managerSeed = seed;
@@ -43,7 +43,7 @@ namespace WPF_Arcade
                 {
                     enemy.MoveRight();
                 }
-
+                enemy.ResetActionPoints();
             }
         }
         //method to randomly turn the enemy
@@ -53,6 +53,7 @@ namespace WPF_Arcade
             managerRandomCount += 1;
             return Math.Abs(input.GetHashCode()) % maxValue;
         }
+
         //keys to make the player move
         public void TakePlayerAction(Key key)
         {

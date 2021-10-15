@@ -6,11 +6,12 @@ namespace WPF_Arcade
     class Enemy
     {
         private int enemyActionPoints;
+        private int enemyStartingActionPoints;
         private int enemyX;
         private int enemyY;
         private int enemyHealth;
         private readonly int enemyMoveCost = 1;
-        private readonly int enemyAttackCost = 2;
+        private readonly int enemyAttackCost = 1;
         private readonly int enemySize;
 
         private TileMap enemyTileMap;
@@ -24,6 +25,7 @@ namespace WPF_Arcade
             enemyX = x;
             enemyY = y;
             enemyActionPoints = actions;
+            enemyStartingActionPoints = actions;
             enemySize = size;
             enemyTileMap = tilemap;
             enemyBitMap = bitmap;
@@ -43,6 +45,22 @@ namespace WPF_Arcade
             enemyCanvas.Children.Add(enemyImage);
         }
 
+        public int X()
+        {
+            return enemyX;
+        }
+
+        public int Y()
+        {
+            return enemyY;
+        }
+
+        public int ActionPoints()
+        {
+            return enemyActionPoints;
+        }
+
+
         public bool MoveUp()
         {
             return MoveIfValid(enemyX, enemyY - enemySize);
@@ -61,6 +79,11 @@ namespace WPF_Arcade
         public bool MoveRight()
         {
             return MoveIfValid(enemyX + enemySize, enemyY);
+        }
+
+        public void ResetActionPoints()
+        {
+            enemyActionPoints = enemyStartingActionPoints;
         }
 
         public void Attack()
