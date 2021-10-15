@@ -30,7 +30,7 @@ namespace WPF_Arcade
             GameWorld.Focus();
             
             terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-            terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
+            //terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
 
             List<Enemy> enemyList = new List<Enemy>();
             enemyList.Add(new Enemy(64, 64, 1, 64, GameImageBitmaps.goblin, GameWorld, terrain)); //add new enemy
@@ -152,6 +152,7 @@ namespace WPF_Arcade
                     break;
 
             }
+
             entityManager.TakePlayerAction(e.Key);
         }
 

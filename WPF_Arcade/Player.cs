@@ -58,147 +58,71 @@ namespace WPF_Arcade
             return playerActionPoints;
         }
 
-
-        //public void doStuff()
-        //{
-
-        //}
-
+        //move functions related to moving the player on the map
         public bool MoveUp()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY - playerMap.TileSize());            //Selects place on grid player wants to move to.
-            if (CanMoveTo(targetTileExist))                                                                      //Checks if there's a tile blocking the players move.
-            {
-                MoveTo(playerX, playerY - playerMap.TileSize());                                                           //Moves player and removes action point.
-                return true;                                                                                     //Same goes for all the moves by player.
-            }
-            else
-            {
-                return false;     
-            }
-
+            //move the player if the move is valid
+            return MoveIfValid(playerX, playerY - playerMap.TileSize());
         }
 
+        //Same goes for all the moves by player.
         public bool MoveDown()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY + playerMap.TileSize());
-            if (CanMoveTo(targetTileExist))
-                {
-                MoveTo(playerX, playerY + playerMap.TileSize());
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return MoveIfValid(playerX, playerY + playerMap.TileSize());
         }
 
         public bool MoveRight()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX + playerMap.TileSize(), playerY);
-            if (CanMoveTo(targetTileExist))
-            {
-                MoveTo(playerX + playerMap.TileSize(), playerY);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return MoveIfValid(playerX + playerMap.TileSize(), playerY);
         }
 
         public bool MoveLeft()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX - playerMap.TileSize(), playerY);
-            if (CanMoveTo(targetTileExist))
-            {
-                MoveTo(playerX - playerMap.TileSize(), playerY);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return MoveIfValid(playerX - playerMap.TileSize(), playerY);
         }
 
+           
+        //methods to take the destroy tile action
         public bool DestroyTileRight()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX + playerMap.TileSize(), playerY);              //Selects place on grid player wants to destroy a tile.
-            if (CanDestroyTile(targetTileExist))                                                                   //Checks if there is a tile.
-            {
-                playerMap.DeleteTileAtScreenCoordinate(playerX + playerMap.TileSize(), playerY);                             //Destroy's tile
-                playerActionPoints -= playerDestroyTileCost;                                                       //Lowers action points
-                return true;                                                                                       //Same goes for all Destroy's by player 
-
-            }
-            else
-            {
-                return false;
-            }
+            return DestroyIfValid(playerX + playerMap.TileSize(), playerY);
         }
+
         public bool DestroyTileLeft()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX - playerMap.TileSize(), playerY);
-            if (CanDestroyTile(targetTileExist))
-            {
-                playerMap.DeleteTileAtScreenCoordinate(playerX - playerMap.TileSize(), playerY);
-                playerActionPoints -= playerDestroyTileCost;
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
+            return DestroyIfValid(playerX - playerMap.TileSize(), playerY);
         }
 
         public bool DestroyTileUp()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY - playerMap.TileSize());
-            if (CanDestroyTile(targetTileExist))
-            {
-                playerMap.DeleteTileAtScreenCoordinate(playerX , playerY - playerMap.TileSize());
-                playerActionPoints -= playerDestroyTileCost;
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
+            return DestroyIfValid(playerX, playerY - playerMap.TileSize());
         }
 
         public bool DestroyTileDown()
         {
-            bool targetTileExist = playerMap.isTileAtScreenCoordinate(playerX, playerY + playerMap.TileSize());
-            if (CanDestroyTile(targetTileExist))
-            {
-                playerMap.DeleteTileAtScreenCoordinate(playerX, playerY + playerMap.TileSize());
-                playerActionPoints -= playerDestroyTileCost;
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
+            return DestroyIfValid(playerX, playerY + playerMap.TileSize());
         }
 
+        //resets the action points back to their starting value
         public void ResetActionPoints()
         {
             playerActionPoints = playerStartActionPoints;
         }
 
 
-        //These 2 below check if you have enough action points and if there is a tile.
-        private bool CanMoveTo(bool targetTileExist)
+        //checks if a move a player wants to make is valid
+        private bool CanMoveTo(int destinationX, int destinationY)
         {
-            return playerActionPoints >= playerMoveCost && !targetTileExist;
-        }
-
-        private bool CanDestroyTile(bool targetTileExist)
-        {
-            return playerActionPoints >= playerDestroyTileCost && targetTileExist;
+            //first check if the destination is in the level
+            if (playerMap.IsScreenCoordinateInLevel(destinationX, destinationY))
+            {
+                //if the destination is within the level, check if there's not a tile there and if the player has enough action points to move.
+                if (!playerMap.isTileAtScreenCoordinate(destinationX, destinationY) && playerActionPoints >= playerMoveCost)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         //Move to removes set ammount of action points and moves the player
@@ -212,26 +136,49 @@ namespace WPF_Arcade
             Canvas.SetLeft(playerImage, playerX);
         }
 
-        //private void DestroyTile(int destructionX, int destructionY)
-        //{
-        //    playerY = destructionY;
-        //    playerX = destructionX;
-        //    playerActionPoints -= playerDestroyTileCost;
-        //    playerMap.DeleteTileAtScreenCoordinate(playerX, playerY)
-        //}
+        private bool MoveIfValid(int destinationX, int destinationY)
+        {
+            bool canMove = CanMoveTo(destinationX, destinationY);
+            if (canMove)
+            {
+                MoveTo(destinationX, destinationY);
+            }
 
+            return canMove;
+        }
+
+        private bool CanDestroyTile(int destructionX, int destructionY)
+        {
+            if (playerMap.IsScreenCoordinateInLevel(destructionX, destructionY))
+            {
+                if (playerActionPoints >= playerDestroyTileCost && playerMap.isTileAtScreenCoordinate(destructionX, destructionY))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void DestroyTile(int destructionX, int destructionY)
+        {
+            playerActionPoints -= playerDestroyTileCost;
+            playerMap.DeleteTileAtScreenCoordinate(playerX, playerY);
+        }
+
+        private bool DestroyIfValid(int destructionX, int destructionY)
+        {
+            bool moveIsValid = CanDestroyTile(destructionX, destructionY);
+            if (moveIsValid)
+            {
+                DestroyTile(destructionX, destructionY);
+            }
+            return moveIsValid;
+        }
 
 
         //public bool Attack() 
         //{
 
         //}
-
-        //public void TakeTurn()
-        //{
-
-        //}
-
-
     }
 }

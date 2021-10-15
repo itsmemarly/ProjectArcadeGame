@@ -64,6 +64,8 @@ namespace WPF_Arcade
         }
 
         //accesible functionality
+
+        //checks if there's a tile at these pixels
         public int ToTileCoordinate(int x)
         {
             return x / worldTileSize;
@@ -72,21 +74,37 @@ namespace WPF_Arcade
         {
             return IsTile(ToTileCoordinate(x), ToTileCoordinate(y));
         }
+
+        //check if there's a tile at these tilemap coordinates
         public bool IsTile(int x, int y)
         {
             return tileMap[x, y] != null;
             
         }
 
+        //removes tile from the tilemap
         public void DeleteTile(int x, int y)
         {
             tileMap[x, y].Destroy();
             tileMap[x, y] = null;
         }
 
+        //removes tile at screen pixels from the tilemap
         public void DeleteTileAtScreenCoordinate(int x, int y)
         {
             DeleteTile(ToTileCoordinate(x), ToTileCoordinate(y));
+        }
+
+        //checks if a tile is in the level
+        public bool IsScreenCoordinateInLevel(int x, int y)
+        {
+            bool xInLevel = ToTileCoordinate(x) >= 0 && ToTileCoordinate(x) < tileMap.GetLength(0);
+            bool yInLevel = ToTileCoordinate(y) >= 0 && ToTileCoordinate(y) < tileMap.GetLength(1);
+            if (xInLevel && yInLevel)
+            {
+                return true;
+            }
+            return false;
         }
 
         //weightmap1 and weightmap2 determine what the range is for each map, and thus how strong their influence is on the final terrain generation

@@ -66,6 +66,15 @@ namespace WPF_Arcade
                     ActivePlayer().MoveRight();
                     EndTurn(ActivePlayer());
                     break;
+                case Key.W:
+                    ActivePlayer().MoveUp();
+                    EndTurn(ActivePlayer());
+                    break;
+                case Key.S:
+                    ActivePlayer().MoveDown();
+                    EndTurn(ActivePlayer());
+                    break;
+
                 default: 
                     break;
 
