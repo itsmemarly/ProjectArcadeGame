@@ -27,6 +27,7 @@ namespace WPF_Arcade
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly int playerStartActionPoints;
+        private EntityManager playerManager;
 
         public Player(int x, int y, int actions, BitmapImage bitmap, Canvas canvas, int size, TileMap map)
         {
@@ -108,6 +109,8 @@ namespace WPF_Arcade
         {
             playerActionPoints = playerStartActionPoints;
         }
+
+        //
 
 
         //checks if a move a player wants to make is valid

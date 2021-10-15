@@ -116,6 +116,8 @@ namespace WPF_Arcade
             
         }
 
+      
+
         private bool MoveIfValid(int destinationX, int destinationY)
         {
             bool isMoveValid = CanMoveTo(destinationX, destinationY);
