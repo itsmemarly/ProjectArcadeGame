@@ -14,7 +14,6 @@ namespace WPF_Arcade
 {
     class Player
     {
-        private readonly int playerDestroyTileCost = 2;
         private readonly int playerAttackCost = 2;
         private readonly int playerMoveCost = 1;
 
@@ -28,7 +27,7 @@ namespace WPF_Arcade
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly CollisionManager playerCollisionManager;
-        
+
 
         public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager)
         {
@@ -94,25 +93,25 @@ namespace WPF_Arcade
         }
 
         //methods to take the destroy tile action
-        //public bool DestroyTileRight()
-        //{
-        //    return DestroyIfValid(playerX + playerSize, playerY);
-        //}
+        public bool AttackRight()
+        {
+            return AttackIfValid(playerX + playerSize, playerY);
+        }
 
-        //public bool DestroyTileLeft()
-        //{
-        //    return DestroyIfValid(playerX - playerSize, playerY);
-        //}
+        public bool AttackLeft()
+        {
+            return AttackIfValid(playerX - playerSize, playerY);
+        }
 
-        //public bool DestroyTileUp()
-        //{
-        //    return DestroyIfValid(playerX, playerY - playerSize);
-        //}
+        public bool AttackUp()
+        {
+            return AttackIfValid(playerX, playerY - playerSize);
+        }
 
-        //public bool DestroyTileDown()
-        //{
-        //    return DestroyIfValid(playerX, playerY + playerSize);
-        //}
+        public bool AttackDown()
+        {
+            return AttackIfValid(playerX, playerY + playerSize);
+        }
 
         ////resets the action points back to their starting value
         public void ResetActionPoints()
@@ -140,38 +139,41 @@ namespace WPF_Arcade
             return canMove;
         }
 
-        //private bool CanDestroyTile(int destructionX, int destructionY)
-        //{
-        //    if (playerMap.IsScreenCoordinateInLevel(destructionX, destructionY))
-        //    {
-        //        if (playerActionPoints >= playerDestroyTileCost && playerMap.isTileAtScreenCoordinate(destructionX, destructionY))
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        private bool AttackIfValid(int x, int y)
+        {
+            //if you have enough action points left to attack
+            if (playerActionPoints >= playerAttackCost)
+            {
+                //see what's at the destination of your attack
+                object thingAtTarget = playerCollisionManager.getThingAt(x, y);
 
-        //private void DestroyTile(int destructionX, int destructionY)
-        //{
-        //    playerActionPoints -= playerDestroyTileCost;
-        //    playerMap.DeleteTileAtScreenCoordinate(playerX, playerY);
-        //}
+                //check if there's even something at the target
+                if (thingAtTarget == null)
+                {
+                    return false;
+                }
+                //then do different things depending on what you're attacking
+                else if (thingAtTarget.GetType() == typeof(Player))
+                {
+                    //do player attacking stuff
+                    return true;
+                }
+                else if (thingAtTarget.GetType() == typeof(Enemy))
+                {
+                    //do enemy attacking stuff
+                    return true;
+                }
+                else if (thingAtTarget.GetType() == typeof(TileMap))
+                {
+                    playerActionPoints -= playerAttackCost;
+                    TileMap map = (TileMap)thingAtTarget;
+                    map.DeleteTileAtScreenCoordinate(x, y);
+                    return true;
+                }
+            }
 
-        //private bool DestroyIfValid(int destructionX, int destructionY)
-        //{
-        //    bool moveIsValid = CanDestroyTile(destructionX, destructionY);
-        //    if (moveIsValid)
-        //    {
-        //        DestroyTile(destructionX, destructionY);
-        //    }
-        //    return moveIsValid;
-        //}
-
-
-        //public bool Attack() 
-        //{
-
-        //}
+            //if none of the other return statements were reached, it means that we attack nothing. Thus we will return false
+            return false;
+        }
     }
 }

@@ -48,14 +48,33 @@ namespace WPF_Arcade
                 case Key.A:
                     ActivePlayer().MoveLeft();
                     break;
+
                 case Key.D:
                     ActivePlayer().MoveRight();
                     break;
+
                 case Key.W:
                     ActivePlayer().MoveUp();
                     break;
+
                 case Key.S:
                     ActivePlayer().MoveDown();
+                    break;
+
+                case Key.Up:
+                    ActivePlayer().AttackUp();
+                    break;
+
+                case Key.Down:
+                    ActivePlayer().AttackUp();
+                    break;
+
+                case Key.Left:
+                    ActivePlayer().AttackLeft();
+                    break;
+
+                case Key.Right:
+                    ActivePlayer().AttackRight();
                     break;
 
                 default:

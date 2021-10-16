@@ -98,7 +98,7 @@ namespace WPF_Arcade
             Random r = new Random();
             SetSeed(r.Next().ToString());
 
-            //GenerateTerrain();
+            GenerateTerrain();
             AddPlayer(64, 64);
             AddPlayer(64, 128);
         }
