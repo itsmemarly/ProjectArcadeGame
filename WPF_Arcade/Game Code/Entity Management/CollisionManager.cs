@@ -17,12 +17,28 @@ namespace WPF_Arcade
             collisionEnemyList = enemyList;
         }
 
-
+        //returns the tileMap if there's a tile there, an enemy if there's an enemy there, or a player if there's a player there or null if there's nothing at the position
         public object getThingAt(int x, int y)
         {
-            return collisionTileMap;
+            if (collisionTileMap.isTileAtScreenCoordinate(x, y))
+            {
+                return collisionTileMap;
+            }
+            Enemy enemy = GetEnemyAt(x, y);
+            if (enemy != null)
+            {
+                return enemy;
+            }
+            Player player = GetPlayerAt(x, y);
+            if (player != null)
+            {
+                return player;
+            }
+            else
+            {
+                return null;
+            }
         }
-
 
         public bool IsValidDestination(int x, int y)
         {
@@ -48,7 +64,7 @@ namespace WPF_Arcade
 
         private bool IsEmpty(int x, int y)
         {
-            if (collisionTileMap.isTileAtScreenCoordinate(x, y) || IsPlayerAt(x, y) || IsEnemyAt(x, y))
+            if (collisionTileMap.isTileAtScreenCoordinate(x, y) || GetPlayerAt(x, y) != null || GetEnemyAt(x, y) != null)
             {
                 return false;
             }
@@ -58,30 +74,30 @@ namespace WPF_Arcade
             }
         }
 
-        private bool IsPlayerAt(int x, int y)
+        private Player GetPlayerAt(int x, int y)
         {
             foreach (var player in collisionPlayerList)
             {
                 if (player.X() == x && player.Y() == y)
                 {
-                    return true;
+                    return player;
                 }
             }
 
-            return false;
+            return null;
         }
 
-        private bool IsEnemyAt(int x, int y)
+        private Enemy GetEnemyAt(int x, int y)
         {
-            foreach (var enemy in collisionPlayerList)
+            foreach (var enemy in collisionEnemyList)
             {
                 if (enemy.X() == x && enemy.Y() == y)
                 {
-                    return true;
+                    return enemy;
                 }
             }
 
-            return false;
+            return null;
         }
 
 
