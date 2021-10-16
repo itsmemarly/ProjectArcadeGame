@@ -14,7 +14,7 @@ namespace WPF_Arcade
 {
     class GameLevel
     {
-        
+
         //variables the class takes in the constructor
         private readonly int levelWidth;
         private readonly int levelHeight;
@@ -24,6 +24,7 @@ namespace WPF_Arcade
         //variables determined in the constructor
         private readonly List<Enemy> levelEnemyList;
         private readonly List<Player> levelPlayerList;
+        private readonly CollisionManager levelCollisionManager;
         private readonly TileMap levelTileMap;
         private readonly int levelTileMapTileWidth;
         private readonly int levelTileMapTileHeight;
@@ -36,7 +37,7 @@ namespace WPF_Arcade
         private readonly int levelNoiseMap2Scale = 3;
         private readonly int levelAirChance = 40; //the value a number needs to exceed to become air
         private readonly int levelGemChance = 10; //the chance in percentages to generate a gem in a stone tile
-        
+
 
         //determines aspects of the generated entities
         private readonly int levelPlayerActions = 5;
@@ -46,7 +47,7 @@ namespace WPF_Arcade
 
         //variables internal to the class
         private string levelSeed = "";
-        private int levelRandomCount= int.MinValue;
+        private int levelRandomCount = int.MinValue;
         private int levelActivePlayerIndex = 0;
 
         public GameLevel(int width, int height, int tileSize, Canvas canvas)
@@ -67,6 +68,8 @@ namespace WPF_Arcade
 
             levelPlayerList = new List<Player>();
             levelEnemyList = new List<Enemy>();
+
+            levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList);
 
         }
         //getters
@@ -108,7 +111,7 @@ namespace WPF_Arcade
 
         private void AddPlayer(int x, int y)
         {
-            levelPlayerList.Add(new Player(x, y, levelPlayerActions, GameImageBitmaps.player, levelCanvas, levelTileSize, levelTileMap));
+            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager));
         }
 
         private void AddEnemy(int x, int y)
@@ -124,24 +127,22 @@ namespace WPF_Arcade
             {
                 case Key.A:
                     ActivePlayer().MoveLeft();
-                    EndTurn(ActivePlayer());
                     break;
                 case Key.D:
                     ActivePlayer().MoveRight();
-                    EndTurn(ActivePlayer());
                     break;
                 case Key.W:
                     ActivePlayer().MoveUp();
-                    EndTurn(ActivePlayer());
                     break;
                 case Key.S:
                     ActivePlayer().MoveDown();
-                    EndTurn(ActivePlayer());
+                    
                     break;
 
                 default:
                     break;
             }
+            EndTurnIfNeeded(ActivePlayer());
         }
 
         private void TakeEnemyTurns()
@@ -161,7 +162,7 @@ namespace WPF_Arcade
             }
         }
 
-        private void EndTurn(Player player)
+        private void EndTurnIfNeeded(Player player)
         {
             if (player.Actionpoints() == 0)
             {

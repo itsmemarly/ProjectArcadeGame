@@ -115,9 +115,7 @@ namespace WPF_Arcade
             Canvas.SetTop(enemyImage, enemyY);
             
         }
-
-      
-
+        
         private bool MoveIfValid(int destinationX, int destinationY)
         {
             bool isMoveValid = CanMoveTo(destinationX, destinationY);
