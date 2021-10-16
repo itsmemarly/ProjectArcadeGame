@@ -120,22 +120,6 @@ namespace WPF_Arcade
             playerActionPoints = playerStartActionPoints;
         }
 
-        //checks if a move a player wants to make is valid
-        //private bool CanMoveTo(int destinationX, int destinationY)
-        //{
-        //    //first check if the destination is in the level
-        //    if (playerMap.IsScreenCoordinateInLevel(destinationX, destinationY))
-        //    {
-        //        //if the destination is within the level, check if there's not a tile there and if the player has enough action points to move.
-        //        if (!playerMap.isTileAtScreenCoordinate(destinationX, destinationY) && playerActionPoints >= playerMoveCost)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //Move to removes set ammount of action points and moves the player
         private void MoveTo(int destinationX, int destinationY)
         {
             playerY = destinationY;

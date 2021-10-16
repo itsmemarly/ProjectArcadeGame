@@ -22,12 +22,12 @@ namespace WPF_Arcade
         private readonly Canvas levelCanvas;
 
         //variables determined in the constructor
+        private readonly CollisionManager levelCollisionManager;
+        private readonly TurnManager levelTurnManager;
+        private readonly TileMap levelTileMap;
+
         private readonly List<Enemy> levelEnemyList;
         private readonly List<Player> levelPlayerList;
-        private readonly CollisionManager levelCollisionManager;
-        private readonly TileMap levelTileMap;
-        private readonly int levelTileMapTileWidth;
-        private readonly int levelTileMapTileHeight;
 
         //properites of the generated terrain
         //these have been picked after some experimentation because they generate the kind of terrain I think works well with the game
@@ -48,7 +48,6 @@ namespace WPF_Arcade
         //variables internal to the class
         private string levelSeed = "";
         private int levelRandomCount = int.MinValue;
-        private int levelActivePlayerIndex = 0;
 
         public GameLevel(int width, int height, int tileSize, Canvas canvas)
         {
@@ -60,8 +59,8 @@ namespace WPF_Arcade
 
             //create the internal properties
             //determine the size of the level in tiles
-            levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
-            levelTileMapTileHeight = (int)Math.Floor((double)(levelHeight / levelTileSize));
+            int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
+            int levelTileMapTileHeight = (int)Math.Floor((double)(levelHeight / levelTileSize));
 
             //make a new tileMap that fits the size of the level
             levelTileMap = new TileMap(levelTileMapTileWidth, levelTileMapTileHeight, levelTileSize, levelSeed, levelCanvas);
@@ -70,13 +69,9 @@ namespace WPF_Arcade
             levelEnemyList = new List<Enemy>();
 
             levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList);
-
+            levelTurnManager = new TurnManager(levelPlayerList, levelEnemyList, levelSeed);
         }
         //getters
-        public Player ActivePlayer()
-        {
-            return levelPlayerList[levelActivePlayerIndex];
-        }
 
         public string Seed()
         {
@@ -87,18 +82,22 @@ namespace WPF_Arcade
         public void SetSeed(string seed)
         {
             levelSeed = seed;
+            levelTileMap.SetSeed(seed);
+            levelTurnManager.SetSeed(seed);
         }
 
         public void ProcessInput(Key key)
         {
-            TakePlayerAction(key);
+            levelTurnManager.TakePlayerAction(key);
         }
 
         //constructs the level
         public void BuildLevel()
         {
             //set the seed to a random value to ensure the level is random
-            SetSeed(GeneratePsuedoRandomValue(int.MaxValue).ToString());
+            Random r = new Random();
+            SetSeed(r.Next().ToString());
+
             //GenerateTerrain();
             AddPlayer(64, 64);
             AddPlayer(64, 128);
@@ -117,73 +116,6 @@ namespace WPF_Arcade
         private void AddEnemy(int x, int y)
         {
             levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelTileMap));
-        }
-
-
-        //MANAGING THE LEVEL
-        private void TakePlayerAction(Key key)
-        {
-            switch (key)
-            {
-                case Key.A:
-                    ActivePlayer().MoveLeft();
-                    break;
-                case Key.D:
-                    ActivePlayer().MoveRight();
-                    break;
-                case Key.W:
-                    ActivePlayer().MoveUp();
-                    break;
-                case Key.S:
-                    ActivePlayer().MoveDown();
-                    
-                    break;
-
-                default:
-                    break;
-            }
-            EndTurnIfNeeded(ActivePlayer());
-        }
-
-        private void TakeEnemyTurns()
-        {
-            foreach (var enemy in levelEnemyList)
-            {
-                if (GeneratePsuedoRandomValue(100) > 50)
-                {
-                    enemy.MoveLeft();
-                }
-
-                else
-                {
-                    enemy.MoveRight();
-                }
-                enemy.ResetActionPoints();
-            }
-        }
-
-        private void EndTurnIfNeeded(Player player)
-        {
-            if (player.Actionpoints() == 0)
-            {
-                levelActivePlayerIndex += 1;
-                player.ResetActionPoints();
-
-                if (levelActivePlayerIndex > levelPlayerList.Count - 1)
-                {
-                    levelActivePlayerIndex = 0;
-                    TakeEnemyTurns();
-                }
-
-            }
-        }
-
-        //generates a value with high varience int the outputwith a small varience the input based on the seed and how many numbers have been previously generated
-        private float GeneratePsuedoRandomValue(float maxValue)
-        {
-            string input = levelRandomCount.ToString() + levelSeed;
-            levelRandomCount += 1;
-            return Math.Abs(input.GetHashCode()) % maxValue;
         }
 
     }
