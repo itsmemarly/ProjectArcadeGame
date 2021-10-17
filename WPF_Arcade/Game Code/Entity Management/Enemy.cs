@@ -14,22 +14,22 @@ namespace WPF_Arcade
         private readonly int enemyAttackCost = 1;
         private readonly int enemySize;
 
-        private TileMap enemyTileMap;
         private readonly BitmapImage enemyBitMap;
         private readonly Image enemyImage;
         private readonly Canvas enemyCanvas;
+        CollisionManager enemyCollisionManager;
 
 
-        public Enemy(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, TileMap tilemap)
+        public Enemy(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionManager)
         {
             enemyX = x;
             enemyY = y;
             enemyActionPoints = actions;
             enemyStartingActionPoints = actions;
             enemySize = size;
-            enemyTileMap = tilemap;
             enemyBitMap = bitmap;
             enemyCanvas = canvas;
+            enemyCollisionManager = collisionManager;
 
             enemyImage = new Image
             {
@@ -86,25 +86,7 @@ namespace WPF_Arcade
             enemyActionPoints = enemyStartingActionPoints;
         }
 
-        public void Attack()
-        {
-
-        }
-
         //private methods
-        private bool CanMoveTo(int destinationX, int destinationY)
-        {
-            //first check if the destination is in the level
-            if (enemyTileMap.IsScreenCoordinateInLevel(destinationX, destinationY))
-            {
-                //if the destination is within the level, check if there's not a tile there and if the player has enough action points to move.
-                if (!enemyTileMap.isTileAtScreenCoordinate(destinationX, destinationY) && enemyActionPoints >= enemyMoveCost)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void MoveTo(int destinationX, int destinationY)
         {
@@ -118,7 +100,7 @@ namespace WPF_Arcade
         
         private bool MoveIfValid(int destinationX, int destinationY)
         {
-            bool isMoveValid = CanMoveTo(destinationX, destinationY);
+            bool isMoveValid = enemyCollisionManager.IsValidDestination(destinationX, destinationY);
 
             if (isMoveValid)
             {

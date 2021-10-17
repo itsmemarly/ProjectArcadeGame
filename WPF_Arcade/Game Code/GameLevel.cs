@@ -115,7 +115,7 @@ namespace WPF_Arcade
 
         private void AddEnemy(int x, int y)
         {
-            levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelTileMap));
+            levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelCollisionManager));
         }
 
     }
