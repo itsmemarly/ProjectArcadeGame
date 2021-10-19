@@ -10,9 +10,9 @@
         Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -20,7 +20,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="1" Content="Opties" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontFamily="OCR A Extended" FontSize="40"></Label>
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
             <Label Content="Master Volume" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontSize="22" FontFamily="OCR A Extended" Margin="0,0,0,10"></Label>
             <Slider x:Name="MasterVolumeSlider" Width="200" Orientation="Horizontal" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" TickFrequency="10" ValueChanged="MasterVolumeSlider_ValueChanged"/>
             <Label Content="Music Volume" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="22" FontFamily="OCR A Extended" Margin="0,0,0,10"></Label>
@@ -28,11 +28,11 @@
             <Label Content="Effect Volume" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" FontSize="22" FontFamily="OCR A Extended" Margin="0,0,0,10"></Label>
             <Slider x:Name="EffectVolumeSlider" Width="200" Orientation="Horizontal" Minimum="0" Maximum="100" SmallChange="1" LargeChange="10" TickFrequency="10" ValueChanged="EffectVolumeSlider_ValueChanged"></Slider>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="266,10,0,0" Grid.ColumnSpan="2" Height="182" VerticalAlignment="Top">
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="266,10,0,0" Grid.ColumnSpan="2" Height="182" VerticalAlignment="Center">
             <CheckBox HorizontalAlignment="Center" x:Name="MasterVolumeCheckBox" Checked="MasterVolumeCheckBox_Checked" VerticalAlignment="Top" Unchecked="MasterVolumeCheckBox_Unchecked"></CheckBox>
             <CheckBox HorizontalAlignment="Center" x:Name="MusicVolumeCheckBox" Checked="MusicVolumeCheckBox_Checked" VerticalAlignment="Center" Margin="0,50,0,0" Unchecked="MusicVolumeCheckBox_Unchecked"></CheckBox>
             <CheckBox HorizontalAlignment="Center" x:Name="EffectVolumeCheckBox" Checked="EffectVolumeCheckBox_Checked" VerticalAlignment="Top" Margin="0,50,0,0" Unchecked="EffectVolumeCheckBox_Unchecked"/>
         </StackPanel>
-        <Button x:Name="TerugNaarMenu" FontFamily="OCR A Extended" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Center" Click="TerugNaarMenu_Clicked" Content="Terug naar Menu" Grid.Column="1" Grid.Row="2" Height="124" Width="266"/>
+        <Button x:Name="TerugNaarMenu" FontFamily="OCR A Extended" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Center" Click="TerugNaarMenu_Clicked" Content="Terug Naar Menu" Grid.Column="1" Grid.Row="2"  Grid.RowSpan="1" Grid.ColumnSpan="1"/>
     </Grid>
 </Window>

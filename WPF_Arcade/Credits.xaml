@@ -9,20 +9,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="75"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height=""></RowDefinition>
+            <RowDefinition Height=""></RowDefinition>
+            <RowDefinition Height=""></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--Credits Title-->
-        <Label Content="Credits" HorizontalAlignment="Center" VerticalAlignment="Center" 
+        <Label Content="Credits" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
 
         <!--Dev Title-->
         <Label Grid.Row="1" Content="Development Team" FontSize="20" Margin="30,0,0,0"
-               FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+               FontFamily="OCR A Extended" Foreground="#FFDDDDDD" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
 
         <!--Dev's-->
         <TextBlock Grid.Row="2" Margin="45,0,0,0" FontFamily="OCR A Extended" VerticalAlignment="Center" Foreground="#FFDDDDDD">
@@ -35,7 +35,7 @@
 
         <!--Special Title-->
         <Label Grid.Row="3" Content="Speciale dank aan" FontSize="20" Margin="30,10,0,0"
-               FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+               FontFamily="OCR A Extended" Foreground="#FFDDDDDD" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Label>
 
         <!--Specials-->
         <TextBlock Grid.Row="4" Margin="45,0,0,0" FontFamily="OCR A Extended" 
@@ -45,7 +45,7 @@
         </TextBlock>
 
         <!--Button MainMenu-->
-        <Button Grid.Row="5" Content="Hoofdmenu" Margin="300,0,300,0" FontFamily="OCR A Extended"
+        <Button Grid.Row="5" Content="Terug Naar Menu" Margin="300,0,300,0" FontFamily="OCR A Extended"
                 Height="40" FontSize="18" Click="MainMenu_Click" Foreground="Black"></Button>
     </Grid>
 </Window>

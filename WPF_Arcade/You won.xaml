@@ -8,39 +8,37 @@
         Title="You_won" Height="450" Width="800" Background="Black">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--Title Win-->
         <Label Content="Je hebt gewonnen!" FontSize="40" HorizontalAlignment="Center"
-               VerticalAlignment="Center" FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+               VerticalAlignment="Bottom" FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
 
         <!--TitleScore-->
-        <Label Grid.Row="1" Content="Je score is:" HorizontalAlignment="Center" VerticalAlignment="Center"
-               FontSize="22" FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+        <Grid Grid.Row=" 1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="1" Source="/gem vein 64px.png" Margin="30,30,0,0"></Image>
+            <Label Grid.Column="0" Content="Je score: 56845" FontFamily="OCR A Extended" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"></Label>
+        </Grid>
 
-        <!--Score-->
-        <Label Grid.Row="2" Content="2000" HorizontalAlignment="Center" VerticalAlignment="Center"
-               Margin="0,0,0,49" FontSize="20" FontFamily="OCR A Extended" Foreground="#FFDDDDDD"
-               RenderTransformOrigin="0.488,-1.817"></Label>
+
 
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <!--Button MainMenu-->
-            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="100,20,100,20"
-                    FontSize="20" FontFamily="OCR A Extended" Click="HoofdMenu_Click" Height="30">Hoofdmenu</Button>
-
-            <!--Button Quit-->
-            <Button Grid.Column="2" FontFamily="OCR A Extended" Margin="100,20,100,20" FontSize="20"
-                    Click="QuitGame_Click" Height="30">Afsluiten</Button>
+            <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <Button FontFamily="OCR A Extended" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,10" Click="HoofdMenu_Click">Terug naar menu</Button>
+                <Button Margin="0,0,0,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="22" Click="QuitGame_Click">Stop het spel</Button>
+            </StackPanel>
         </Grid>
 
     </Grid>

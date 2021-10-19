@@ -9,31 +9,52 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="225"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--Title Explenation-->
-        <Label Content="Uitleg" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <Label Content="Uitleg" HorizontalAlignment="Center" VerticalAlignment="Bottom"
                FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
 
         <!--Explenation-->
         <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Margin="0,0,-7,0" FontFamily="OCR A Extended" Width="700" Foreground="White"> 
+                   Margin="0,20,0,0" FontFamily="OCR A Extended" Width="700" Foreground="White" FontSize="16"> 
 
-            What is Lorem Ipsum?<LineBreak/><LineBreak/>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.<LineBreak/>
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<LineBreak/>
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.<LineBreak/>
-            
-            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<LineBreak/>
-            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,<LineBreak/>
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
+        Je bent verdwaald en in het Goblin Doolhof terecht gekomen! <LineBreak></LineBreak>
+        Probeer je weg terug te vinden naar de bewoonde wereld en ga het gevecht <LineBreak></LineBreak> 
+        aan met de monsters die je tegenkomt.<LineBreak></LineBreak>
+        Vind als eerste speler je weg uit het doolhof en verzamel ondertussen <LineBreak></LineBreak> 
+        door de Goblins te verslaan en diamanten te verzamelen. <LineBreak></LineBreak>
+        Let op! De Goblins laten maar 1 speler uit het doolhof ontsnappen.. <LineBreak></LineBreak>
+        <LineBreak></LineBreak>
         </TextBlock>
+        
+           
+           
+           <TextBlock Grid.Row="2" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" Margin="0,0,400,0"> 
+        Speler 1:<LineBreak></LineBreak>
+        A: links<LineBreak></LineBreak>
+        D: rechts<LineBreak></LineBreak>       
+        W: boven<LineBreak></LineBreak>
+        S: onder<LineBreak></LineBreak>
+           </TextBlock>
+           <TextBlock Grid.Row="2" HorizontalAlignment="Center" Margin="400,0,0,0" Foreground="White" VerticalAlignment="Center">
+           Speler 2:<LineBreak></LineBreak>
+        A: links<LineBreak></LineBreak>
+        D: rechts<LineBreak></LineBreak>       
+        W: boven<LineBreak></LineBreak>
+        S: onder<LineBreak></LineBreak>
+      
+           </TextBlock>
+        
+
+
+        
 
         <!--Button StartGame-->
-        <Button Grid.Row="2" Content="Start Spel" Margin="300,20,300,20" FontFamily="OCR A Extended"
+        <Button Grid.Row="3" Content="Start Spel" Margin="300,20,300,20" FontFamily="OCR A Extended"
                 Click="StartGame_Click" FontSize="20" Width="200" Height="40" />
         
     </Grid>
