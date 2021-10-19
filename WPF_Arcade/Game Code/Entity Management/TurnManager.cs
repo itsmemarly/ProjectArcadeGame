@@ -104,6 +104,7 @@ namespace WPF_Arcade
         {
             if (player.Actionpoints() == 0)
             {
+                //changes which player is active
                 levelActivePlayerIndex += 1;
                 player.ResetActionPoints();
 
