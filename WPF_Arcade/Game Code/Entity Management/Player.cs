@@ -16,6 +16,7 @@ namespace WPF_Arcade
     {
         private readonly int playerAttackCost = 2;
         private readonly int playerMoveCost = 1;
+        private int playerHealth = 3;
 
         private int playerX;
         private int playerY;
@@ -29,6 +30,8 @@ namespace WPF_Arcade
         private readonly CollisionManager playerCollisionManager;
 
 
+
+
         public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager)
         {
             playerX = x;
@@ -39,6 +42,8 @@ namespace WPF_Arcade
             playerSize = size;
             playerStartActionPoints = actions;
             playerCollisionManager = collisionmanager;
+
+
 
             playerImage = new Image
             {
@@ -158,10 +163,17 @@ namespace WPF_Arcade
                     //do player attacking stuff
                     return true;
                 }
+                   // attack enemy
                 else if (thingAtTarget.GetType() == typeof(Enemy))
                 {
-                    //do enemy attacking stuff
+                    playerActionPoints -= playerAttackCost;
+                    Enemy enemy = (Enemy)thingAtTarget;
+                    enemy.DamageOnEnemy();
                     return true;
+
+                    //get points
+                    //respawn enemy?
+
                 }
                 else if (thingAtTarget.GetType() == typeof(TileMap))
                 {
@@ -175,5 +187,28 @@ namespace WPF_Arcade
             //if none of the other return statements were reached, it means that we attack nothing. Thus we will return false
             return false;
         }
+
+        //Damages player, kills him if necissary 
+        public void DamageOnPlayer()
+        {
+            playerHealth -= 1;
+
+            if (playerHealth <= 0)
+            {
+                KillPlayer();
+            }
+            else
+            {
+                //move player backwards
+            }
+
+        }
+
+        // kills player
+        private void KillPlayer()
+        {
+            playerCanvas.Children.Remove(playerImage);
+        }
+
     }
 }

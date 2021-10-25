@@ -9,15 +9,16 @@ namespace WPF_Arcade
         private int enemyStartingActionPoints;
         private int enemyX;
         private int enemyY;
-        private int enemyHealth;
+        private int enemyHealth = 2;
         private readonly int enemyMoveCost = 1;
         private readonly int enemyAttackCost = 1;
+        private readonly int damageReceived = 1;
         private readonly int enemySize;
 
         private readonly BitmapImage enemyBitMap;
         private readonly Image enemyImage;
         private readonly Canvas enemyCanvas;
-        CollisionManager enemyCollisionManager;
+        private readonly CollisionManager enemyCollisionManager;
 
 
         public Enemy(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionManager)
@@ -81,6 +82,28 @@ namespace WPF_Arcade
             return MoveIfValid(enemyX + enemySize, enemyY);
         }
 
+        public bool AttackRight()
+        {
+            return AttackIfValid(enemyX + enemySize, enemyY);
+        }
+
+        public bool AttackLeft()
+        {
+            return AttackIfValid(enemyX - enemySize, enemyY);
+        }
+
+        public bool AttackUp()
+        {
+            return AttackIfValid(enemyX, enemyY - enemySize);
+        }
+
+        public bool AttackDown()
+        {
+            return AttackIfValid(enemyX, enemyY + enemySize);
+        }
+
+
+
         public void ResetActionPoints()
         {
             enemyActionPoints = enemyStartingActionPoints;
@@ -95,9 +118,9 @@ namespace WPF_Arcade
             enemyActionPoints -= enemyMoveCost;
             Canvas.SetLeft(enemyImage, enemyX);
             Canvas.SetTop(enemyImage, enemyY);
-            
+
         }
-        
+
         private bool MoveIfValid(int destinationX, int destinationY)
         {
             bool isMoveValid = enemyCollisionManager.IsValidDestination(destinationX, destinationY);
@@ -109,5 +132,54 @@ namespace WPF_Arcade
 
             return isMoveValid;
         }
+
+
+        public void DamageOnEnemy()
+        {
+            enemyHealth -= damageReceived;
+            if (enemyHealth <= 0)
+            {
+                KillMonster();
+            }
+
+
+
+
+        }
+        private void KillMonster()
+        {
+            enemyCanvas.Children.Remove(enemyImage);
+        }
+
+
+        private bool AttackIfValid(int x, int y)
+        {
+            //check points
+            if (enemyActionPoints <= enemyAttackCost)
+            {
+                //check if there is something at target
+                object thingAtTarget = enemyCollisionManager.getThingAt(x, y);
+
+                if (thingAtTarget == null)
+                {
+                    return false;
+                }
+                //if there's a player attack
+                else if (thingAtTarget.GetType() == typeof(Player))
+                {
+                    enemyActionPoints -= enemyAttackCost;
+                    Player player = (Player)thingAtTarget;
+                    player.DamageOnPlayer();
+                    return true;
+
+                    //do player attacking stuff
+                }
+            }
+            return false;
+
+        }
+
+
     }
+
 }
