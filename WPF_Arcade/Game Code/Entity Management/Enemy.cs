@@ -9,16 +9,26 @@ namespace WPF_Arcade
         private int enemyStartingActionPoints;
         private int enemyX;
         private int enemyY;
+<<<<<<< HEAD
         private int enemyHealth = 2;
         private readonly int enemyMoveCost = 1;
         private readonly int enemyAttackCost = 1;
         private readonly int damageReceived = 1;
+=======
+        private int enemyHealth;
+        private readonly int enemyMoveCost = 1;
+        private readonly int enemyAttackCost = 1;
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
         private readonly int enemySize;
 
         private readonly BitmapImage enemyBitMap;
         private readonly Image enemyImage;
         private readonly Canvas enemyCanvas;
+<<<<<<< HEAD
         private readonly CollisionManager enemyCollisionManager;
+=======
+        CollisionManager enemyCollisionManager;
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
 
 
         public Enemy(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionManager)
@@ -82,6 +92,7 @@ namespace WPF_Arcade
             return MoveIfValid(enemyX + enemySize, enemyY);
         }
 
+<<<<<<< HEAD
         public bool AttackRight()
         {
             return AttackIfValid(enemyX + enemySize, enemyY);
@@ -104,6 +115,8 @@ namespace WPF_Arcade
 
 
 
+=======
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
         public void ResetActionPoints()
         {
             enemyActionPoints = enemyStartingActionPoints;
@@ -132,6 +145,7 @@ namespace WPF_Arcade
 
             return isMoveValid;
         }
+<<<<<<< HEAD
 
 
         public void DamageOnEnemy()
@@ -179,4 +193,7 @@ namespace WPF_Arcade
       
     }
 
+=======
+    }
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
 }

@@ -8,20 +8,20 @@
         Title="Save" Height="450" Width="800" Background="Black">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
         <!--Titel SaveGame-->
-        <Label Content="Spel opslaan" VerticalAlignment="Center" 
-               FontFamily="OCR A Extended" FontSize="48" Foreground="#FFDDDDDD"/>
+        <Label Content="Spel Opslaan" VerticalAlignment="Bottom" 
+               FontFamily="OCR A Extended" FontSize="48" Foreground="#FFDDDDDD" HorizontalAlignment="Center"/>
 
         <!--Title Pick a game-->
-        <Label Grid.Row="1" Content="Kies een spel" VerticalAlignment="Center" FontSize="24" 
-                    FontFamily="OCR A Extended" Foreground="#FFDDDDDD"/>
+        <Label Grid.Row="1" Content="Kies een spel:" VerticalAlignment="Bottom" FontSize="24" 
+                    FontFamily="OCR A Extended" Foreground="#FFDDDDDD" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
         <!--SaveFile Images-->
         <Grid Grid.Row="2">
@@ -30,9 +30,9 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" Source="Images/screenshotgame.png"></Image>
-            <Image Grid.Column="1" Source="Images/screenshotgame.png"></Image>
-            <Image Grid.Column="2" Source="Images/screenshotgame.png"></Image>
+            <Image Grid.Column="0" Source="/screenshotgame.png"></Image>
+            <Image Grid.Column="1" Source="/screenshotgame.png"></Image>
+            <Image Grid.Column="2" Source="/screenshotgame.png"></Image>
         </Grid>
 
         <!--SaveFile Button-->
@@ -61,10 +61,10 @@
         <!--Menu Button-->
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+                
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="30,30,50,30" Click="Menu_Click" FontFamily="OCR A Extended" FontSize="20" Height="30" Width="100">Menu</Button>
+            <Button Margin="30,30,50,30" Click="Menu_Click" FontFamily="OCR A Extended" FontSize="20"  HorizontalAlignment="Center">Terug Naar Menu</Button>
         </Grid>
 
     </Grid>

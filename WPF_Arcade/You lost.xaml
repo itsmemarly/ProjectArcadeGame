@@ -19,7 +19,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="1" Source="Images/bat 64px.png" Margin="30,30,0,0"></Image>
+            <Image Grid.Column="1" Source="/bat 64px.png" Margin="30,30,0,0"></Image>
             <Label Grid.Column="0" Content="Je score: 56845" FontFamily="OCR A Extended" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"></Label>
         </Grid>
 

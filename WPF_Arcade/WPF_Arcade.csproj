@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bat 64px.png" />
+    <None Remove="gem vein 64px.png" />
+    <None Remove="goblin 64px.png" />
     <None Remove="Media\ArcadeGame mockup.png" />
     <None Remove="Media\Sprites\bat 16px.png" />
     <None Remove="Media\Sprites\bat 32px.png" />
@@ -30,17 +33,22 @@
     <None Remove="Media\Sprites\player 32px.png" />
     <None Remove="Media\Sprites\player 64px.png" />
     <None Remove="Media\Sprites\player_16px.png" />
+    <None Remove="Media\Sprites\player_32px.png" />
     <None Remove="Media\Sprites\player_64px.png" />
-    <None Remove="Media\Sprites\playe_ 32px.png" />
     <None Remove="Media\Sprites\stone 16px.png" />
     <None Remove="Media\Sprites\stone 32px.png" />
     <None Remove="Media\Sprites\stone 64px.png" />
     <None Remove="Media\Sprites\stone_16px.png" />
     <None Remove="Media\Sprites\stone_32px.png" />
     <None Remove="Media\Sprites\stone_64px.png" />
+    <None Remove="player 64px.png" />
+    <None Remove="screenshotgame.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bat 64px.png" />
+    <Resource Include="gem vein 64px.png" />
+    <Resource Include="goblin 64px.png" />
     <Resource Include="Media\ArcadeGame mockup.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -54,11 +62,13 @@
     <Resource Include="Media\Sprites\goblin_32px.png" />
     <Resource Include="Media\Sprites\goblin_64px.png" />
     <Resource Include="Media\Sprites\player_16px.png" />
+    <Resource Include="Media\Sprites\player_32px.png" />
     <Resource Include="Media\Sprites\player_64px.png" />
-    <Resource Include="Media\Sprites\playe_ 32px.png" />
     <Resource Include="Media\Sprites\stone_16px.png" />
     <Resource Include="Media\Sprites\stone_32px.png" />
     <Resource Include="Media\Sprites\stone_64px.png" />
+    <Resource Include="player 64px.png" />
+    <Resource Include="screenshotgame.png" />
   </ItemGroup>
 
 </Project>

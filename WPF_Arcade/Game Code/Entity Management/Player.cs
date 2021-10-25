@@ -16,7 +16,10 @@ namespace WPF_Arcade
     {
         private readonly int playerAttackCost = 2;
         private readonly int playerMoveCost = 1;
+<<<<<<< HEAD
         private int playerHealth = 3;
+=======
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
 
         private int playerX;
         private int playerY;
@@ -28,8 +31,11 @@ namespace WPF_Arcade
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly CollisionManager playerCollisionManager;
+<<<<<<< HEAD
         
         
+=======
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
 
 
         public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager)
@@ -42,8 +48,11 @@ namespace WPF_Arcade
             playerSize = size;
             playerStartActionPoints = actions;
             playerCollisionManager = collisionmanager;
+<<<<<<< HEAD
            
             
+=======
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
 
             playerImage = new Image
             {
@@ -165,6 +174,7 @@ namespace WPF_Arcade
                 }
                 else if (thingAtTarget.GetType() == typeof(Enemy))
                 {
+<<<<<<< HEAD
                     playerActionPoints -= playerAttackCost;
                     Enemy enemy = (Enemy)thingAtTarget;
                     enemy.DamageOnEnemy();
@@ -173,6 +183,10 @@ namespace WPF_Arcade
                     //get points
                     //respawn enemy?
                     
+=======
+                    //do enemy attacking stuff
+                    return true;
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
                 }
                 else if (thingAtTarget.GetType() == typeof(TileMap))
                 {
@@ -186,6 +200,7 @@ namespace WPF_Arcade
             //if none of the other return statements were reached, it means that we attack nothing. Thus we will return false
             return false;
         }
+<<<<<<< HEAD
 
         public void DamageOnPlayer()
         {
@@ -207,5 +222,7 @@ namespace WPF_Arcade
             playerCanvas.Children.Remove(playerImage);
         }
 
+=======
+>>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
     }
 }

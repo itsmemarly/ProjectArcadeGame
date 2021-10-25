@@ -75,8 +75,8 @@
         </Grid>
         <Grid Grid.Row="3">
             <Button FontFamily="OCR A Extended" FontSize="22" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Center" Click="TerugNaarMenu">Terug naar menu</Button>
-            <Image Source="Images/gem vein 64px.png" HorizontalAlignment="Left" Margin="10,10,0,10"></Image>
-            <Image Source="Images/bat 64px.png" HorizontalAlignment="Right" Margin="0,10,10,10"></Image>
+            <Image Source="/gem vein 64px.png" HorizontalAlignment="Left" Margin="10,10,0,10"></Image>
+            <Image Source="/bat 64px.png" HorizontalAlignment="Right" Margin="0,10,10,10"></Image>
         </Grid>
     </Grid>
 </Window>
