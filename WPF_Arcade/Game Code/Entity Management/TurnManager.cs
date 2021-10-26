@@ -28,6 +28,15 @@ namespace WPF_Arcade
             turnPlayerList = playerlist;
             turnEnemyList = enemyList;
             turnSeed = seed;
+
+            //set all the players to inactive
+            foreach (var player in turnPlayerList)
+            {
+                player.SetInactive();
+            }
+
+            //then set the currently active player to active
+            ActivePlayer().SetActive();
         }
 
         public Player ActivePlayer()
@@ -91,32 +100,35 @@ namespace WPF_Arcade
                 {
                     enemy.MoveLeft();
                 }
-
-
-
-
-
                 else
                 {
                     enemy.MoveRight();
                 }
+
                 enemy.ResetActionPoints();
             }
         }
 
         private void EndTurnIfNeeded(Player player)
         {
-            if (player.Actionpoints() == 0)
+            if (player.Actionpoints() <= 0)
             {
+                //reset the amount of action points to spend when their turn ends so they have them on their next turn
+                player.ResetActionPoints();
+
+                //also sets the player to inactive 
+                player.SetInactive();
+
                 //changes which player is active
                 levelActivePlayerIndex += 1;
-                player.ResetActionPoints();
 
                 if (levelActivePlayerIndex > turnPlayerList.Count - 1)
                 {
                     levelActivePlayerIndex = 0;
                     TakeEnemyTurns();
                 }
+
+                ActivePlayer().SetActive();
 
             }
         }
