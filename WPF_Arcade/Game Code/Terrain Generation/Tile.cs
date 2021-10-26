@@ -57,6 +57,7 @@ namespace WPF_Arcade
             return tileType;
         }
 
+
        public void Destroy()
        {
             tileCanvas.Children.Remove(tileImage);

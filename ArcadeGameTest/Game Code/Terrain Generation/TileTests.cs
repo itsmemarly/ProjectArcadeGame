@@ -15,14 +15,21 @@ using System.Windows.Shapes;
 namespace WPF_Arcade.Tests
 {
     [TestClass()]
-    
     public class TileTests
-    {       
+    {
+        Game game;
+        Tile tile;
+
+        public TileTests()
+        {
+            game = new Game();
+            tile = new Tile("test", 64, 0, 0, game.Canvas(), GameImageBitmaps.stone);
+        }
         
         [TestMethod()]
         public void TileTest()
         {
-            Assert.Fail();
+            Assert.IsNotNull(tile);
         }
 
         [TestMethod()]
