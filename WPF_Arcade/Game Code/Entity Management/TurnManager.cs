@@ -28,7 +28,10 @@ namespace WPF_Arcade
             turnPlayerList = playerlist;
             turnEnemyList = enemyList;
             turnSeed = seed;
+        }
 
+        public void SetActivePlayerVisual()
+        {
             //set all the players to inactive
             foreach (var player in turnPlayerList)
             {
@@ -132,9 +135,6 @@ namespace WPF_Arcade
 
             }
         }
-
-
-
 
 
         //generates a value with high varience int the outputwith a small varience the input based on the seed and how many numbers have been previously generated
