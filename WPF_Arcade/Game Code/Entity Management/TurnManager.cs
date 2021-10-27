@@ -21,7 +21,7 @@ namespace WPF_Arcade
 
         private int levelActivePlayerIndex = 0;
         private int turnRandomCount = int.MinValue;
-        
+
 
         public TurnManager(List<Player> playerlist, List<Enemy> enemyList, string seed)
         {
@@ -66,11 +66,7 @@ namespace WPF_Arcade
                     break;
 
                 case Key.Down:
-<<<<<<< HEAD
                     ActivePlayer().AttackDown();
-=======
-                    ActivePlayer().AttackUp();
->>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
                     break;
 
                 case Key.Left:
@@ -96,13 +92,10 @@ namespace WPF_Arcade
                     enemy.MoveLeft();
                 }
 
-<<<<<<< HEAD
-                
 
-               
 
-=======
->>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
+
+
                 else
                 {
                     enemy.MoveRight();

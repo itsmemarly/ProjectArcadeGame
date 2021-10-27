@@ -1,5 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +24,7 @@ namespace WPF_Arcade
         public Highscore()
         {
             InitializeComponent();
+        
         }
 
         private void TerugNaarMenu(object sender, RoutedEventArgs e)

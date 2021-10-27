@@ -101,10 +101,7 @@ namespace WPF_Arcade
             GenerateTerrain();
             AddPlayer(64, 64);
             AddPlayer(64, 128);
-<<<<<<< HEAD
             AddEnemy(64, 448);
-=======
->>>>>>> 726b6fd93b7dee9c9721291ec57f5e47353e344b
         }
 
         private void GenerateTerrain()
