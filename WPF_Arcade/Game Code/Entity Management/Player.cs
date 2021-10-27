@@ -160,8 +160,16 @@ namespace WPF_Arcade
                 //then do different things depending on what you're attacking
                 else if (thingAtTarget.GetType() == typeof(Player))
                 {
-                    //do player attacking stuff
-                    return true;
+                    player.cs
+
+                // attacks other player (put other player on random tile)
+                    else if (thingAtTarget.GetType() == typeof(Player))
+                    {
+                        playerActionPoints -= playerAttackCost;
+                        TileMap map = (TileMap)thingAtTarget;
+                        map.RandomlyPlacePlayer(x, y);
+                        return true;
+                        return true;
                 }
                    // attack enemy
                 else if (thingAtTarget.GetType() == typeof(Enemy))
