@@ -157,21 +157,6 @@ namespace WPF_Arcade
 
         }
 
-        
-
-
-        //place player if attacked
-        public void PlacePlayer(int x, int y)
-        {
-            Player[x, y].Destroy();
-            Player[x, y] = null;
-        }
-        //randomly places player if attacked
-        public void RandomlyPlacePlayer(int x, int y)
-        {
-            PlacePlayer(ToTileCoordinate(x), ToTileCoordinate(y));
-        }
-
         public void Clear()
         {
             for (int x = 0; x < tileMap.GetLength(0); x++)
