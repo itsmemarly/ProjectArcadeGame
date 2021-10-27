@@ -30,6 +30,18 @@ namespace WPF_Arcade
             turnSeed = seed;
         }
 
+        public void SetActivePlayerVisual()
+        {
+            //set all the players to inactive
+            foreach (var player in turnPlayerList)
+            {
+                player.SetInactive();
+            }
+
+            //then set the currently active player to active
+            ActivePlayer().SetActive();
+        }
+
         public Player ActivePlayer()
         {
             return turnPlayerList[levelActivePlayerIndex];
@@ -91,26 +103,27 @@ namespace WPF_Arcade
                 {
                     enemy.MoveLeft();
                 }
-
-
-
-
-
                 else
                 {
                     enemy.MoveRight();
                 }
+
                 enemy.ResetActionPoints();
             }
         }
 
         private void EndTurnIfNeeded(Player player)
         {
-            if (player.Actionpoints() == 0)
+            if (player.Actionpoints() <= 0)
             {
+                //reset the amount of action points to spend when their turn ends so they have them on their next turn
+                player.ResetActionPoints();
+
+                //also sets the player to inactive 
+                player.SetInactive();
+
                 //changes which player is active
                 levelActivePlayerIndex += 1;
-                player.ResetActionPoints();
 
                 if (levelActivePlayerIndex > turnPlayerList.Count - 1)
                 {
@@ -118,11 +131,10 @@ namespace WPF_Arcade
                     TakeEnemyTurns();
                 }
 
+                ActivePlayer().SetActive();
+
             }
         }
-
-
-
 
 
         //generates a value with high varience int the outputwith a small varience the input based on the seed and how many numbers have been previously generated

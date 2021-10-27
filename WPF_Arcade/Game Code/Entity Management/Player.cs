@@ -118,6 +118,16 @@ namespace WPF_Arcade
             return AttackIfValid(playerX, playerY + playerSize);
         }
 
+        public void SetActive()
+        {
+            playerImage.Opacity = 1;
+        }
+
+        public void SetInactive()
+        {
+            playerImage.Opacity = 0.5;
+        }
+
         ////resets the action points back to their starting value
         public void ResetActionPoints()
         {

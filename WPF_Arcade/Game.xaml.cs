@@ -44,6 +44,11 @@ namespace WPF_Arcade
             //entityManager = new EntityManager(enemyList, playerList, terrain.Seed());
         }
 
+        public Canvas Canvas()
+        {
+            return GameWorld;
+        }
+
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
         {
             level.ProcessInput(e.Key);
