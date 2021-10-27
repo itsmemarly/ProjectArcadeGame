@@ -116,6 +116,34 @@ namespace WPF_Arcade
             return null;
         }
 
+        //puts player on empty tile at the beginning of the game
+
+        public Player PutPlayer(int x, int y)
+        {
+            foreach (var player in collisionPlayerList)
+            {
+                if (collisionTileMap.isTileAtScreenCoordinate(x, y))
+                {
+                    return player;
+                }
+            }
+            return null;
+        }
+
+        //puts enemy on empty tile at the beginning of the game
+
+        public Enemy PutEnemy(int x, int y)
+        {
+            foreach (var enemy in collisionEnemyList)
+            {
+                if (collisionTileMap.isTileAtScreenCoordinate(x, y))
+                {
+                    return enemy;
+                }
+            }
+            return null;
+        }
+
 
     }
 }
