@@ -157,13 +157,15 @@ namespace WPF_Arcade
                 {
                     return false;
                 }
-                //then do different things depending on what you're attacking
+
+                // attacks other player
                 else if (thingAtTarget.GetType() == typeof(Player))
                 {
-                    //do player attacking stuff
+                    playerActionPoints -= playerAttackCost;
                     return true;
                 }
-                   // attack enemy
+                
+                // attack enemy
                 else if (thingAtTarget.GetType() == typeof(Enemy))
                 {
                     playerActionPoints -= playerAttackCost;
