@@ -102,8 +102,6 @@ namespace WPF_Arcade
             AddPlayer(64, 64);
             AddPlayer(64, 128);
             AddEnemy(64, 448);
-
-            levelTurnManager.SetActivePlayerVisual();
         }
 
         private void GenerateTerrain()

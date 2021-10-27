@@ -83,18 +83,16 @@ namespace WPF_Arcade
         }
 
         //removes tile from the tilemap
-        public string DeleteTile(int x, int y)
+        public void DeleteTile(int x, int y)
         {
-            String tileType = tileMap[x, y].Type();
             tileMap[x, y].Destroy();
             tileMap[x, y] = null;
-            return tileType;
         }
 
         //removes tile at screen pixels from the tilemap
-        public string DeleteTileAtScreenCoordinate(int x, int y)
+        public void DeleteTileAtScreenCoordinate(int x, int y)
         {
-            return DeleteTile(ToTileCoordinate(x), ToTileCoordinate(y));
+            DeleteTile(ToTileCoordinate(x), ToTileCoordinate(y));
         }
 
         //checks if a tile is in the level
