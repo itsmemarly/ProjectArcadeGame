@@ -27,6 +27,9 @@ namespace WPF_Arcade
         
         }
 
+        public string conString = "Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=C:/XAMPP/HTDOCS/HBO/DIGDUG/PROJECTARCADEGAME/WPF_ARCADE/DATABASE1.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
         private void TerugNaarMenu(object sender, RoutedEventArgs e)
         {
             Menu menu = new Menu();
