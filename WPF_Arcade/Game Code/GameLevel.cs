@@ -32,6 +32,7 @@ namespace WPF_Arcade
 
         private readonly List<Enemy> levelEnemyList;
         private readonly List<Player> levelPlayerList;
+        private readonly Exit levelExit;
 
         //properites of the generated terrain
         //these have been picked after some experimentation because they generate the kind of terrain I think works well with the game
@@ -76,7 +77,9 @@ namespace WPF_Arcade
             levelPlayerList = new List<Player>();
             levelEnemyList = new List<Enemy>();
 
-            levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList);
+            levelExit = new Exit(0, 0, levelTileSize, levelCanvas);
+
+            levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList, levelExit);
             levelTurnManager = new TurnManager(levelPlayerList, levelEnemyList, levelSeed);
         }
         //getters
@@ -109,6 +112,7 @@ namespace WPF_Arcade
             GenerateTerrain();
             PlacePlayers();
             PlaceEnemies(levelEnemyChance);
+            PlaceExit();
         }
 
         private void GenerateTerrain()
@@ -158,6 +162,23 @@ namespace WPF_Arcade
                     }
                 }
             }
+        }
+
+        private void PlaceExit()
+        {
+            //first caluclate the middle of the screen
+            int halfWidth = levelWidth / 2;
+            int nearestTileToMiddle = halfWidth - (halfWidth % levelTileSize);
+
+            int bottomOfScreen = levelHeight - (levelHeight % levelTileSize) - levelTileSize;
+            //bottomOfScreen = 128;
+            levelExit.MoveTo(nearestTileToMiddle, bottomOfScreen);
+
+            if (levelTileMap.isTileAtScreenCoordinate(nearestTileToMiddle, bottomOfScreen))
+            {
+                levelTileMap.DeleteTileAtScreenCoordinate(nearestTileToMiddle, bottomOfScreen);
+            }
+
         }
 
         private void AddEnemy(int x, int y)

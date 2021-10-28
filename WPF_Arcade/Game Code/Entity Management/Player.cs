@@ -216,6 +216,7 @@ namespace WPF_Arcade
                 else if (thingAtTarget.GetType()== typeof(Exit))
                 {
                     Exit exit = (Exit)thingAtTarget;
+                    AddToScore(PlayerActionScores.win);
                     exit.EndGame();
                 }
             }

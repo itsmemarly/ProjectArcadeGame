@@ -19,15 +19,14 @@ namespace WPF_Arcade
         private Canvas exitCanvas;
         private int exitX;
         private int exitY;
-        private BitmapImage exitBitMap;
+        private BitmapImage exitBitMap = GameImageBitmaps.exit;
         private Image exitImage;
 
 
-        public Exit(int x, int y, int size, Canvas canvas, BitmapImage bitmap)
+        public Exit(int x, int y, int size, Canvas canvas)
         {
             exitX = x;
             exitY = y;
-            exitBitMap = bitmap;
             exitCanvas = canvas;
             exitSize = size;
 
@@ -40,10 +39,28 @@ namespace WPF_Arcade
             };
 
 
-            Canvas.SetLeft(exitImage, x * exitSize);
-            Canvas.SetTop(exitImage, y * exitSize);
+            Canvas.SetLeft(exitImage, x);
+            Canvas.SetTop(exitImage, y);
 
             exitCanvas.Children.Add(exitImage);
+        }
+
+        public int X()
+        {
+            return exitX;
+        }
+
+        public int Y()
+        {
+            return exitY;
+        }
+
+        public void MoveTo(int x, int y)
+        {
+            exitX = x;
+            exitY = y;
+            Canvas.SetLeft(exitImage, x);
+            Canvas.SetTop(exitImage, y);
         }
 
         // Creates and opens the win screen
