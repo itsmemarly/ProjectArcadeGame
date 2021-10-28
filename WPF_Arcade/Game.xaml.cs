@@ -55,9 +55,40 @@ namespace WPF_Arcade
             //        terrain.Generate(75, 2, 25, 3, 40, 10);
             //        break;
 
-            //    default:
-            //        break;
-            //}
+                //case Key.W:
+                //    player.MoveUp();
+                //    break;
+
+                //case Key.S:
+                //    player.MoveDown();
+                //    break;
+
+                //case Key.D:
+                //    player.MoveRight();
+                //    break;
+
+                //case Key.A:
+                //    player.MoveLeft();
+                //    break;
+
+                //case Key.C:
+                //    player.DestroyTileRight();
+                //    break;
+
+                //case Key.Q:
+                //    player.DestroyTileLeft();
+                //    break;
+
+                //case Key.E:
+                //    player.DestroyTileUp();
+                //    break;
+
+                //case Key.Z:
+                //    player.DestroyTileDown();
+                //    break;
+
+                //default:
+                //    break;
 
             //entityManager.TakePlayerAction(e.Key);
         }
