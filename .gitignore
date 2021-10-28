@@ -392,4 +392,16 @@ FodyWeavers.xsd
 # Ignore chache files and user specific VS files
 *.[Cc]ache
 *.suo
+*MainWindow.g.i.cs
+*GeneratedMSBuildEditorConfig.editorconfig
+*assets.cache
+*WPF_Arcade_MarkupCompile.i.cache
+*WPF_Arcade.csproj.nuget.dgspec.json
+*WPF_Arcade.csproj.nuget.g.props
+*project.assets.json
+*project.nuget.cache
 
+
+
+
+*.cache

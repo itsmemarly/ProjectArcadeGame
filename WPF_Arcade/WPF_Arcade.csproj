@@ -7,7 +7,72 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
+    <None Remove="bat 64px.png" />
+    <None Remove="gem vein 64px.png" />
+    <None Remove="goblin 64px.png" />
+    <None Remove="Media\ArcadeGame mockup.png" />
+    <None Remove="Media\Sprites\bat 16px.png" />
+    <None Remove="Media\Sprites\bat 32px.png" />
+    <None Remove="Media\Sprites\bat 64px.png" />
+    <None Remove="Media\Sprites\bat_16px.png" />
+    <None Remove="Media\Sprites\bat_32px.png" />
+    <None Remove="Media\Sprites\bat_64px.png" />
+    <None Remove="Media\Sprites\gem vein 16px.png" />
+    <None Remove="Media\Sprites\gem vein 32px.png" />
+    <None Remove="Media\Sprites\gem vein 64px.png" />
+    <None Remove="Media\Sprites\gem_vein_16px.png" />
+    <None Remove="Media\Sprites\gem_vein_32px.png" />
+    <None Remove="Media\Sprites\gem_vein_64px.png" />
+    <None Remove="Media\Sprites\goblin 16px.png" />
+    <None Remove="Media\Sprites\goblin 32px.png" />
+    <None Remove="Media\Sprites\goblin 64px.png" />
+    <None Remove="Media\Sprites\goblin_16px.png" />
+    <None Remove="Media\Sprites\goblin_32px.png" />
+    <None Remove="Media\Sprites\goblin_64px.png" />
+    <None Remove="Media\Sprites\player 16px.png" />
+    <None Remove="Media\Sprites\player 32px.png" />
+    <None Remove="Media\Sprites\player 64px.png" />
+    <None Remove="Media\Sprites\player_16px.png" />
+    <None Remove="Media\Sprites\player_32px.png" />
+    <None Remove="Media\Sprites\player_64px.png" />
+    <None Remove="Media\Sprites\stone 16px.png" />
+    <None Remove="Media\Sprites\stone 32px.png" />
+    <None Remove="Media\Sprites\stone 64px.png" />
+    <None Remove="Media\Sprites\stone_16px.png" />
+    <None Remove="Media\Sprites\stone_32px.png" />
+    <None Remove="Media\Sprites\stone_64px.png" />
+    <None Remove="player 64px.png" />
+    <None Remove="screenshotgame.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.27" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="bat 64px.png" />
+    <Resource Include="gem vein 64px.png" />
+    <Resource Include="goblin 64px.png" />
+    <Resource Include="Media\ArcadeGame mockup.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Media\Sprites\bat_16px.png" />
+    <Resource Include="Media\Sprites\bat_32px.png" />
+    <Resource Include="Media\Sprites\bat_64px.png" />
+    <Resource Include="Media\Sprites\gem_vein_16px.png" />
+    <Resource Include="Media\Sprites\gem_vein_32px.png" />
+    <Resource Include="Media\Sprites\gem_vein_64px.png" />
+    <Resource Include="Media\Sprites\goblin_16px.png" />
+    <Resource Include="Media\Sprites\goblin_32px.png" />
+    <Resource Include="Media\Sprites\goblin_64px.png" />
+    <Resource Include="Media\Sprites\player_16px.png" />
+    <Resource Include="Media\Sprites\player_32px.png" />
+    <Resource Include="Media\Sprites\player_64px.png" />
+    <Resource Include="Media\Sprites\stone_16px.png" />
+    <Resource Include="Media\Sprites\stone_32px.png" />
+    <Resource Include="Media\Sprites\stone_64px.png" />
+    <Resource Include="player 64px.png" />
+    <Resource Include="screenshotgame.png" />
   </ItemGroup>
 
 </Project>

@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Arcade"
         mc:Ignorable="d"
-        Title="Tutorial" Height="450" Width="800">
+        Title="Tutorial" Height="450" Width="800" Background="Black">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Title Explenation-->
+        <Label Content="Uitleg" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+               FontFamily="OCR A Extended" FontSize="40" Foreground="White"></Label>
+
+        <!--Explenation-->
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch"
+                   Margin="0,20,0,0" FontFamily="OCR A Extended" Width="700" Foreground="White" FontSize="16"> 
+
+        Je bent verdwaald en in het Goblin Doolhof terecht gekomen! <LineBreak></LineBreak>
+        Probeer je weg terug te vinden naar de bewoonde wereld en ga het gevecht <LineBreak></LineBreak> 
+        aan met de monsters die je tegenkomt.<LineBreak></LineBreak>
+        Vind als eerste speler je weg uit het doolhof en verzamel ondertussen <LineBreak></LineBreak> 
+        door de Goblins te verslaan en diamanten te verzamelen. <LineBreak></LineBreak>
+        Let op! De Goblins laten maar 1 speler uit het doolhof ontsnappen.. <LineBreak></LineBreak>
+        <LineBreak></LineBreak>
+        </TextBlock>
+
+
+
+
+        <TextBlock Grid.Row="2" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Bottom" Margin="120,0,0,0" Width="149" FontFamily="OCR A Extended" FontSize="14"> 
+        Besturing speler:<LineBreak></LineBreak>
+        <LineBreak></LineBreak>
+        A : ←<LineBreak></LineBreak>
+        D : →<LineBreak></LineBreak>       
+        W : ↑<LineBreak></LineBreak>
+        S : ↓<LineBreak></LineBreak>
+        </TextBlock>
+
+
+        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Foreground="White" VerticalAlignment="Bottom" Margin="0,0,120,0" FontFamily="OCR A Extended" TextAlignment="Left" TextDecorations="{x:Null}" FontSize="14">
+            Attack:
+            <LineBreak></LineBreak>
+            <LineBreak></LineBreak>
+            ← Attack links
+            <LineBreak></LineBreak>
+            → Attack rechts 
+            <LineBreak></LineBreak>
+            ↑ Attack boven 
+            <LineBreak></LineBreak>
+            ↓ Attack onder 
+            <LineBreak></LineBreak>
+
+        </TextBlock>
+
+
+
+
+
+        <!--Button StartGame-->
+        <Button Grid.Row="3" Content="Start Spel" Margin="300,20,300,20" FontFamily="OCR A Extended"
+                Click="StartGame_Click" FontSize="20" Width="200" Height="40" />
         
     </Grid>
 </Window>

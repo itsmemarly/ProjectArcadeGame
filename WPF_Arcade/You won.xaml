@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Arcade"
         mc:Ignorable="d"
-        Title="You_won" Height="450" Width="800">
+        Title="You_won" Height="450" Width="800" Background="Black">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Title Win-->
+        <Label Content="Je hebt gewonnen!" FontSize="40" HorizontalAlignment="Center"
+               VerticalAlignment="Bottom" FontFamily="OCR A Extended" Foreground="#FFDDDDDD"></Label>
+
+        <!--TitleScore-->
+        <Grid Grid.Row=" 1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="1" Source="/gem vein 64px.png" Margin="30,30,0,0"></Image>
+            <Label Grid.Column="0" Content="Je score: 56845" FontFamily="OCR A Extended" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"></Label>
+        </Grid>
+
+
+
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <Button FontFamily="OCR A Extended" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,10" Click="HoofdMenu_Click">Terug naar menu</Button>
+                <Button Margin="0,0,0,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="22" Click="QuitGame_Click">Stop het spel</Button>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

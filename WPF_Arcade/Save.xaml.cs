@@ -21,5 +21,23 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+        private void SaveGame1_Click(object sender, RoutedEventArgs e)
+        {
+            //SaveFile 1
+        }
+
+        private void SaveGame2_Click(object sender, RoutedEventArgs e)
+        {
+            //SaveFile 2
+        }
+
+        private void SaveGame3_Click(object sender, RoutedEventArgs e)
+        {
+            //SaveFile 3
+        }
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            //menu button
+        }
     }
 }

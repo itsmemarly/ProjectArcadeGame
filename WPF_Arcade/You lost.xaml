@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Arcade"
         mc:Ignorable="d"
-        Title="You_lost" Height="450" Width="800">
-    <Grid>
-        
+        Title="You_lost" 
+        Background="Black"
+        Height="450" Width="800">
+    <Grid VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Label Content="Je hebt verloren!" FontFamily="OCR A Extended" FontSize="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"></Label>
+        <Grid Grid.Row=" 1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="1" Source="/bat 64px.png" Margin="30,30,0,0"></Image>
+            <Label Grid.Column="0" Content="Je score: 56845" FontFamily="OCR A Extended" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"></Label>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+            <Button FontFamily="OCR A Extended" FontSize="22" HorizontalAlignment="Center" Margin="0,0,0,10" Click="TerugNaarMenu">Terug naar menu</Button>
+            <Button Margin="0,0,0,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="22" Click="StopHetSpel">Stop het spel</Button>
+        </StackPanel>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
     </Grid>
 </Window>

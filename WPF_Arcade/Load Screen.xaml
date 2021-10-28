@@ -1,12 +1,14 @@
-﻿<Window x:Class="WPF_Arcade.Save"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Arcade"
-        mc:Ignorable="d"
-        Title="Save" Height="450" Width="800" Background="Black">
-    <Grid>
+﻿<Page x:Class="WPF_Arcade.Load_Screen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPF_Arcade"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="Black"
+      Title="Load_Screen">
+
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -15,15 +17,15 @@
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--Titel SaveGame-->
-        <Label Content="Spel Opslaan" VerticalAlignment="Bottom" 
+        <!--Load Game Title-->
+        <Label Content="Spel Laden" VerticalAlignment="Bottom" 
                FontFamily="OCR A Extended" FontSize="48" Foreground="#FFDDDDDD" HorizontalAlignment="Center"/>
 
-        <!--Title Pick a game-->
+        <!--Pick a game-->
         <Label Grid.Row="1" Content="Kies een spel:" VerticalAlignment="Bottom" FontSize="24" 
                     FontFamily="OCR A Extended" Foreground="#FFDDDDDD" HorizontalAlignment="Center" Margin="0,0,0,10"/>
 
-        <!--SaveFile Images-->
+        <!--SaveFile Pictures-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -35,7 +37,7 @@
             <Image Grid.Column="2" Source="/screenshotgame.png"></Image>
         </Grid>
 
-        <!--SaveFile Button-->
+        <!--SaveGame Buttons-->
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -45,27 +47,27 @@
             <Button Grid.Column="0" Content="Spel 1" VerticalAlignment="Center" 
                    HorizontalAlignment="Center" FontSize="20" FontFamily="OCR A Extended"
                     Visibility="Visible"  
-                    Foreground="Black" Click="SaveGame1_Click" Height="25"/>
+                    Foreground="Black" Click="LoadGame1_Click" Height="25"/>
 
             <Button Grid.Column="1" Content="Spel 2" VerticalAlignment="Center" 
                    HorizontalAlignment="Center" FontSize="20" FontFamily="OCR A Extended"
                     BorderBrush="White"  
-                    Foreground="Black" Click="SaveGame2_Click" Height="25"></Button>
+                    Foreground="Black" Click="LoadGame2_Click" Height="25"></Button>
 
             <Button Grid.Column="2" Content="Spel 3" VerticalAlignment="Center" 
                    HorizontalAlignment="Center" FontSize="20" FontFamily="OCR A Extended"
                     Foreground="Black"  
-                    BorderBrush="White" Click="SaveGame3_Click" Height="25"></Button>
+                    BorderBrush="White" Click="LoadGame3_Click" Height="25"></Button>
         </Grid>
 
-        <!--Menu Button-->
-        <Grid Grid.Row="4">
+        <!--MainMenu Button-->
+        <Grid Grid.Row="4" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Margin="30,30,50,30" Click="Menu_Click" FontFamily="OCR A Extended" FontSize="20"  HorizontalAlignment="Center">Terug Naar Menu</Button>
+            <Button Margin="30,30,50,30" Click="MainMenu_Click" FontFamily="OCR A Extended" FontSize="20" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">Terug Naar Menu</Button>
         </Grid>
 
     </Grid>
-</Window>
+</Page>

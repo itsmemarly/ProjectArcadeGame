@@ -20,9 +20,14 @@ namespace WPF_Arcade
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static int MasterVolume = 10;
+        public static int MusicVolume = 10;
+        public static int EffectVolume = 10;
+        
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }
