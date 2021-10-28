@@ -20,6 +20,10 @@ namespace WPF_Arcade
         private readonly int levelHeight;
         private readonly int levelTileSize;
         private readonly Canvas levelCanvas;
+        private readonly TextBox levelPlayer1ScoreText;
+        private readonly TextBox levelPlayer1TurnText;
+        private readonly TextBox levelPlayer2ScoreText;
+        private readonly TextBox levelPlayer2TurnText;
 
         //variables determined in the constructor
         private readonly CollisionManager levelCollisionManager;
@@ -49,7 +53,7 @@ namespace WPF_Arcade
         private string levelSeed = "";
         private int levelRandomCount = int.MinValue;
 
-        public GameLevel(int width, int height, int tileSize, Canvas canvas)
+        public GameLevel(int width, int height, int tileSize, Canvas canvas, TextBox P1Score, TextBox P1Turn, TextBox P2Score, TextBox P2Turn)
         {
             //set the properties to the right value
             levelWidth = width;
@@ -57,9 +61,14 @@ namespace WPF_Arcade
             levelTileSize = tileSize;
             levelCanvas = canvas;
 
-            //create the internal properties
-            //determine the size of the level in tiles
-            int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
+            levelPlayer1ScoreText = P1Score;
+            levelPlayer1TurnText = P1Turn;
+            levelPlayer2ScoreText = P2Score;
+            levelPlayer2TurnText = P2Turn;
+
+        //create the internal properties
+        //determine the size of the level in tiles
+        int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
             int levelTileMapTileHeight = (int)Math.Floor((double)(levelHeight / levelTileSize));
 
             //make a new tileMap that fits the size of the level
@@ -99,8 +108,8 @@ namespace WPF_Arcade
             SetSeed(r.Next().ToString());
 
             GenerateTerrain();
-            AddPlayer(64, 64);
-            AddPlayer(64, 128);
+            AddPlayer(64, 64, levelPlayer1ScoreText, levelPlayer1TurnText);
+            AddPlayer(64, 128, levelPlayer2ScoreText, levelPlayer2TurnText);
             AddEnemy(64, 448);
         }
 
@@ -109,9 +118,9 @@ namespace WPF_Arcade
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
-        private void AddPlayer(int x, int y)
+        private void AddPlayer(int x, int y, TextBox scoreText, TextBox turnText)
         {
-            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager));
+            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText));
         }
 
         private void AddEnemy(int x, int y)

@@ -20,6 +20,9 @@
     <None Remove="Media\Sprites\gem vein 16px.png" />
     <None Remove="Media\Sprites\gem vein 32px.png" />
     <None Remove="Media\Sprites\gem vein 64px.png" />
+    <None Remove="Media\Sprites\gem_16px.png" />
+    <None Remove="Media\Sprites\gem_32px.png" />
+    <None Remove="Media\Sprites\gem_64px.png" />
     <None Remove="Media\Sprites\gem_vein_16px.png" />
     <None Remove="Media\Sprites\gem_vein_32px.png" />
     <None Remove="Media\Sprites\gem_vein_64px.png" />
@@ -59,6 +62,9 @@
     <Resource Include="Media\Sprites\bat_16px.png" />
     <Resource Include="Media\Sprites\bat_32px.png" />
     <Resource Include="Media\Sprites\bat_64px.png" />
+    <Resource Include="Media\Sprites\gem_16px.png" />
+    <Resource Include="Media\Sprites\gem_32px.png" />
+    <Resource Include="Media\Sprites\gem_64px.png" />
     <Resource Include="Media\Sprites\gem_vein_16px.png" />
     <Resource Include="Media\Sprites\gem_vein_32px.png" />
     <Resource Include="Media\Sprites\gem_vein_64px.png" />

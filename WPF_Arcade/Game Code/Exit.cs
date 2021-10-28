@@ -14,29 +14,29 @@ namespace WPF_Arcade
 {
     public class Exit
     {
-        private string exitType;
+        private string exit;
         private int exitSize;
         private Canvas exitCanvas;
         private int exitX;
         private int exitY;
-        private BitmapImage exitBitmap;
+        private BitmapImage exitBitMap;
         private Image exitImage;
 
-        public Exit(int size, int x, int y, Canvas canvas, BitmapImage bitmap)
+
+        public Exit(int x, int y, int size, Canvas canvas, BitmapImage bitmap)
         {
             exitX = x;
             exitY = y;
-
+            exitBitMap = bitmap;
             exitCanvas = canvas;
-                
             exitSize = size;
 
             exitImage = new Image
             {
-                Tag = "exitType",
+                Tag = "exit",
                 Height = exitSize,
                 Width = exitSize,
-                Source = bitmap,
+                Source = exitBitMap
             };
 
 
@@ -46,11 +46,16 @@ namespace WPF_Arcade
             exitCanvas.Children.Add(exitImage);
         }
 
-
+        // Creates and opens the win screen
+        public void EndGame()
+        {
+            You_won winscreen = new You_won();
+            winscreen.Visibility = Visibility.Visible;
+            
+        }
 
 
         
-
 
 
     }
