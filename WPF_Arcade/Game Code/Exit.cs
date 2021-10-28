@@ -21,14 +21,16 @@ namespace WPF_Arcade
         private int exitY;
         private BitmapImage exitBitmap;
         private Image exitImage;
+        private int exitHealth;
 
-        public Exit(int size, int x, int y, Canvas canvas, BitmapImage bitmap)
+
+        public Exit(int size, int x, int y, Canvas canvas)
         {
             exitX = x;
             exitY = y;
 
             exitCanvas = canvas;
-                
+
             exitSize = size;
 
             exitImage = new Image
@@ -36,7 +38,7 @@ namespace WPF_Arcade
                 Tag = "exitType",
                 Height = exitSize,
                 Width = exitSize,
-                Source = bitmap,
+                Source = GameImageBitmaps.exit
             };
 
 
@@ -46,11 +48,21 @@ namespace WPF_Arcade
             exitCanvas.Children.Add(exitImage);
         }
 
+        // Creates and opens the win screen
+        private void OpenWinScreen()
+        {
+            You_won winscreen = new You_won();
+            winscreen.Visibility = Visibility.Visible;
+        }
 
-
-
-        
-
+        // Checks if the exit has been hit and ends the game by opening the winscreen
+        public void EndGame()
+        {
+            if (exitHealth == 0)
+            {
+                OpenWinScreen();
+            }
+        }
 
 
     }
