@@ -20,11 +20,12 @@ namespace WPF_Arcade
 
         private int playerX;
         private int playerY;
+        private int playerScore = 0;
 
         private readonly int playerSize;
         private int playerActionPoints;
         private readonly int playerStartActionPoints;
-        private String playerName;
+        private readonly string playerName;
         private readonly Image playerImage;
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
@@ -184,7 +185,11 @@ namespace WPF_Arcade
                 {
                     UpdateActionPoints(-playerAttackCost);
                     Enemy enemy = (Enemy)thingAtTarget;
-                    enemy.DamageOnEnemy();
+                    bool kill = enemy.DamageOnEnemy();
+                    if (kill)
+                    {
+                        AddToScore(PlayerActionScores.destroyEnemy);
+                    }
                     return true;
 
                     //get points
@@ -195,6 +200,16 @@ namespace WPF_Arcade
                 {
                     UpdateActionPoints(-playerAttackCost);
                     TileMap map = (TileMap)thingAtTarget;
+                    string targetTileType = map.getTileTypeAtScreenCoordinate(x, y);
+                    if (targetTileType == "gem")
+                    {
+                        AddToScore(PlayerActionScores.destroyGem);
+                    }
+                    else if (targetTileType == "stone")
+                    {
+                        AddToScore(PlayerActionScores.destroyStone);
+                    }
+
                     map.DeleteTileAtScreenCoordinate(x, y);
                     return true;
                 }
@@ -225,6 +240,11 @@ namespace WPF_Arcade
 
         }
 
+        private void AddToScore(int amount)
+        {
+            playerScore += amount;
+            playerScoreLabel.Text = playerName + " Score: " + playerScore.ToString();
+        }
         // kills player
         private void KillPlayer()
         {

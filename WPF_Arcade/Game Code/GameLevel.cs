@@ -46,8 +46,7 @@ namespace WPF_Arcade
         //determines aspects of the generated entities
         private readonly int levelPlayerActions = 5;
         private readonly int levelEnemyActions = 1; //curently not implemented for heigher values
-        private readonly int levelPlayerCount = 2;
-        private readonly int levelEnemyCount = 4;
+        private readonly int levelEnemyChance = 10;
 
         //variables internal to the class
         private string levelSeed = "";
@@ -109,10 +108,7 @@ namespace WPF_Arcade
 
             GenerateTerrain();
             PlacePlayers();
-
-
-
-            AddEnemy(64, 448);
+            PlaceEnemies(levelEnemyChance);
         }
 
         private void GenerateTerrain()
@@ -147,9 +143,32 @@ namespace WPF_Arcade
             levelPlayerList[0].SetActive();
         }
 
+        private void PlaceEnemies(int chance)
+        {
+            Random r = new Random();
+
+            //loop over the level to find empty tile coordinates and put them all in a list;
+            for (int x = 0; x < levelTileMap.Width(); x++)
+            {
+                for (int y = 0; y < levelTileMap.Height(); y++)
+                {
+                    if (!levelTileMap.IsTile(x, y) && GeneratePsuedoRandomValue(x, y, 100) < chance)
+                    {
+                        AddEnemy(x * levelTileSize, y * levelTileSize);
+                    }
+                }
+            }
+        }
+
         private void AddEnemy(int x, int y)
         {
             levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelCollisionManager));
+        }
+
+        private float GeneratePsuedoRandomValue(double x, double y, float maxValue)
+        {
+            string input = x.ToString() + y.ToString() + levelSeed;
+            return Math.Abs(input.GetHashCode()) % maxValue;
         }
 
     }

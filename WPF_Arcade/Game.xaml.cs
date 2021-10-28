@@ -19,7 +19,7 @@ namespace WPF_Arcade
 
     public partial class Game : Window
     {
-        private readonly GameLevel level;
+        private GameLevel level;
         
         public Game()
         {
@@ -33,6 +33,10 @@ namespace WPF_Arcade
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
         {
             level.ProcessInput(e.Key);
+            if (e.Key == Key.R)
+            {
+                //level = new GameLevel(1920, 1080, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
+            }
         }
 
         private void GameWorld_KeyUp(object sender, KeyEventArgs e)
