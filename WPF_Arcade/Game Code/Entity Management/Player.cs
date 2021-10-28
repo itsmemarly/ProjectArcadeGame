@@ -28,13 +28,13 @@ namespace WPF_Arcade
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly CollisionManager playerCollisionManager;
-        private readonly TextBox playerTurnCounter;
-        private readonly TextBox playerScoreLabel;
+        private readonly TextBlock playerTurnCounter;
+        private readonly TextBlock playerScoreLabel;
 
 
 
 
-        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBox turnCounter, TextBox Score)
+        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBlock turnCounter, TextBlock Score)
         {
             playerX = x;
             playerY = y;
