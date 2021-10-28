@@ -39,9 +39,9 @@
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <TextBox Margin="10,0,10,10" FontFamily="OCR A Extended" FontSize="20" Background="#FFDDDDDD">
-                    Player 1
-                </TextBox>
+                <TextBlock IsEnabled="false"  Name="PlayerName" Margin="10,0,10,10" FontFamily="OCR A Extended" FontSize="20" Background="#FFDDDDDD">
+                  
+                </TextBlock>
                 <TextBox FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" Background="#FFDDDDDD">
                     Player 2
                 </TextBox>
@@ -56,8 +56,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <TextBox HorizontalAlignment="Stretch" FontFamily="OCR A Extended" FontSize="20" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                    38950
+                <TextBox Name="PlayerScore" HorizontalAlignment="Stretch" FontFamily="OCR A Extended" FontSize="20" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
+                  
                 </TextBox>
                 <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
                     75849
