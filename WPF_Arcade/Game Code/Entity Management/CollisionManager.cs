@@ -116,6 +116,12 @@ namespace WPF_Arcade
             return null;
         }
 
+        public void DeleteEnemey(int x, int y)
+        {
+            Enemy enemy = GetEnemyAt(x, y);
+            collisionEnemyList.Remove(enemy);
+        }
 
+        
     }
 }

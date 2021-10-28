@@ -215,6 +215,7 @@ namespace WPF_Arcade
         private void KillPlayer()
         {
             playerCanvas.Children.Remove(playerImage);
+            
         }
 
     }
