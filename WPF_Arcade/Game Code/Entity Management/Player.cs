@@ -24,6 +24,7 @@ namespace WPF_Arcade
         private readonly int playerSize;
         private int playerActionPoints;
         private readonly int playerStartActionPoints;
+        private String playerName;
         private readonly Image playerImage;
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
@@ -34,7 +35,8 @@ namespace WPF_Arcade
 
 
 
-        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBlock turnCounter, TextBlock Score)
+
+        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBlock turnCounter, TextBlock Score, String name)
         {
             playerX = x;
             playerY = y;
@@ -46,12 +48,13 @@ namespace WPF_Arcade
             playerCollisionManager = collisionmanager;
             playerTurnCounter = turnCounter;
             playerScoreLabel = Score;
+            playerName = name;
 
 
 
             playerImage = new Image
             {
-                Tag = "playerImage",
+                Tag = name,
                 Height = playerSize,
                 Width = playerSize,
                 Source = playerBitmap
@@ -126,12 +129,13 @@ namespace WPF_Arcade
         public void ResetActionPoints()
         {
             playerActionPoints = playerStartActionPoints;
+            playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
         }
 
         private void UpdateActionPoints(int val)
         {
             playerActionPoints += val;
-            playerTurnCounter.Text = playerActionPoints.ToString() + "/5";
+            playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
         }
 
         private void MoveTo(int destinationX, int destinationY)
@@ -226,6 +230,14 @@ namespace WPF_Arcade
         {
             playerCanvas.Children.Remove(playerImage);
             
+        }
+        public void SetActive()
+        {
+            playerImage.Opacity = 1;
+        }
+        public void SetInactive()
+        {
+            playerImage.Opacity = 0.5;
         }
 
     }

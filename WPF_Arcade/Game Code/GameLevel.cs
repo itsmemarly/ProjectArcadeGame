@@ -108,8 +108,10 @@ namespace WPF_Arcade
             SetSeed(r.Next().ToString());
 
             GenerateTerrain();
-            AddPlayer(64, 64, levelPlayer1ScoreText, levelPlayer1TurnText);
-            AddPlayer(64, 128, levelPlayer2ScoreText, levelPlayer2TurnText);
+            PlacePlayers();
+
+
+
             AddEnemy(64, 448);
         }
 
@@ -118,9 +120,31 @@ namespace WPF_Arcade
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
-        private void AddPlayer(int x, int y, TextBlock scoreText, TextBlock turnText)
+        private void AddPlayer(int x, int y, TextBlock scoreText, TextBlock turnText, String name)
         {
-            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText));
+            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText, name));
+            if (levelTileMap.isTileAtScreenCoordinate(x, y))
+            {
+                levelTileMap.DeleteTileAtScreenCoordinate(x, y);
+            }
+            
+        }
+
+        private void PlacePlayers()
+        {
+            //calculate starting x position for the players
+            //first caluclate the middle of the screen
+            int halfWidth = levelWidth / 2;
+            int nearestTileToMiddle = halfWidth - (halfWidth % levelTileSize);
+
+            AddPlayer(nearestTileToMiddle - levelTileSize, 64, levelPlayer1ScoreText, levelPlayer1TurnText, "Player 1");
+            AddPlayer(nearestTileToMiddle + levelTileSize, 64, levelPlayer2ScoreText, levelPlayer2TurnText, "Player 2");
+
+            foreach (var player in levelPlayerList)
+            {
+                player.SetInactive();
+            }
+            levelPlayerList[0].SetActive();
         }
 
         private void AddEnemy(int x, int y)
