@@ -184,6 +184,11 @@ namespace WPF_Arcade
                     map.DeleteTileAtScreenCoordinate(x, y);
                     return true;
                 }
+                else if (thingAtTarget.GetType()== typeof(Exit))
+                {
+                    Exit exit = (Exit)thingAtTarget;
+                    exit.EndGame();
+                }
             }
 
             //if none of the other return statements were reached, it means that we attack nothing. Thus we will return false
