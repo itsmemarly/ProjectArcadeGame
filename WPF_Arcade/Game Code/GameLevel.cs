@@ -20,10 +20,10 @@ namespace WPF_Arcade
         private readonly int levelHeight;
         private readonly int levelTileSize;
         private readonly Canvas levelCanvas;
-        private readonly TextBox levelPlayer1ScoreText;
-        private readonly TextBox levelPlayer1TurnText;
-        private readonly TextBox levelPlayer2ScoreText;
-        private readonly TextBox levelPlayer2TurnText;
+        private readonly TextBlock levelPlayer1ScoreText;
+        private readonly TextBlock levelPlayer1TurnText;
+        private readonly TextBlock levelPlayer2ScoreText;
+        private readonly TextBlock levelPlayer2TurnText;
 
         //variables determined in the constructor
         private readonly CollisionManager levelCollisionManager;
@@ -53,7 +53,7 @@ namespace WPF_Arcade
         private string levelSeed = "";
         private int levelRandomCount = int.MinValue;
 
-        public GameLevel(int width, int height, int tileSize, Canvas canvas, TextBox P1Score, TextBox P1Turn, TextBox P2Score, TextBox P2Turn)
+        public GameLevel(int width, int height, int tileSize, Canvas canvas, TextBlock P1Score, TextBlock P1Turn, TextBlock P2Score, TextBlock P2Turn)
         {
             //set the properties to the right value
             levelWidth = width;
@@ -118,7 +118,7 @@ namespace WPF_Arcade
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
-        private void AddPlayer(int x, int y, TextBox scoreText, TextBox turnText)
+        private void AddPlayer(int x, int y, TextBlock scoreText, TextBlock turnText)
         {
             levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText));
         }
