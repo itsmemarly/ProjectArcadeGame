@@ -28,11 +28,13 @@ namespace WPF_Arcade
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly CollisionManager playerCollisionManager;
+        private readonly TextBox playerTurnCounter;
+        private readonly TextBox playerScoreLabel;
 
 
 
 
-        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager)
+        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBox turnCounter, TextBox Score)
         {
             playerX = x;
             playerY = y;
@@ -42,6 +44,8 @@ namespace WPF_Arcade
             playerSize = size;
             playerStartActionPoints = actions;
             playerCollisionManager = collisionmanager;
+            playerTurnCounter = turnCounter;
+            playerScoreLabel = Score;
 
 
 
@@ -124,11 +128,17 @@ namespace WPF_Arcade
             playerActionPoints = playerStartActionPoints;
         }
 
+        private void UpdateActionPoints(int val)
+        {
+            playerActionPoints += val;
+            playerTurnCounter.Text = playerActionPoints.ToString() + "/5";
+        }
+
         private void MoveTo(int destinationX, int destinationY)
         {
             playerY = destinationY;
             playerX = destinationX;
-            playerActionPoints -= playerMoveCost;
+            UpdateActionPoints(-playerMoveCost);
             Canvas.SetTop(playerImage, playerY);
             Canvas.SetLeft(playerImage, playerX);
         }
@@ -161,14 +171,14 @@ namespace WPF_Arcade
                 // attacks other player
                 else if (thingAtTarget.GetType() == typeof(Player))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     return true;
                 }
                 
                 // attack enemy
                 else if (thingAtTarget.GetType() == typeof(Enemy))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     Enemy enemy = (Enemy)thingAtTarget;
                     enemy.DamageOnEnemy();
                     return true;
@@ -179,7 +189,7 @@ namespace WPF_Arcade
                 }
                 else if (thingAtTarget.GetType() == typeof(TileMap))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     TileMap map = (TileMap)thingAtTarget;
                     map.DeleteTileAtScreenCoordinate(x, y);
                     return true;
