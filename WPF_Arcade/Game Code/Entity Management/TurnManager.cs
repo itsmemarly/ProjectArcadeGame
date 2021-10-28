@@ -92,10 +92,6 @@ namespace WPF_Arcade
                     enemy.MoveLeft();
                 }
 
-
-
-
-
                 else
                 {
                     enemy.MoveRight();
@@ -111,6 +107,7 @@ namespace WPF_Arcade
                 //changes which player is active
                 levelActivePlayerIndex += 1;
                 player.ResetActionPoints();
+                player.SetInactive();
 
                 if (levelActivePlayerIndex > turnPlayerList.Count - 1)
                 {
@@ -118,6 +115,7 @@ namespace WPF_Arcade
                     TakeEnemyTurns();
                 }
 
+                ActivePlayer().SetActive();
             }
         }
 

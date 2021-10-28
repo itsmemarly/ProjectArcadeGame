@@ -11,12 +11,9 @@
             Background="Black"
             KeyDown="GameWorld_KeyDown"
             KeyUp="GameWorld_KeyUp">
-        <TextBox Name="Player1TurnCounter" Height="30" Width="200" Text="P1Turn" Canvas.Left="10" Canvas.Top="45" Panel.ZIndex="996"></TextBox>
-        <TextBox Name="Player1Score" Height="30" Width="200" Text="P1Score" Canvas.Left="10" Canvas.Top="10" Panel.ZIndex="1000"></TextBox>
-        <TextBox Name="Player2TurnCounter" Height="30" Width="200" Text="P2Turn" Canvas.Left="368" Canvas.Top="45"></TextBox>
-        <TextBox Name="Player2Score" Height="30" Width="200" Text="P2Score" Canvas.Left="368" Canvas.Top="10" RenderTransformOrigin="0.495,0.685"></TextBox>
+        <TextBlock Name="Player1TurnCounter" Height="30" Width="200" Text="Player 1: 5/5" Canvas.Left="10" Canvas.Top="45" Panel.ZIndex="1000" Foreground="White"></TextBlock>
+        <TextBlock Name="Player1Score" Height="30" Width="200" Text="Player 1 Score: 0" Canvas.Left="10" Canvas.Top="10" Panel.ZIndex="1000" Foreground="White"></TextBlock>
+        <TextBlock Name="Player2TurnCounter" Height="30" Width="200" Text="Player 2: 5/5" Canvas.Left="368" Canvas.Top="45" Background="Black" Foreground="White" Panel.ZIndex="1000"></TextBlock>
+        <TextBlock Name="Player2Score" Height="30" Width="200" Text="Player 2 Score: 0" Canvas.Left="368" Canvas.Top="10" RenderTransformOrigin="0.495,0.685" Foreground="White" Panel.ZIndex="1000"/>
     </Canvas>
-
-
-
 </Window>

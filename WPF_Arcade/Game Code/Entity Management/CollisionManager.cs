@@ -9,13 +9,16 @@ namespace WPF_Arcade
         private readonly TileMap collisionTileMap;
         private readonly List<Enemy> collisionEnemyList;
         private readonly List<Player> collisionPlayerList;
+        private Exit collisionExit;
 
-        public CollisionManager(TileMap tilemap, List<Player> playerlist, List<Enemy> enemyList)
+        public CollisionManager(TileMap tilemap, List<Player> playerlist, List<Enemy> enemyList, Exit exit)
         {
             collisionTileMap = tilemap;
             collisionPlayerList = playerlist;
             collisionEnemyList = enemyList;
+            collisionExit = exit;
         }
+
         /// <summary>
         ///     returns the tileMap if there's a tile there,
         ///     an enemy if there's an enemy there,
@@ -44,6 +47,10 @@ namespace WPF_Arcade
             if (player != null)
             {
                 return player;
+            }
+            if (collisionExit.X() == x && collisionExit.Y() == y)
+            {
+                return collisionExit;
             }
             else
             {

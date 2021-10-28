@@ -75,6 +75,20 @@ namespace WPF_Arcade
             return IsTile(ToTileCoordinate(x), ToTileCoordinate(y));
         }
 
+        public string getTileTypeAt(int x, int y)
+        {
+            if (tileMap[x, y] == null)
+            {
+                return "void";
+            }
+            return tileMap[x, y].Type();
+        }
+
+        public string getTileTypeAtScreenCoordinate(int x, int y)
+        {
+            return getTileTypeAt(ToTileCoordinate(x), ToTileCoordinate(y));
+        }
+
         //check if there's a tile at these tilemap coordinates
         public bool IsTile(int x, int y)
         {
