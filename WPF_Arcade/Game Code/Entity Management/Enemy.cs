@@ -140,15 +140,14 @@ namespace WPF_Arcade
             if (enemyHealth <= 0)
             {
                 KillMonster();
+
             }
-
-
-
-
         }
+
         private void KillMonster()
         {
             enemyCanvas.Children.Remove(enemyImage);
+            
         }
 
 

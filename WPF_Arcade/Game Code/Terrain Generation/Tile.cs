@@ -55,6 +55,7 @@ namespace WPF_Arcade
        public void Destroy()
        {
             tileCanvas.Children.Remove(tileImage);
+            
        }
     }
 }
