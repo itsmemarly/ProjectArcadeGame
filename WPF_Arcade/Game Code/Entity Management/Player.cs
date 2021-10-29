@@ -72,6 +72,11 @@ namespace WPF_Arcade
             return playerActionPoints;
         }
 
+        public int Score()
+        {
+            return playerScore;
+        }
+
         public int X()
         {
             return playerX;
