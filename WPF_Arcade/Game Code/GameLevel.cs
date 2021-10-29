@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -110,13 +111,13 @@ namespace WPF_Arcade
                 //Link to DB
                 OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\reidi\OneDrive\Documents\testdb_old.mdb");
 
-                //Open connection
-                con.Open();
+            //Open connection
+            con.Open();
+            //Add new adapter for Scores
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Speler1 (Naam1, Naam2, Score1, Score2) VALUES (' Player 1 ', 'Player 2'," + levelPlayerList[0].Score() + ", " + levelPlayerList[1].Score() + ")", con);
+            cmd.ExecuteNonQuery();
 
-                //Add new adapter for Scores
-                OleDbDataAdapter da = new OleDbDataAdapter("INSERT INTO Speler1 (Naam1, Naam2, Score1, Score2) VALUES (' Player 1 ', 'Player 2'," +levelPlayerList[0].Score() +", " + levelPlayerList[1].Score()+")", con);
-            
-                con.Close();
+            con.Close();
 
         }
 
