@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 
 namespace WPF_Arcade
 {
-    class GameLevel
+    public class GameLevel
     {
 
         //variables the class takes in the constructor
@@ -77,7 +77,7 @@ namespace WPF_Arcade
             levelPlayerList = new List<Player>();
             levelEnemyList = new List<Enemy>();
 
-            levelExit = new Exit(0, 0, levelTileSize, levelCanvas);
+            levelExit = new Exit(0, 0, levelTileSize, levelCanvas, this);
 
             levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList, levelExit);
             levelTurnManager = new TurnManager(levelPlayerList, levelEnemyList, levelSeed);
@@ -100,6 +100,11 @@ namespace WPF_Arcade
         public void ProcessInput(Key key)
         {
             levelTurnManager.TakePlayerAction(key);
+        }
+
+        public void SaveScores()
+        {
+
         }
 
         //constructs the level

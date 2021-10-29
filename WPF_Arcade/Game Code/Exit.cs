@@ -21,9 +21,10 @@ namespace WPF_Arcade
         private int exitY;
         private BitmapImage exitBitMap = GameImageBitmaps.exit;
         private Image exitImage;
+        private readonly GameLevel exitLevel;
 
 
-        public Exit(int x, int y, int size, Canvas canvas)
+        public Exit(int x, int y, int size, Canvas canvas, GameLevel level)
         {
             exitX = x;
             exitY = y;
@@ -66,6 +67,7 @@ namespace WPF_Arcade
         // Creates and opens the win screen
         public void EndGame()
         {
+            exitLevel.SaveScores();
             You_won winscreen = new You_won();
             winscreen.Visibility = Visibility.Visible;
             
