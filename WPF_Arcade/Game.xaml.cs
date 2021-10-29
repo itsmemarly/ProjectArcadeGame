@@ -17,11 +17,8 @@ namespace WPF_Arcade
     /// </summary>
     /// 
 
-    //TODO: refactor this mess!!
     public partial class Game : Window
     {
-        //TileMap terrain;
-        //EntityManager entityManager;
         private readonly GameLevel level;
         
         public Game()
@@ -29,68 +26,13 @@ namespace WPF_Arcade
             InitializeComponent();
             GameWorld.Focus();
 
-            level = new GameLevel(1920, 1080, 64, GameWorld);
+            level = new GameLevel(1920, 1080, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
             level.BuildLevel();
-
-            //terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-            //terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
-
-            //List<Enemy> enemyList = new List<Enemy>();
-            //enemyList.Add(new Enemy(64, 64, 1, 64, GameImageBitmaps.goblin, GameWorld, terrain)); //add new enemy
-
-            //List<Player> playerList = new List<Player>();
-            //playerList.Add(new Player(128, 64, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 1
-            //playerList.Add(new Player(128, 128, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 2
-            //entityManager = new EntityManager(enemyList, playerList, terrain.Seed());
         }
 
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
         {
             level.ProcessInput(e.Key);
-            //switch (e.Key)
-            //{
-            //    case Key.R:
-            //        terrain.Clear();
-            //        terrain.RandomSeed();
-            //        terrain.Generate(75, 2, 25, 3, 40, 10);
-            //        break;
-
-                //case Key.W:
-                //    player.MoveUp();
-                //    break;
-
-                //case Key.S:
-                //    player.MoveDown();
-                //    break;
-
-                //case Key.D:
-                //    player.MoveRight();
-                //    break;
-
-                //case Key.A:
-                //    player.MoveLeft();
-                //    break;
-
-                //case Key.C:
-                //    player.DestroyTileRight();
-                //    break;
-
-                //case Key.Q:
-                //    player.DestroyTileLeft();
-                //    break;
-
-                //case Key.E:
-                //    player.DestroyTileUp();
-                //    break;
-
-                //case Key.Z:
-                //    player.DestroyTileDown();
-                //    break;
-
-                //default:
-                //    break;
-
-            //entityManager.TakePlayerAction(e.Key);
         }
 
         private void GameWorld_KeyUp(object sender, KeyEventArgs e)
