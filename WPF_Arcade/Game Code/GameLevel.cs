@@ -20,10 +20,10 @@ namespace WPF_Arcade
         private readonly int levelHeight;
         private readonly int levelTileSize;
         private readonly Canvas levelCanvas;
-        private readonly TextBox levelPlayer1ScoreText;
-        private readonly TextBox levelPlayer1TurnText;
-        private readonly TextBox levelPlayer2ScoreText;
-        private readonly TextBox levelPlayer2TurnText;
+        private readonly TextBlock levelPlayer1ScoreText;
+        private readonly TextBlock levelPlayer1TurnText;
+        private readonly TextBlock levelPlayer2ScoreText;
+        private readonly TextBlock levelPlayer2TurnText;
 
         //variables determined in the constructor
         private readonly CollisionManager levelCollisionManager;
@@ -32,6 +32,7 @@ namespace WPF_Arcade
 
         private readonly List<Enemy> levelEnemyList;
         private readonly List<Player> levelPlayerList;
+        private readonly Exit levelExit;
 
         //properites of the generated terrain
         //these have been picked after some experimentation because they generate the kind of terrain I think works well with the game
@@ -46,14 +47,13 @@ namespace WPF_Arcade
         //determines aspects of the generated entities
         private readonly int levelPlayerActions = 5;
         private readonly int levelEnemyActions = 1; //curently not implemented for heigher values
-        private readonly int levelPlayerCount = 2;
-        private readonly int levelEnemyCount = 4;
+        private readonly int levelEnemyChance = 10;
 
         //variables internal to the class
         private string levelSeed = "";
         private int levelRandomCount = int.MinValue;
 
-        public GameLevel(int width, int height, int tileSize, Canvas canvas, TextBox P1Score, TextBox P1Turn, TextBox P2Score, TextBox P2Turn)
+        public GameLevel(int width, int height, int tileSize, Canvas canvas, TextBlock P1Score, TextBlock P1Turn, TextBlock P2Score, TextBlock P2Turn)
         {
             //set the properties to the right value
             levelWidth = width;
@@ -77,7 +77,9 @@ namespace WPF_Arcade
             levelPlayerList = new List<Player>();
             levelEnemyList = new List<Enemy>();
 
-            levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList);
+            levelExit = new Exit(0, 0, levelTileSize, levelCanvas);
+
+            levelCollisionManager = new CollisionManager(levelTileMap, levelPlayerList, levelEnemyList, levelExit);
             levelTurnManager = new TurnManager(levelPlayerList, levelEnemyList, levelSeed);
         }
         //getters
@@ -108,9 +110,9 @@ namespace WPF_Arcade
             SetSeed(r.Next().ToString());
 
             GenerateTerrain();
-            AddPlayer(64, 64, levelPlayer1ScoreText, levelPlayer1TurnText);
-            AddPlayer(64, 128, levelPlayer2ScoreText, levelPlayer2TurnText);
-            AddEnemy(64, 448);
+            PlacePlayers();
+            PlaceEnemies(levelEnemyChance);
+            PlaceExit();
         }
 
         private void GenerateTerrain()
@@ -118,14 +120,76 @@ namespace WPF_Arcade
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
-        private void AddPlayer(int x, int y, TextBox scoreText, TextBox turnText)
+        private void AddPlayer(int x, int y, TextBlock scoreText, TextBlock turnText, String name)
         {
-            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText));
+            levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText, name));
+            if (levelTileMap.isTileAtScreenCoordinate(x, y))
+            {
+                levelTileMap.DeleteTileAtScreenCoordinate(x, y);
+            }
+            
+        }
+
+        private void PlacePlayers()
+        {
+            //calculate starting x position for the players
+            //first caluclate the middle of the screen
+            int halfWidth = levelWidth / 2;
+            int nearestTileToMiddle = halfWidth - (halfWidth % levelTileSize);
+
+            AddPlayer(nearestTileToMiddle - levelTileSize, 64, levelPlayer1ScoreText, levelPlayer1TurnText, "Player 1");
+            AddPlayer(nearestTileToMiddle + levelTileSize, 64, levelPlayer2ScoreText, levelPlayer2TurnText, "Player 2");
+
+            foreach (var player in levelPlayerList)
+            {
+                player.SetInactive();
+            }
+            levelPlayerList[0].SetActive();
+        }
+
+        private void PlaceEnemies(int chance)
+        {
+            Random r = new Random();
+
+            //loop over the level to find empty tile coordinates and put them all in a list;
+            for (int x = 0; x < levelTileMap.Width(); x++)
+            {
+                for (int y = 0; y < levelTileMap.Height(); y++)
+                {
+                    if (!levelTileMap.IsTile(x, y) && GeneratePsuedoRandomValue(x, y, 100) < chance)
+                    {
+                        AddEnemy(x * levelTileSize, y * levelTileSize);
+                    }
+                }
+            }
+        }
+
+        private void PlaceExit()
+        {
+            //first caluclate the middle of the screen
+            int halfWidth = levelWidth / 2;
+            int nearestTileToMiddle = halfWidth - (halfWidth % levelTileSize);
+
+            int bottomOfScreen = levelHeight - (levelHeight % levelTileSize) - levelTileSize;
+            //bottomOfScreen = 128;
+            levelExit.MoveTo(nearestTileToMiddle, bottomOfScreen);
+
+            if (levelTileMap.isTileAtScreenCoordinate(nearestTileToMiddle, bottomOfScreen))
+            {
+                levelTileMap.DeleteTileAtScreenCoordinate(nearestTileToMiddle, bottomOfScreen);
+            }
+
         }
 
         private void AddEnemy(int x, int y)
         {
             levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelCollisionManager));
+        }
+
+        private float GeneratePsuedoRandomValue(double x, double y, float maxValue)
+        {
+            string input = x.ToString() + y.ToString() + levelSeed;
+            return Math.Abs(input.GetHashCode()) % maxValue;
         }
 
     }
