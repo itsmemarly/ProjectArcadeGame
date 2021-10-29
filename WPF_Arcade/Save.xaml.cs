@@ -26,14 +26,8 @@ namespace WPF_Arcade
         public Save()
         {
             InitializeComponent();
-            Bind();
         }
-
-        private void Bind()
-        {
-           
           
-        }
         private void SaveGame1_Click(object sender, RoutedEventArgs e)
         {
             //SaveFile 1
@@ -41,7 +35,7 @@ namespace WPF_Arcade
             //Open connection
             con.Open();
 
-            //Add new adapter & datatable for P1
+            //Select data from database with ID 1
             OleDbDataAdapter da = new OleDbDataAdapter("Select * From Opslaan Where ID=1", con);
            
             con.Close();
@@ -55,7 +49,7 @@ namespace WPF_Arcade
             //Open connection
             con.Open();
 
-            //Add new adapter & datatable for P1
+            //Select data from database with ID 2
             OleDbDataAdapter da = new OleDbDataAdapter("Select * From Opslaan Where ID=2", con);
 
             con.Close();
@@ -69,7 +63,7 @@ namespace WPF_Arcade
             //Open connection
             con.Open();
 
-            //Add new adapter & datatable for P1
+            //Select data from database with ID 3
             OleDbDataAdapter da = new OleDbDataAdapter("Select * From Opslaan Where ID=3", con);
 
             con.Close();
