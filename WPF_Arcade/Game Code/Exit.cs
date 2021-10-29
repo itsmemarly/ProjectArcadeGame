@@ -30,6 +30,7 @@ namespace WPF_Arcade
             exitY = y;
             exitCanvas = canvas;
             exitSize = size;
+            exitLevel = level;
 
             exitImage = new Image
             {
