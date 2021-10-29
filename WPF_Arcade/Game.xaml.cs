@@ -43,9 +43,11 @@ namespace WPF_Arcade
         {
 
         }
-        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            // Go to main menu
+            Menu menu = new Menu();
+            Close();
+            menu.Visibility = Visibility.Visible;
         }
     }
 

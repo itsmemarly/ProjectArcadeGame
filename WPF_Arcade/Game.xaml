@@ -11,6 +11,7 @@
             Background="Black"
             KeyDown="GameWorld_KeyDown"
             KeyUp="GameWorld_KeyUp">
+        <Button x:Name="MenuButton" Content="Menu" Canvas.Left="1150" Canvas.Top="10" Width="200" Height="100" FontSize="48" Click="MenuButton_Click" Panel.ZIndex="1000" BorderBrush="{x:Null}" Foreground="White" Background="{x:Null}"/>
         <TextBlock Name="Player1TurnCounter" Height="30" Width="200" Text="Player 1: 5/5" Canvas.Left="10" Canvas.Top="45" Panel.ZIndex="1000" Foreground="White"></TextBlock>
         <TextBlock Name="Player1Score" Height="30" Width="200" Text="Player 1 Score: 0" Canvas.Left="10" Canvas.Top="10" Panel.ZIndex="1000" Foreground="White"></TextBlock>
         <TextBlock Name="Player2TurnCounter" Height="30" Width="200" Text="Player 2: 5/5" Canvas.Left="368" Canvas.Top="45" Background="Black" Foreground="White" Panel.ZIndex="1000"></TextBlock>
