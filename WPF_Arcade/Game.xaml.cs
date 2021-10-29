@@ -26,7 +26,7 @@ namespace WPF_Arcade
             InitializeComponent();
             GameWorld.Focus();
 
-            level = new GameLevel(1920, 1064, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
+            level = new GameLevel(960, 540, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
             level.BuildLevel();
         }
 
@@ -43,9 +43,11 @@ namespace WPF_Arcade
         {
 
         }
-        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            // Go to main menu
+            Menu menu = new Menu();
+            Close();
+            menu.Visibility = Visibility.Visible;
         }
     }
 
