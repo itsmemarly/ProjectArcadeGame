@@ -28,8 +28,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Foreground="White" FontFamily="OCR A Extended" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0">Speler</Label>
-            <Label Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="22" Foreground="White" VerticalAlignment="Stretch" Margin="0,10,0,0">Score</Label>
+            <Label Foreground="White" FontFamily="OCR A Extended" FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,0">Speler 1</Label>
+            <Label Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="22" Foreground="White" VerticalAlignment="Stretch" Margin="0,10,0,0">Speler 2</Label>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -39,38 +39,11 @@
                 </ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <TextBlock IsEnabled="false"  Name="PlayerName" Margin="10,0,10,10" FontFamily="OCR A Extended" FontSize="20" Background="#FFDDDDDD">
-                  
-                </TextBlock>
-                <TextBox FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" Background="#FFDDDDDD">
-                    Player 2
-                </TextBox>
-                <TextBox Margin="10,0,10,10" FontSize="20" FontFamily="OCR A Extended" Background="#FFDDDDDD">
-                    Player 3
-                </TextBox>
-                <TextBox Margin="10,0,10,10" FontSize="20" FontFamily="OCR A Extended" Background="#FFDDDDDD">
-                    Player 4
-                </TextBox>
-                <TextBox Margin="10,0,10,10" FontSize="20" FontFamily="OCR A Extended" Background="#FFDDDDDD">
-                    Player 5
-                </TextBox>
+                <DataGrid Height="500" ItemsSource="{Binding}" Name="PlayerName" Margin="0,20,10,10" FontFamily="OCR A Extended" FontSize="20" Background="#FFDDDDDD"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <TextBox Name="PlayerScore" HorizontalAlignment="Stretch" FontFamily="OCR A Extended" FontSize="20" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                  
-                </TextBox>
-                <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                    75849
-                </TextBox>
-                <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                    93849
-                </TextBox>
-                <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                    45687
-                </TextBox>
-                <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
-                    12978
-                </TextBox>
+                <DataGrid HorizontalAlignment="Stretch" Height="500" ItemsSource="{Binding}" Name="PlayerScore" Margin="10,20,10,10" FontFamily="OCR A Extended" FontSize="20" Background="#FFDDDDDD"/>
+
             </StackPanel>
         </Grid>
         <Grid Grid.Row="3">

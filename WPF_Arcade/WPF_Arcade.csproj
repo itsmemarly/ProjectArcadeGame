@@ -6,6 +6,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>true</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="bat 64px.png" />
     <None Remove="gem vein 64px.png" />
@@ -49,7 +54,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DatabaseConnections.OleDb" Version="2.0.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.13.1" />
     <PackageReference Include="MySql.Data" Version="8.0.27" />
+    <PackageReference Include="System.Data.OleDb" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
