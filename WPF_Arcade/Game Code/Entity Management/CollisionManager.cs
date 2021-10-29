@@ -77,9 +77,9 @@ namespace WPF_Arcade
         {
             return
                 x >= 0
-                && x <= collisionTileMap.Width() * collisionTileMap.TileSize()
+                && x <= (collisionTileMap.Width() * collisionTileMap.TileSize()) -1
                 && y >= 0
-                && y <= collisionTileMap.Height() * collisionTileMap.TileSize();
+                && y <= (collisionTileMap.Height() * collisionTileMap.TileSize()) -1;
         }
 
         //returns true if the given coordinates are empty, or false if they're not
