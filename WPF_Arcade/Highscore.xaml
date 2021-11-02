@@ -56,7 +56,7 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <TextBox HorizontalAlignment="Stretch" FontFamily="OCR A Extended" FontSize="20" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
+                <TextBox HorizontalAlignment="Stretch" FontFamily="OCR A Extended" FontSize="20" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD" TextChanged="TextBox_TextChanged">
                     38950
                 </TextBox>
                 <TextBox HorizontalAlignment="Stretch" FontSize="20" FontFamily="OCR A Extended" Margin="10,0,10,10" TextAlignment="Right" Background="#FFDDDDDD">
