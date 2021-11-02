@@ -20,19 +20,24 @@ namespace WPF_Arcade
 
         private int playerX;
         private int playerY;
+        private int playerScore = 0;
 
         private readonly int playerSize;
         private int playerActionPoints;
         private readonly int playerStartActionPoints;
+        private readonly string playerName;
         private readonly Image playerImage;
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;
         private readonly CollisionManager playerCollisionManager;
+        private readonly TextBlock playerTurnCounter;
+        private readonly TextBlock playerScoreLabel;
 
 
 
 
-        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager)
+
+        public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBlock turnCounter, TextBlock Score, String name)
         {
             playerX = x;
             playerY = y;
@@ -42,12 +47,15 @@ namespace WPF_Arcade
             playerSize = size;
             playerStartActionPoints = actions;
             playerCollisionManager = collisionmanager;
+            playerTurnCounter = turnCounter;
+            playerScoreLabel = Score;
+            playerName = name;
 
 
 
             playerImage = new Image
             {
-                Tag = "playerImage",
+                Tag = name,
                 Height = playerSize,
                 Width = playerSize,
                 Source = playerBitmap
@@ -122,13 +130,20 @@ namespace WPF_Arcade
         public void ResetActionPoints()
         {
             playerActionPoints = playerStartActionPoints;
+            playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
+        }
+
+        private void UpdateActionPoints(int val)
+        {
+            playerActionPoints += val;
+            playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
         }
 
         private void MoveTo(int destinationX, int destinationY)
         {
             playerY = destinationY;
             playerX = destinationX;
-            playerActionPoints -= playerMoveCost;
+            UpdateActionPoints(-playerMoveCost);
             Canvas.SetTop(playerImage, playerY);
             Canvas.SetLeft(playerImage, playerX);
         }
@@ -161,16 +176,20 @@ namespace WPF_Arcade
                 // attacks other player
                 else if (thingAtTarget.GetType() == typeof(Player))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     return true;
                 }
                 
                 // attack enemy
                 else if (thingAtTarget.GetType() == typeof(Enemy))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     Enemy enemy = (Enemy)thingAtTarget;
-                    enemy.DamageOnEnemy();
+                    bool kill = enemy.DamageOnEnemy();
+                    if (kill)
+                    {
+                        AddToScore(PlayerActionScores.destroyEnemy);
+                    }
                     return true;
 
                     //get points
@@ -179,10 +198,26 @@ namespace WPF_Arcade
                 }
                 else if (thingAtTarget.GetType() == typeof(TileMap))
                 {
-                    playerActionPoints -= playerAttackCost;
+                    UpdateActionPoints(-playerAttackCost);
                     TileMap map = (TileMap)thingAtTarget;
+                    string targetTileType = map.getTileTypeAtScreenCoordinate(x, y);
+                    if (targetTileType == "gem")
+                    {
+                        AddToScore(PlayerActionScores.destroyGem);
+                    }
+                    else if (targetTileType == "stone")
+                    {
+                        AddToScore(PlayerActionScores.destroyStone);
+                    }
+
                     map.DeleteTileAtScreenCoordinate(x, y);
                     return true;
+                }
+                else if (thingAtTarget.GetType()== typeof(Exit))
+                {
+                    Exit exit = (Exit)thingAtTarget;
+                    AddToScore(PlayerActionScores.win);
+                    exit.EndGame();
                 }
             }
 
@@ -206,10 +241,24 @@ namespace WPF_Arcade
 
         }
 
+        private void AddToScore(int amount)
+        {
+            playerScore += amount;
+            playerScoreLabel.Text = playerName + " Score: " + playerScore.ToString();
+        }
         // kills player
         private void KillPlayer()
         {
             playerCanvas.Children.Remove(playerImage);
+            
+        }
+        public void SetActive()
+        {
+            playerImage.Opacity = 1;
+        }
+        public void SetInactive()
+        {
+            playerImage.Opacity = 0.5;
         }
 
     }

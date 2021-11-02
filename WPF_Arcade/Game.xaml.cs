@@ -17,58 +17,37 @@ namespace WPF_Arcade
     /// </summary>
     /// 
 
-    //TODO: refactor this mess!!
     public partial class Game : Window
     {
-        //TileMap terrain;
-        //EntityManager entityManager;
-        private readonly GameLevel level;
+        private GameLevel level;
         
         public Game()
         {
             InitializeComponent();
             GameWorld.Focus();
 
-            level = new GameLevel(1920, 1080, 64, GameWorld);
+            level = new GameLevel(960, 540, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
             level.BuildLevel();
-
-            //terrain = new TileMap(30, 16, 64, "", GameWorld); //make a new tilemap
-            //terrain.Generate(75, 2, 25, 3, 40, 10); //fill the tilemap with terrain
-
-            //List<Enemy> enemyList = new List<Enemy>();
-            //enemyList.Add(new Enemy(64, 64, 1, 64, GameImageBitmaps.goblin, GameWorld, terrain)); //add new enemy
-
-            //List<Player> playerList = new List<Player>();
-            //playerList.Add(new Player(128, 64, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 1
-            //playerList.Add(new Player(128, 128, 5, GameImageBitmaps.player, GameWorld, 64, terrain)); //add new player 2
-            //entityManager = new EntityManager(enemyList, playerList, terrain.Seed());
         }
 
         private void GameWorld_KeyDown(object sender, KeyEventArgs e)
         {
             level.ProcessInput(e.Key);
-            //switch (e.Key)
-            //{
-            //    case Key.R:
-            //        terrain.Clear();
-            //        terrain.RandomSeed();
-            //        terrain.Generate(75, 2, 25, 3, 40, 10);
-            //        break;
-
-            //    default:
-            //        break;
-            //}
-
-            //entityManager.TakePlayerAction(e.Key);
+            if (e.Key == Key.R)
+            {
+                //level = new GameLevel(1920, 1080, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
+            }
         }
 
         private void GameWorld_KeyUp(object sender, KeyEventArgs e)
         {
 
         }
-        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
-            // Go to main menu
+            Menu menu = new Menu();
+            Close();
+            menu.Visibility = Visibility.Visible;
         }
     }
 

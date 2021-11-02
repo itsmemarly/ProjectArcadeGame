@@ -19,7 +19,6 @@ namespace WPF_Arcade
         private Canvas tileCanvas;
         private int tileX;
         private int tileY;
-        private BitmapImage tileBitmap;
         private Image tileImage;
         // Mogelijk tileImage (XML as property van de Tile)
 
@@ -51,10 +50,15 @@ namespace WPF_Arcade
             // Manual implementation of new Tile
             tileCanvas.Children.Add(tileImage);
         }
-
+        
+        public string Type()
+        {
+            return tileType;
+        }
        public void Destroy()
        {
             tileCanvas.Children.Remove(tileImage);
+            
        }
     }
 }

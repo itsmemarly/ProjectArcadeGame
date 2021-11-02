@@ -9,13 +9,16 @@ namespace WPF_Arcade
         private readonly TileMap collisionTileMap;
         private readonly List<Enemy> collisionEnemyList;
         private readonly List<Player> collisionPlayerList;
+        private Exit collisionExit;
 
-        public CollisionManager(TileMap tilemap, List<Player> playerlist, List<Enemy> enemyList)
+        public CollisionManager(TileMap tilemap, List<Player> playerlist, List<Enemy> enemyList, Exit exit)
         {
             collisionTileMap = tilemap;
             collisionPlayerList = playerlist;
             collisionEnemyList = enemyList;
+            collisionExit = exit;
         }
+
         /// <summary>
         ///     returns the tileMap if there's a tile there,
         ///     an enemy if there's an enemy there,
@@ -45,6 +48,10 @@ namespace WPF_Arcade
             {
                 return player;
             }
+            if (collisionExit.X() == x && collisionExit.Y() == y)
+            {
+                return collisionExit;
+            }
             else
             {
                 return null;
@@ -70,9 +77,9 @@ namespace WPF_Arcade
         {
             return
                 x >= 0
-                && x <= collisionTileMap.Width() * collisionTileMap.TileSize()
+                && x <= (collisionTileMap.Width() * collisionTileMap.TileSize()) -1
                 && y >= 0
-                && y <= collisionTileMap.Height() * collisionTileMap.TileSize();
+                && y <= (collisionTileMap.Height() * collisionTileMap.TileSize()) -1;
         }
 
         //returns true if the given coordinates are empty, or false if they're not
@@ -116,34 +123,12 @@ namespace WPF_Arcade
             return null;
         }
 
-        //puts player on empty tile at the beginning of the game
-
-        public Player PutPlayer(int x, int y)
+        public void DeleteEnemey(int x, int y)
         {
-            foreach (var player in collisionPlayerList)
-            {
-                if (collisionTileMap.isTileAtScreenCoordinate(x, y))
-                {
-                    return player;
-                }
-            }
-            return null;
+            Enemy enemy = GetEnemyAt(x, y);
+            collisionEnemyList.Remove(enemy);
         }
 
-        //puts enemy on empty tile at the beginning of the game
-
-        public Enemy PutEnemy(int x, int y)
-        {
-            foreach (var enemy in collisionEnemyList)
-            {
-                if (collisionTileMap.isTileAtScreenCoordinate(x, y))
-                {
-                    return enemy;
-                }
-            }
-            return null;
-        }
-
-
+        
     }
 }

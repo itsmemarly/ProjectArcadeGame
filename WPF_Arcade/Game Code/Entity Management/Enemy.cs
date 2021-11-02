@@ -134,21 +134,28 @@ namespace WPF_Arcade
         }
 
 
-        public void DamageOnEnemy()
+        public bool DamageOnEnemy()
         {
             enemyHealth -= damageReceived;
             if (enemyHealth <= 0)
             {
+                
                 KillMonster();
+                enemyCollisionManager.DeleteEnemey(enemyX,enemyY);
+                return true;
             }
-
-
-
-
+            else
+            {
+                return false;
+            }
         }
+
+
+
         private void KillMonster()
         {
             enemyCanvas.Children.Remove(enemyImage);
+            
         }
 
 
