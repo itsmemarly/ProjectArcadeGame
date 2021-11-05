@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\kajat\Documents\Repositories\ProjectArcadeGame\WPF_Arcade\obj\Debug\netcoreapp3.1\
+C:\Users\maxme\Documents\GitHub\ProjectArcadeGame\WPF_Arcade\obj\Debug\netcoreapp3.1\
 WPF_Arcade
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\kajat\Documents\Repositories\ProjectArcadeGame\WPF_Arcade\App.xaml
+C:\Users\maxme\Documents\GitHub\ProjectArcadeGame\WPF_Arcade\App.xaml
 14-534253855
 
 29-427308548
-203440339967
+2031343137973
 Credits.xaml;Game.xaml;Highscore.xaml;Load Screen.xaml;MainWindow.xaml;Menu.xaml;Options.xaml;Save.xaml;SpelAfsluiten.xaml;Startscherm.xaml;Tutorial.xaml;Welcome.xaml;You lost.xaml;You won.xaml;
 
-True
+False
 

@@ -26,6 +26,9 @@ namespace WPF_Arcade
             InitializeComponent();
             GameWorld.Focus();
 
+            // Connects the following UI Elements to GameLevel's game logic:
+            //  Canvas GameWorld
+            //  TextBlock Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter
             level = new GameLevel(960, 540, 64, GameWorld, Player1Score, Player1TurnCounter, Player2Score, Player2TurnCounter);
             level.BuildLevel();
         }
@@ -43,6 +46,12 @@ namespace WPF_Arcade
         {
 
         }
+
+        /// <summary>
+        /// Closes Game screen and pops up Menu screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             Menu menu = new Menu();

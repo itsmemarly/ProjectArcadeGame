@@ -43,6 +43,8 @@ namespace WPF_Arcade
             {
                 return enemy;
             }
+
+            // check if other Player stands in the way
             Player player = GetPlayerAt(x, y);
             if (player != null)
             {

@@ -66,9 +66,9 @@ namespace WPF_Arcade
             levelPlayer2ScoreText = P2Score;
             levelPlayer2TurnText = P2Turn;
 
-        //create the internal properties
-        //determine the size of the level in tiles
-        int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
+            //create the internal properties
+            //determine the size of the level in tiles
+            int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
             int levelTileMapTileHeight = (int)Math.Floor((double)(levelHeight / levelTileSize));
 
             //make a new tileMap that fits the size of the level
@@ -125,6 +125,14 @@ namespace WPF_Arcade
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
+        /// <summary>
+        /// Adds Player to the Player List, puts Player at the given coordinates and removes Tile at the given coordinates if needed
+        /// </summary>
+        /// <param name="x">x coordinate of Player</param>
+        /// <param name="y">y coordinate of Player</param>
+        /// <param name="scoreText">TextBlock to view Player's Score in the UI</param>
+        /// <param name="turnText">TextBlock to view Player's remaining Turns in comparison to initial turn amount in the UI</param>
+        /// <param name="name">Player's Name (either "Player 1" or "Player 2")</param>
         private void AddPlayer(int x, int y, TextBlock scoreText, TextBlock turnText, String name)
         {
             levelPlayerList.Add(new Player(x, y, levelPlayerActions, levelTileSize, GameImageBitmaps.player, levelCanvas, levelCollisionManager, turnText, scoreText, name));
@@ -169,6 +177,9 @@ namespace WPF_Arcade
             }
         }
 
+        /// <summary>
+        /// Places the Gem at its destined coordinates in the Terrain, and removes any interfering Tile
+        /// </summary>
         private void PlaceExit()
         {
             //first caluclate the middle of the screen
@@ -186,6 +197,11 @@ namespace WPF_Arcade
 
         }
 
+        /// <summary>
+        /// Adds Enemy to the Enemy List and puts It at Its given coordinates
+        /// </summary>
+        /// <param name="x">x coordinate of Enemy</param>
+        /// <param name="y">y coordinate of Enemy</param>
         private void AddEnemy(int x, int y)
         {
             levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelCollisionManager));

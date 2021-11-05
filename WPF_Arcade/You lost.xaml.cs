@@ -22,11 +22,21 @@ namespace WPF_Arcade
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Closes You lost screen and pops up Menu screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void TerugNaarMenu(object sender, RoutedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Closes You lost screen and pops up SpelAfsluiten screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void StopHetSpel(object sender, RoutedEventArgs e)
         {
 

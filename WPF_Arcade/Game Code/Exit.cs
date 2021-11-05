@@ -23,7 +23,6 @@ namespace WPF_Arcade
         private Image exitImage;
         private readonly GameLevel exitLevel;
 
-
         public Exit(int x, int y, int size, Canvas canvas, GameLevel level)
         {
             exitX = x;
@@ -39,7 +38,6 @@ namespace WPF_Arcade
                 Width = exitSize,
                 Source = exitBitMap
             };
-
 
             Canvas.SetLeft(exitImage, x);
             Canvas.SetTop(exitImage, y);
@@ -73,10 +71,5 @@ namespace WPF_Arcade
             winscreen.Visibility = Visibility.Visible;
             
         }
-
-
-        
-
-
     }
 }

@@ -22,11 +22,21 @@ namespace WPF_Arcade
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Closes Application
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void JaSluitAf(object sender, RoutedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Closes SpelAfsluiten and pops up other screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void NeeSluitNietAf(object sender, RoutedEventArgs e)
         {
 

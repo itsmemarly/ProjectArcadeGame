@@ -21,6 +21,12 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Closes Tutorial screen and pops up Game screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void StartGame_Click(object sender, RoutedEventArgs e)
         {
             //Start the game

@@ -183,10 +183,6 @@ namespace WPF_Arcade
                 }
             }
             return false;
-
         }
-
-
     }
-
 }

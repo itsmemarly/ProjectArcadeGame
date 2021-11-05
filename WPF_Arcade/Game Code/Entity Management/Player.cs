@@ -14,6 +14,8 @@ namespace WPF_Arcade
 {
     class Player
     {
+
+        // Player's Properties
         private readonly int playerAttackCost = 2;
         private readonly int playerMoveCost = 1;
         private int playerHealth = 3;
@@ -33,10 +35,6 @@ namespace WPF_Arcade
         private readonly TextBlock playerTurnCounter;
         private readonly TextBlock playerScoreLabel;
 
-
-
-
-
         public Player(int x, int y, int actions, int size, BitmapImage bitmap, Canvas canvas, CollisionManager collisionmanager, TextBlock turnCounter, TextBlock Score, String name)
         {
             playerX = x;
@@ -50,8 +48,6 @@ namespace WPF_Arcade
             playerTurnCounter = turnCounter;
             playerScoreLabel = Score;
             playerName = name;
-
-
 
             playerImage = new Image
             {
@@ -82,63 +78,103 @@ namespace WPF_Arcade
             return playerY;
         }
 
-        //move functions related to moving the player on the map
+        /// <summary>
+        /// Checks if Player can move 1 up
+        /// </summary>
+        /// <returns>true if Player is not hindered to move 1 up, false if otherwise</returns>
         public bool MoveUp()
         {
             //move the player if the move is valid
             return MoveIfValid(playerX, playerY - playerSize);
         }
 
-        //Same goes for all the moves by player.
+        /// <summary>
+        /// Checks if Player can move 1 down
+        /// </summary>
+        /// <returns>true if Player is not hindered to move 1 down, false if otherwise</returns>
         public bool MoveDown()
         {
             return MoveIfValid(playerX, playerY + playerSize);
         }
 
+        /// <summary>
+        /// Checks if Player can move 1 right
+        /// </summary>
+        /// <returns>true if Player is not hindered to move 1 right, false if otherwise</returns>
         public bool MoveRight()
         {
             return MoveIfValid(playerX + playerSize, playerY);
         }
 
+        /// <summary>
+        /// Checks if Player can move 1 left
+        /// </summary>
+        /// <returns>true if Player is not hindered to move 1 left, false if otherwise</returns>
         public bool MoveLeft()
         {
             return MoveIfValid(playerX - playerSize, playerY);
         }
 
-        //methods to take the destroy tile action
+        /// <summary>
+        /// Checks if Player can attack/mine 1 right
+        /// </summary>
+        /// <returns>true if Player is not hindered to attack/mine 1 right, false if otherwise</returns>
         public bool AttackRight()
         {
             return AttackIfValid(playerX + playerSize, playerY);
         }
 
+        /// <summary>
+        /// Checks if Player can attack/mine 1 left
+        /// </summary>
+        /// <returns>true if Player is not hindered to attack/mine 1 left, false if otherwise</returns>
         public bool AttackLeft()
         {
             return AttackIfValid(playerX - playerSize, playerY);
         }
 
+        /// <summary>
+        /// Checks if Player can attack/mine 1 up
+        /// </summary>
+        /// <returns>true if Player is not hindered to attack/mine 1 up, false if otherwise</returns>
         public bool AttackUp()
         {
             return AttackIfValid(playerX, playerY - playerSize);
         }
 
+        /// <summary>
+        /// Checks if Player can attack/mine 1 down
+        /// </summary>
+        /// <returns>true if Player is not hindered to attack/mine 1 down, false if otherwise</returns>
         public bool AttackDown()
         {
             return AttackIfValid(playerX, playerY + playerSize);
         }
 
-        ////resets the action points back to their starting value
+        /// <summary>
+        /// Resets Player's Turns back to starting value and displays this amount
+        /// </summary>
         public void ResetActionPoints()
         {
             playerActionPoints = playerStartActionPoints;
             playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
         }
 
+        /// <summary>
+        /// Updates and displays Player's remaining Turns
+        /// </summary>
+        /// <param name="val"></param>
         private void UpdateActionPoints(int val)
         {
             playerActionPoints += val;
             playerTurnCounter.Text = playerName + " : " + playerActionPoints.ToString() + "/5";
         }
 
+        /// <summary>
+        /// Changes Player's coordinates to given destination coordinates and updates Canvas accordingly
+        /// </summary>
+        /// <param name="destinationX">x coordinate of destination</param>
+        /// <param name="destinationY">y coordinate of destination</param>
         private void MoveTo(int destinationX, int destinationY)
         {
             playerY = destinationY;
@@ -148,8 +184,15 @@ namespace WPF_Arcade
             Canvas.SetLeft(playerImage, playerX);
         }
 
+        /// <summary>
+        /// Checks if Player can move to the destination indicated by the destination's coordinates
+        /// </summary>
+        /// <param name="destinationX">x coordinate of destination</param>
+        /// <param name="destinationY">y coordinate of destination</param>
+        /// <returns></returns>
         private bool MoveIfValid(int destinationX, int destinationY)
         {
+            // check if nothing stands in the destinated location, so Player can move to the destinated location
             bool canMove = playerCollisionManager.IsValidDestination(destinationX, destinationY);
             if (canMove)
             {
@@ -159,6 +202,12 @@ namespace WPF_Arcade
             return canMove;
         }
 
+        /// <summary>
+        /// Checks if Player can attack/mine/achieve Exit to the destination indicated by the destination's coordinates
+        /// </summary>
+        /// <param name="x">x coordinate of destination</param>
+        /// <param name="y">y coordinate of destination</param>
+        /// <returns></returns>
         private bool AttackIfValid(int x, int y)
         {
             //if you have enough action points left to attack
@@ -186,6 +235,8 @@ namespace WPF_Arcade
                     UpdateActionPoints(-playerAttackCost);
                     Enemy enemy = (Enemy)thingAtTarget;
                     bool kill = enemy.DamageOnEnemy();
+
+                    // if Player kills Enemy, then Player gets 30 points added to Its current Score
                     if (kill)
                     {
                         AddToScore(PlayerActionScores.destroyEnemy);
@@ -201,6 +252,8 @@ namespace WPF_Arcade
                     UpdateActionPoints(-playerAttackCost);
                     TileMap map = (TileMap)thingAtTarget;
                     string targetTileType = map.getTileTypeAtScreenCoordinate(x, y);
+
+                    // if Player mines a gem vein, then Player gets 10 points added to Its current Score
                     if (targetTileType == "gem")
                     {
                         AddToScore(PlayerActionScores.destroyGem);
@@ -213,6 +266,8 @@ namespace WPF_Arcade
                     map.DeleteTileAtScreenCoordinate(x, y);
                     return true;
                 }
+
+                // if Player is at the Exit, then Player gets 100 points added to Its current Score and the Game is over
                 else if (thingAtTarget.GetType()== typeof(Exit))
                 {
                     Exit exit = (Exit)thingAtTarget;
@@ -238,9 +293,13 @@ namespace WPF_Arcade
             {
                 //move player backwards
             }
-
         }
 
+        /// <summary>
+        /// Increases Player's Score by given amount, and updates Player's Score Label to show this increment
+        /// </summary>
+        /// <param name="amount">Given amount to add up to Score, depending on the situation (Win adds 100 up to Score, and
+        /// destroyed gem adds 10 up to Score)</param>
         private void AddToScore(int amount)
         {
             playerScore += amount;
@@ -260,6 +319,5 @@ namespace WPF_Arcade
         {
             playerImage.Opacity = 0.5;
         }
-
     }
 }

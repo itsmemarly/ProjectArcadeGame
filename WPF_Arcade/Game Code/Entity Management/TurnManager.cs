@@ -41,6 +41,14 @@ namespace WPF_Arcade
             turnRandomCount = int.MinValue;
         }
 
+        /// <summary>
+        /// Translates User Input (WASD/Arrows) into action on Terrain if possible
+        /// </summary>
+        /// <param name="key">
+        /// User Input:
+        ///     WASD keys to move Player to up, left, down and right respectively;
+        ///     Arrows up, down, left, right to let Player attack/mine up, down, left and right respectively.
+        /// </param>
         public void TakePlayerAction(Key key)
         {
             switch (key)
@@ -83,6 +91,9 @@ namespace WPF_Arcade
             EndTurnIfNeeded(ActivePlayer());
         }
 
+        /// <summary>
+        /// Makes all Enemies randomly move to left or to right in their Turn
+        /// </summary>
         private void TakeEnemyTurns()
         {
             foreach (var enemy in turnEnemyList)
@@ -91,7 +102,6 @@ namespace WPF_Arcade
                 {
                     enemy.MoveLeft();
                 }
-
                 else
                 {
                     enemy.MoveRight();
@@ -112,16 +122,14 @@ namespace WPF_Arcade
                 if (levelActivePlayerIndex > turnPlayerList.Count - 1)
                 {
                     levelActivePlayerIndex = 0;
+
+                    // Gives all Enemies a Turn to perform a move to left or to right
                     TakeEnemyTurns();
                 }
 
                 ActivePlayer().SetActive();
             }
         }
-
-
-
-
 
         //generates a value with high varience int the outputwith a small varience the input based on the seed and how many numbers have been previously generated
         private float GeneratePsuedoRandomValue(float maxValue)

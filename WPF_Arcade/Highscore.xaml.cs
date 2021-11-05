@@ -27,9 +27,14 @@ namespace WPF_Arcade
         
         }
 
+        // Retrieve Highscore data
         public string conString = "Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=C:/XAMPP/HTDOCS/HBO/DIGDUG/PROJECTARCADEGAME/WPF_ARCADE/DATABASE1.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-
+        /// <summary>
+        /// Closes Highscore screen and pops up Menu screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TerugNaarMenu(object sender, RoutedEventArgs e)
         {
             Menu menu = new Menu();
