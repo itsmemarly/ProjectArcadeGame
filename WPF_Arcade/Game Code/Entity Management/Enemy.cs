@@ -46,71 +46,118 @@ namespace WPF_Arcade
             enemyCanvas.Children.Add(enemyImage);
         }
 
+        /// <summary>
+        /// Gets the x coordinate of the Enemy
+        /// </summary>
+        /// <returns>x coordinate of the Enemy</returns>
         public int X()
         {
             return enemyX;
         }
 
+        /// <summary>
+        /// Gets the y coordinate of the Enemy
+        /// </summary>
+        /// <returns>y coordinate of the Enemy</returns>
         public int Y()
         {
             return enemyY;
         }
 
+        /// <summary>
+        /// Gets the ActionPoints (read: amount of remaining Turns) of the Enemy
+        /// </summary>
+        /// <returns>ActionPoints (read: amount of remaining Turns) of the Enemy</returns>
         public int ActionPoints()
         {
             return enemyActionPoints;
         }
 
-
+        /// <summary>
+        /// Checks if the Enemy can move up by 1
+        /// </summary>
+        /// <returns>true if the Enemy can move up by 1, false if the Enemy can not move up by 1</returns>
         public bool MoveUp()
         {
             return MoveIfValid(enemyX, enemyY - enemySize);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can move down by 1
+        /// </summary>
+        /// <returns>true if the Enemy can move down by 1, false if the Enemy can not move down by 1</returns>
         public bool MoveDown()
         {
             return MoveIfValid(enemyX, enemyY + enemySize);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can move left by 1
+        /// </summary>
+        /// <returns>true if the Enemy can move left by 1, false if the Enemy can not move left by 1</returns>
         public bool MoveLeft()
         {
             return MoveIfValid(enemyX - enemySize, enemyY);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can move right by 1
+        /// </summary>
+        /// <returns>true if the Enemy can move right by 1, false if the Enemy can not move right by 1</returns>
         public bool MoveRight()
         {
             return MoveIfValid(enemyX + enemySize, enemyY);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can attack right by 1
+        /// </summary>
+        /// <returns>true if the Enemy can attack right by 1, false if the Enemy can not attack right by 1</returns>
         public bool AttackRight()
         {
             return AttackIfValid(enemyX + enemySize, enemyY);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can attack left by 1
+        /// </summary>
+        /// <returns>true if the Enemy can attack left by 1, false if the Enemy can not attack left by 1</returns>
         public bool AttackLeft()
         {
             return AttackIfValid(enemyX - enemySize, enemyY);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can attack up by 1
+        /// </summary>
+        /// <returns>true if the Enemy can attack up by 1, false if the Enemy can not attack up by 1</returns>
         public bool AttackUp()
         {
             return AttackIfValid(enemyX, enemyY - enemySize);
         }
 
+        /// <summary>
+        /// Checks if the Enemy can attack down by 1
+        /// </summary>
+        /// <returns>true if the Enemy can attack down by 1, false if the Enemy can not attack down by 1</returns>
         public bool AttackDown()
         {
             return AttackIfValid(enemyX, enemyY + enemySize);
         }
 
-
-
+        /// <summary>
+        /// Resets the Enemy's ActionPoints (read: amount of Turns) to 1
+        /// </summary>
         public void ResetActionPoints()
         {
             enemyActionPoints = enemyStartingActionPoints;
         }
 
-        //private methods
-
+        /// <summary>
+        /// Moves the Enemy to the given position
+        /// </summary>
+        /// <param name="destinationX">x coordinate of the position</param>
+        /// <param name="destinationY">y coordinate of the position</param>
         private void MoveTo(int destinationX, int destinationY)
         {
             enemyY = destinationY;
@@ -118,9 +165,14 @@ namespace WPF_Arcade
             enemyActionPoints -= enemyMoveCost;
             Canvas.SetLeft(enemyImage, enemyX);
             Canvas.SetTop(enemyImage, enemyY);
-
         }
 
+        /// <summary>
+        /// Checks if the Enemy can move to the given position
+        /// </summary>
+        /// <param name="destinationX">x coordinate of the position</param>
+        /// <param name="destinationY">y coordinate of the position</param>
+        /// <returns></returns>
         private bool MoveIfValid(int destinationX, int destinationY)
         {
             bool isMoveValid = enemyCollisionManager.IsValidDestination(destinationX, destinationY);
@@ -133,13 +185,15 @@ namespace WPF_Arcade
             return isMoveValid;
         }
 
-
+        /// <summary>
+        /// Decrements the Enemy's Health by 1, and deletes the Enemy if Its Health is gone
+        /// </summary>
+        /// <returns>true if the Enemy's Health is gone, false if the Enemy's Health is not gone</returns>
         public bool DamageOnEnemy()
         {
             enemyHealth -= damageReceived;
             if (enemyHealth <= 0)
             {
-                
                 KillMonster();
                 enemyCollisionManager.DeleteEnemey(enemyX,enemyY);
                 return true;
@@ -150,15 +204,24 @@ namespace WPF_Arcade
             }
         }
 
-
-
+        /// <summary>
+        /// Removes the Enemy from the Canvas
+        /// </summary>
         private void KillMonster()
         {
             enemyCanvas.Children.Remove(enemyImage);
-            
         }
 
-
+        /// <summary>
+        /// Checks if the Enemy can attack a Player, if a Player exists and is located at the given position
+        /// </summary>
+        /// <param name="x">x coordinate of the given position</param>
+        /// <param name="y">y coordinate of the given position</param>
+        /// <returns>true if these statements are all true:
+        ///     The Enemy has enough Action Points (read: remaining Turns) to be able to perform an attack;
+        ///     A Thing exists at the given position;
+        ///     The Thing turns out to be a Player.
+        /// false if only one or none of the above statements are true</returns>
         private bool AttackIfValid(int x, int y)
         {
             //check points

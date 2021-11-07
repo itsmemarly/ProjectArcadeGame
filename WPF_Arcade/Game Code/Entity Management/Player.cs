@@ -63,16 +63,29 @@ namespace WPF_Arcade
         }
 
         //getters
+
+        /// <summary>
+        /// Gets Player's Action Points (read: remaining Turns)
+        /// </summary>
+        /// <returns>Player's Action Points (read: remaining Turns)</returns>
         public int Actionpoints()
         {
             return playerActionPoints;
         }
 
+        /// <summary>
+        /// Gets Player's x coordinate
+        /// </summary>
+        /// <returns>Player's x coordinate</returns>
         public int X()
         {
             return playerX;
         }
 
+        /// <summary>
+        /// Gets Player's y coordinate
+        /// </summary>
+        /// <returns>Player's y coordinate</returns>
         public int Y()
         {
             return playerY;
@@ -163,7 +176,7 @@ namespace WPF_Arcade
         /// <summary>
         /// Updates and displays Player's remaining Turns
         /// </summary>
-        /// <param name="val"></param>
+        /// <param name="val">Player's remaining Turns</param>
         private void UpdateActionPoints(int val)
         {
             playerActionPoints += val;
@@ -305,16 +318,26 @@ namespace WPF_Arcade
             playerScore += amount;
             playerScoreLabel.Text = playerName + " Score: " + playerScore.ToString();
         }
-        // kills player
+
+        /// <summary>
+        /// Kills Player and removes It from the Canvas
+        /// </summary>
         private void KillPlayer()
         {
             playerCanvas.Children.Remove(playerImage);
-            
         }
+
+        /// <summary>
+        /// Sets the Player as active and makes It visible on the Canvas
+        /// </summary>
         public void SetActive()
         {
             playerImage.Opacity = 1;
         }
+
+        /// <summary>
+        /// Sets the Player as inactive and makes It invisible on the Canvas
+        /// </summary>
         public void SetInactive()
         {
             playerImage.Opacity = 0.5;

@@ -50,15 +50,22 @@ namespace WPF_Arcade
             // Manual implementation of new Tile
             tileCanvas.Children.Add(tileImage);
         }
-        
+
+        /// <summary>
+        /// Gets value of what kind of type the Tile is
+        /// </summary>
+        /// <returns>value of what kind of type the Tile is</returns>
         public string Type()
         {
             return tileType;
         }
-       public void Destroy()
-       {
+
+        /// <summary>
+        /// Destroys the Tile and removes It from the Canvas
+        /// </summary>
+        public void Destroy()
+        {
             tileCanvas.Children.Remove(tileImage);
-            
-       }
+        }
     }
 }

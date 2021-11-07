@@ -84,12 +84,20 @@ namespace WPF_Arcade
         }
         //getters
 
+        /// <summary>
+        /// Gets the Level's Seed
+        /// </summary>
+        /// <returns>the Level's Seed</returns>
         public string Seed()
         {
             return levelSeed;
         }
 
         //setters
+        /// <summary>
+        /// Sets the Level's Seed
+        /// </summary>
+        /// <param name="seed">the Level's Seed</param>
         public void SetSeed(string seed)
         {
             levelSeed = seed;
@@ -97,17 +105,26 @@ namespace WPF_Arcade
             levelTurnManager.SetSeed(seed);
         }
 
+        /// <summary>
+        /// Processes the Players' moves based on user input (WASD/Arrow keys)
+        /// </summary>
+        /// <param name="key">user input (WASD/Arrow keys)</param>
         public void ProcessInput(Key key)
         {
             levelTurnManager.TakePlayerAction(key);
         }
 
+        /// <summary>
+        /// Saves the Players' Scores
+        /// </summary>
         public void SaveScores()
         {
 
         }
 
-        //constructs the level
+        /// <summary>
+        /// Constructs the Level
+        /// </summary>
         public void BuildLevel()
         {
             //set the seed to a random value to ensure the level is random
@@ -120,16 +137,19 @@ namespace WPF_Arcade
             PlaceExit();
         }
 
+        /// <summary>
+        /// Generates the visual Terrain
+        /// </summary>
         private void GenerateTerrain()
         {
             levelTileMap.Generate(levelNoiseMap1Weight, levelNoiseMap1Scale, levelNoiseMap2Weight, levelNoiseMap2Scale, levelAirChance, levelGemChance);
         }
 
         /// <summary>
-        /// Adds Player to the Player List, puts Player at the given coordinates and removes Tile at the given coordinates if needed
+        /// Adds Player to the Player List, puts Player at the given position and removes Tile at the given position if needed
         /// </summary>
-        /// <param name="x">x coordinate of Player</param>
-        /// <param name="y">y coordinate of Player</param>
+        /// <param name="x">graphical x coordinate of Player</param>
+        /// <param name="y">graphical y coordinate of Player</param>
         /// <param name="scoreText">TextBlock to view Player's Score in the UI</param>
         /// <param name="turnText">TextBlock to view Player's remaining Turns in comparison to initial turn amount in the UI</param>
         /// <param name="name">Player's Name (either "Player 1" or "Player 2")</param>
@@ -140,9 +160,11 @@ namespace WPF_Arcade
             {
                 levelTileMap.DeleteTileAtScreenCoordinate(x, y);
             }
-            
         }
 
+        /// <summary>
+        /// Places the Players at their desired positions
+        /// </summary>
         private void PlacePlayers()
         {
             //calculate starting x position for the players
@@ -160,6 +182,10 @@ namespace WPF_Arcade
             levelPlayerList[0].SetActive();
         }
 
+        /// <summary>
+        /// Places the Enemies where no Tile is present. This positioning depends on luck as well
+        /// </summary>
+        /// <param name="chance">the luck factor</param>
         private void PlaceEnemies(int chance)
         {
             Random r = new Random();
@@ -194,24 +220,30 @@ namespace WPF_Arcade
             {
                 levelTileMap.DeleteTileAtScreenCoordinate(nearestTileToMiddle, bottomOfScreen);
             }
-
         }
 
         /// <summary>
-        /// Adds Enemy to the Enemy List and puts It at Its given coordinates
+        /// Adds Enemy to the Enemy List and puts It at Its given position
         /// </summary>
-        /// <param name="x">x coordinate of Enemy</param>
-        /// <param name="y">y coordinate of Enemy</param>
+        /// <param name="x">x coordinate of the position</param>
+        /// <param name="y">y coordinate of the position</param>
         private void AddEnemy(int x, int y)
         {
             levelEnemyList.Add(new Enemy(x, y, levelEnemyActions, levelTileSize, GameImageBitmaps.goblin, levelCanvas, levelCollisionManager));
         }
 
+        /// <summary>
+        /// Generates a pseudo random value based on the absolute hash of the combination of the coordinates of the Enemy's position and the Seed, 
+        /// however this value is not larger than maxValue
+        /// </summary>
+        /// <param name="x">x coordinate of the position of the Enemy</param>
+        /// <param name="y">y coordinate of the position of the Enemy</param>
+        /// <param name="maxValue">The limit to how large the pseudo random value can be</param>
+        /// <returns>the pseudo random value</returns>
         private float GeneratePsuedoRandomValue(double x, double y, float maxValue)
         {
             string input = x.ToString() + y.ToString() + levelSeed;
             return Math.Abs(input.GetHashCode()) % maxValue;
         }
-
     }
 }

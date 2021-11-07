@@ -19,7 +19,5 @@ namespace WPF_Arcade
         public static readonly BitmapImage player = new BitmapImage(new Uri(@"pack://application:,,,/Media/Sprites/player_64px.png"));
         public static readonly BitmapImage goblin = new BitmapImage(new Uri(@"pack://application:,,,/Media/Sprites/goblin_64px.png"));
         public static readonly BitmapImage exit = new BitmapImage(new Uri(@"pack://application:,,,/Media/Sprites/gem_64px.png"));
-
-
     }
 }

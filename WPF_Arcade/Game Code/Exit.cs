@@ -45,16 +45,27 @@ namespace WPF_Arcade
             exitCanvas.Children.Add(exitImage);
         }
 
+        /// <summary>
+        /// Gets the x coordinate of Exit
+        /// </summary>
+        /// <returns>the x coordinate of Exit</returns>
         public int X()
         {
             return exitX;
         }
 
+        /// <summary>
+        /// Gets the y coordinate of Exit
+        /// </summary>
+        /// <returns>the y coordinate of Exit</returns>
         public int Y()
         {
             return exitY;
         }
 
+        /// <summary>
+        /// Moves Exit to the given position
+        /// </summary>
         public void MoveTo(int x, int y)
         {
             exitX = x;
@@ -62,8 +73,10 @@ namespace WPF_Arcade
             Canvas.SetLeft(exitImage, x);
             Canvas.SetTop(exitImage, y);
         }
-
-        // Creates and opens the win screen
+     
+        /// <summary>
+        /// Saves the Players' Scores and pops up the You won screen
+        /// </summary>
         public void EndGame()
         {
             exitLevel.SaveScores();

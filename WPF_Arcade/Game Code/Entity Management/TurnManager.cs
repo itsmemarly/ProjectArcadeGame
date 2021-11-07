@@ -30,11 +30,19 @@ namespace WPF_Arcade
             turnSeed = seed;
         }
 
+        /// <summary>
+        /// Gets the active Player
+        /// </summary>
+        /// <returns>the active Player</returns>
         public Player ActivePlayer()
         {
             return turnPlayerList[levelActivePlayerIndex];
         }
 
+        /// <summary>
+        /// Sets the Seed of the Terrain for the Turn Manager
+        /// </summary>
+        /// <param name="seed">the Seed of the Terrain</param>
         public void SetSeed(string seed)
         {
             turnSeed = seed;
@@ -42,7 +50,7 @@ namespace WPF_Arcade
         }
 
         /// <summary>
-        /// Translates User Input (WASD/Arrows) into action on Terrain if possible
+        /// Translates User Input (WASD/Arrows) into action on Terrain if possible, and ends the active Player's turn if needed
         /// </summary>
         /// <param name="key">
         /// User Input:
@@ -92,7 +100,7 @@ namespace WPF_Arcade
         }
 
         /// <summary>
-        /// Makes all Enemies randomly move to left or to right in their Turn
+        /// Makes all Enemies randomly move to left or to right in their turn
         /// </summary>
         private void TakeEnemyTurns()
         {
@@ -110,6 +118,10 @@ namespace WPF_Arcade
             }
         }
 
+        /// <summary>
+        /// Ends the turn of the Player if the Player has no Action Points (read: Turn counts) left
+        /// </summary>
+        /// <param name="player">the Player</param>
         private void EndTurnIfNeeded(Player player)
         {
             if (player.Actionpoints() == 0)
@@ -131,7 +143,11 @@ namespace WPF_Arcade
             }
         }
 
-        //generates a value with high varience int the outputwith a small varience the input based on the seed and how many numbers have been previously generated
+        /// <summary>
+        /// Generates a pseudo random value based on the seed and the amount of times pseudo random values have previously been generated
+        /// </summary>
+        /// <param name="maxValue">Maximum of pseudo random value</param>
+        /// <returns>pseudo random value</returns>
         private float GeneratePsuedoRandomValue(float maxValue)
         {
             string input = turnRandomCount.ToString() + turnSeed;
