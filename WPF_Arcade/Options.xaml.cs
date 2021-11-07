@@ -74,6 +74,12 @@ namespace WPF_Arcade
             // EffectVolume = EffectVolumeSlider.Value
         }
 
+
+        /// <summary>
+        /// Closes Options screen and pops up Menu screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void TerugNaarMenu_Clicked(object sender, RoutedEventArgs e)
         {
             Menu menu = new Menu();

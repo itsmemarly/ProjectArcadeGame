@@ -22,20 +22,42 @@ namespace WPF_Arcade
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Closes Load Screen screen and pops up Game screen from Game Slot 1
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void LoadGame1_Click(object sender, RoutedEventArgs e)
         {
             //Load game 1
         }
+
+        /// <summary>
+        /// Closes Load Screen screen and pops up Game screen from Game Slot 2
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void LoadGame2_Click(object sender, RoutedEventArgs e)
         {
             //Load game 2
         }
 
+        /// <summary>
+        /// Closes Load Screen screen and pops up Game screen from Game Slot 3
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void LoadGame3_Click(object sender, RoutedEventArgs e)
         {
             //Load game 3
         }
 
+        /// <summary>
+        /// Closes Load Screen screen and pops up Menu screen
+        /// </summary>
+        /// <param name="sender">Mouse Click</param>
+        /// <param name="e">Mouse Click</param>
         private void MainMenu_Click(object sender, RoutedEventArgs e)
         {
             //Back to main menu

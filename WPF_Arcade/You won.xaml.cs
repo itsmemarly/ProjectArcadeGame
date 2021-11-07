@@ -43,7 +43,5 @@ namespace WPF_Arcade
         {
             // Quit the game
         }
-
-        
     }
 }
