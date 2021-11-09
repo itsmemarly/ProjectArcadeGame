@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\xampp\htdocs\HBO\digdug\ProjectArcadeGame\WPF_Arcade\App.xaml
-14-1221623850
+15-1450610884
 
-29636941916
+301293504855
 2051228508775
-Credits.xaml;Game.xaml;Highscore.xaml;Load Screen.xaml;MainWindow.xaml;Menu.xaml;Options.xaml;Save.xaml;SpelAfsluiten.xaml;Startscherm.xaml;Tutorial.xaml;Welcome.xaml;You lost.xaml;You won.xaml;
+Credits.xaml;Game.xaml;Highscore.xaml;KiesNaam.xaml;Load Screen.xaml;MainWindow.xaml;Menu.xaml;Options.xaml;Save.xaml;SpelAfsluiten.xaml;Startscherm.xaml;Tutorial.xaml;Welcome.xaml;You lost.xaml;You won.xaml;
 
-False
+True
 

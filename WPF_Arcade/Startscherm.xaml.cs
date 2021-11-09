@@ -25,9 +25,10 @@ namespace WPF_Arcade
 
         private void ButtonStartSpel(object sender, RoutedEventArgs e)
         {
-            Game game = new Game();
+            KiesNaam inputname = new KiesNaam();
+          
             Close();
-            game.Visibility = Visibility.Visible;
+            inputname.Visibility = Visibility.Visible;
         }
 
         private void ButtonLaadVorigSpel(object sender, RoutedEventArgs e)

@@ -47,7 +47,7 @@ namespace WPF_Arcade
             da.Fill(dt);
 
             //Link to the right datagrid
-            PlayerName.DataContext = dt;
+            Player1.DataContext = dt;
 
 
             //Repeat same steps for names & scores P2
@@ -62,7 +62,7 @@ namespace WPF_Arcade
             da2.Fill(dt2);
 
             //Link to the datagrid for P2
-            PlayerScore.DataContext = dt2;
+            Player2.DataContext = dt2;
 
             //Close conncection (con)
             con.Close();
