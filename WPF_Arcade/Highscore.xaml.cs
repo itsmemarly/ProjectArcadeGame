@@ -24,6 +24,8 @@ namespace WPF_Arcade
         public Highscore()
         {
             InitializeComponent();
+
+            //Call private void Bind
             Bind();
         }
         private void Bind()
@@ -36,17 +38,33 @@ namespace WPF_Arcade
 
             //Add new adapter & datatable for P1
             OleDbDataAdapter da = new OleDbDataAdapter("Select Naam1 AS Naam, Score1 AS Score from Speler1 ORDER BY Score1 DESC", con);
+           
+            //Create new DataTable (dt)
+
             DataTable dt = new DataTable();
-            //Fill datatable with adapter
+
+            //Fill dataTable with adapter
             da.Fill(dt);
 
             //Link to the right datagrid
             PlayerName.DataContext = dt;
 
+
+            //Repeat same steps for names & scores P2
+
+            //Add new adapter
             OleDbDataAdapter da2 = new OleDbDataAdapter("Select Naam2 AS Naam, Score2 AS Score from Speler1 ORDER BY Score2 DESC", con);
+
+            //Add new DataTable (dt) 2 stands for P2
             DataTable dt2 = new DataTable();
+
+            //Fill dataTable with adapter
             da2.Fill(dt2);
+
+            //Link to the datagrid for P2
             PlayerScore.DataContext = dt2;
+
+            //Close conncection (con)
             con.Close();
         }
 

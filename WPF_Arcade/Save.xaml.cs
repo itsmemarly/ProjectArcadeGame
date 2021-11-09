@@ -38,6 +38,7 @@ namespace WPF_Arcade
             //Select data from database with ID 1
             OleDbDataAdapter da = new OleDbDataAdapter("Select * From Opslaan Where ID=1", con);
            
+            //Close connection
             con.Close();
         }
 

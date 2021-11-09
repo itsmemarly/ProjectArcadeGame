@@ -74,6 +74,8 @@ namespace WPF_Arcade
 
         public int Score()
         {
+
+            //Return score player 1 & player 2.
             return playerScore;
         }
 

@@ -113,10 +113,14 @@ namespace WPF_Arcade
 
             //Open connection
             con.Open();
+
             //Add new adapter for Scores
             OleDbCommand cmd = new OleDbCommand("INSERT INTO Speler1 (Naam1, Naam2, Score1, Score2) VALUES (' Player 1 ', 'Player 2'," + levelPlayerList[0].Score() + ", " + levelPlayerList[1].Score() + ")", con);
+            
+            //Send cmd to DB
             cmd.ExecuteNonQuery();
 
+            //Close connection
             con.Close();
 
         }
