@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,8 +24,8 @@ namespace WPF_Arcade
         }
 
         //link to database///
-        public string conString = "";
-
+        public string conString = "Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=C:/Users/jessi/Downloads/testdb_oldIntegrated Security=True;ConnectTimeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+      
 
 
         /// Input Name Player 1///
