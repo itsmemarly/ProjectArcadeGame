@@ -1,9 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿// using DocumentFormat.OpenXml.Office.CustomUI;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.OleDb;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,14 +18,18 @@ namespace WPF_Arcade
     /// <summary>
     /// Interaction logic for Highscore.xaml
     /// </summary>
+    /// 
+   
+
     public partial class Highscore : Window
     {
+
         public Highscore()
         {
             InitializeComponent();
+
             //Call private void Bind
             Bind();
-        
         }
         private void Bind()
         {
@@ -67,10 +70,6 @@ namespace WPF_Arcade
             //Close conncection (con)
             con.Close();
         }
-
-
-        public string conString = "Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=C:/XAMPP/HTDOCS/HBO/DIGDUG/PROJECTARCADEGAME/WPF_ARCADE/DATABASE1.MDF;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
 
         private void TerugNaarMenu(object sender, RoutedEventArgs e)
         {
