@@ -14,6 +14,7 @@ namespace WPF_Arcade
 {
     public class Exit
     {
+        // Exit Properties
         private string exit;
         private int exitSize;
         private Canvas exitCanvas;
