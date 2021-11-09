@@ -22,14 +22,16 @@ namespace WPF_Arcade
         //puts UserName1 in Game
         public void PutName1(object sender, TextCompositionEventArgs e)
         {
-            
+         
         }
 
         //puts UserName2 in Game
-        public void PutName2(object sender, TextCompositionEventArgs e)
+      public static void PutName2(object sender, TextCompositionEventArgs e)
         {
+ 
 
-        }
+       }
+        
 
         private GameLevel level;
         

@@ -68,7 +68,7 @@ namespace WPF_Arcade
         // Creates and opens the win screen
         public void EndGame()
         {
-            exitLevel.SaveScores();
+            //exitLevel.SaveScores();
             You_won winscreen = new You_won();
             winscreen.Visibility = Visibility.Visible;
             

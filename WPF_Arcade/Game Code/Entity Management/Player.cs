@@ -25,7 +25,7 @@ namespace WPF_Arcade
         private readonly int playerSize;
         private int playerActionPoints;
         private readonly int playerStartActionPoints;
-        private readonly string playerName;
+        public string playerName;
         private readonly Image playerImage;
         private readonly Canvas playerCanvas;
         private readonly BitmapImage playerBitmap;

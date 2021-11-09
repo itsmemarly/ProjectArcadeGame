@@ -21,70 +21,64 @@ namespace WPF_Arcade
         public InputName()
         {
             InitializeComponent();
-            //Call private void Bind
-            Bind();
-        }
-
-        private void Bind()
-        {
-            //Link to DB
-            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:/Users/jessi/Downloads/testdb_old");
-
-            //Open connection
-            con.Open();
-
-            //Add new adapter & datatable for P1
-            OleDbDataAdapter da = new OleDbDataAdapter("Select Naam1 AS Naam, Score1 AS Score from Speler1 ORDER BY Score1 DESC", con);
-
-            //Create new DataTable (dt)
-
-            DataTable dt = new DataTable();
-
-            //Fill dataTable with adapter
-            da.Fill(dt);
-
-            //Link to the right datagrid
-            PlayerName.DataContext = dt;
-
-
-            //Repeat same steps for names & scores P2
-
-            //Add new adapter
-            OleDbDataAdapter da2 = new OleDbDataAdapter("Select Naam2 AS Naam, Score2 AS Score from Speler1 ORDER BY Score2 DESC", con);
-
-            //Add new DataTable (dt) 2 stands for P2
-            DataTable dt2 = new DataTable();
-
-            //Fill dataTable with adapter
-            da2.Fill(dt2);
-
-            //Link to the datagrid for P2
-            PlayerScore.DataContext = dt2;
-
-            //Close conncection (con)
-            con.Close();
         }
 
         //link to database///
         public string conString = "Data Source=(localdb)/MSSQLLocalDB;Initial Catalog=C:/Users/jessi/Downloads/testdb_oldIntegrated Security=True;ConnectTimeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-      
-
 
         /// Input Name Player 1///
-        public void PutYourNamePlayer1(object sender, TextCompositionEventArgs e)
+        public class NamePlayer1
         {
-            string UserName1;
-            UserName1 = Console.ReadLine();
-            Console.ReadKey();
+            public void PutYourNamePlayer1(object sender, TextCompositionEventArgs e)
+            {
+                string UserName1;
+                UserName1 = Console.ReadLine();
+                Console.ReadKey();
+                MessageBox.Show("Voer je naam in, Speler 1!");
+
+                //naam mag niet korter zijn dan 2 tekens
+                if (UserName1.Length < 2)
+                {
+                    MessageBox.Show("Naam mag niet korter zijn dan 2 tekens.");
+
+                }
+                //naam mag niet langer zijn dan 10 tekens
+                else if (UserName1.Length > 10)
+                {
+                    MessageBox.Show("Naam mag niet langer zijn dan 10 tekens.");
+
+                }
+
+            }
         }
 
         /// Input Name Player 2///
-        public void PutYourNamePlayer2(object sender, TextCompositionEventArgs e)
+        public class NamePlayer2
         {
-            string UserName2;
-            UserName2 = Console.ReadLine();
-            Console.ReadKey();
+            public void PutYourNamePlayer2(object sender, TextCompositionEventArgs e)
+            {
+                string UserName2;
+                UserName2 = Console.ReadLine();
+                Console.ReadKey();
+                MessageBox.Show("Voer je naam in, Speler 2!");
+
+                //naam mag niet korter zijn dan 2 tekens
+                if (UserName2.Length < 2)
+                {
+                    MessageBox.Show("Naam mag niet korter zijn dan 2 tekens.");
+                   
+                }
+                //naam mag niet langer zijn dan 10 tekens
+                else if (UserName2.Length > 10)
+                {
+                    MessageBox.Show("Naam mag niet langer zijn dan 10 tekens.");
+                   
+                }
+                
+
+            }
         }
+        
 
         /// Button start Spel///
         public void ButtonStartSpel(object sender, RoutedEventArgs e)
