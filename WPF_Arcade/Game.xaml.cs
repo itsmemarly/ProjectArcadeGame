@@ -19,6 +19,18 @@ namespace WPF_Arcade
 
     public partial class Game : Window
     {
+        //puts UserName1 in Game
+        public void PutName1(object sender, TextCompositionEventArgs e)
+        {
+            
+        }
+
+        //puts UserName2 in Game
+        public void PutName2(object sender, TextCompositionEventArgs e)
+        {
+
+        }
+
         private GameLevel level;
         
         public Game()
@@ -49,7 +61,10 @@ namespace WPF_Arcade
             Close();
             menu.Visibility = Visibility.Visible;
         }
+
     }
+
+
 
 }
 
