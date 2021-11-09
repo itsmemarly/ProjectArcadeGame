@@ -66,9 +66,9 @@ namespace WPF_Arcade
             levelPlayer2ScoreText = P2Score;
             levelPlayer2TurnText = P2Turn;
 
-        //create the internal properties
-        //determine the size of the level in tiles
-        int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
+            //create the internal properties
+            //determine the size of the level in tiles
+            int levelTileMapTileWidth = (int)Math.Floor((double)(levelWidth / levelTileSize));
             int levelTileMapTileHeight = (int)Math.Floor((double)(levelHeight / levelTileSize));
 
             //make a new tileMap that fits the size of the level
@@ -132,7 +132,7 @@ namespace WPF_Arcade
             {
                 levelTileMap.DeleteTileAtScreenCoordinate(x, y);
             }
-            
+
         }
 
         private void PlacePlayers()
@@ -151,6 +151,7 @@ namespace WPF_Arcade
             }
             levelPlayerList[0].SetActive();
         }
+
 
         private void PlaceEnemies(int chance)
         {
@@ -197,5 +198,28 @@ namespace WPF_Arcade
             return Math.Abs(input.GetHashCode()) % maxValue;
         }
 
+
+
+        public void SaveScores()
+        {
+
+            //Link to DB
+            OleDbConnection con = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\reidi\OneDrive\Documents\testdb_old.mdb");
+
+            //Open connection
+            con.Open();
+
+            //Add new adapter for Scores
+            OleDbCommand cmd = new OleDbCommand("INSERT INTO Speler1 (Naam1, Naam2, Score1, Score2) VALUES (' Player 1 ', 'Player 2'," + levelPlayerList[0].Score() + ", " + levelPlayerList[1].Score() + ")", con);
+
+            //Send cmd to DB
+            cmd.ExecuteNonQuery();
+
+            //Close connection
+            con.Close();
+
+
+        }
     }
+
 }
