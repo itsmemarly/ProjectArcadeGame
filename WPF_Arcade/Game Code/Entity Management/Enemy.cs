@@ -5,6 +5,7 @@ namespace WPF_Arcade
 {
     class Enemy
     {
+        // Enemy's Properties
         private int enemyActionPoints;
         private int enemyStartingActionPoints;
         private int enemyX;
@@ -65,9 +66,9 @@ namespace WPF_Arcade
         }
 
         /// <summary>
-        /// Gets the ActionPoints (read: amount of remaining Turns) of the Enemy
+        /// Gets the ActionPoints (read: amount of remaining moves) of the Enemy
         /// </summary>
-        /// <returns>ActionPoints (read: amount of remaining Turns) of the Enemy</returns>
+        /// <returns>ActionPoints (read: amount of remaining moves) of the Enemy</returns>
         public int ActionPoints()
         {
             return enemyActionPoints;
@@ -186,7 +187,7 @@ namespace WPF_Arcade
         }
 
         /// <summary>
-        /// Decrements the Enemy's Health by 1, and deletes the Enemy if Its Health is gone
+        /// Decreases the Enemy's Health by 1, and deletes the Enemy if Its Health is empty
         /// </summary>
         /// <returns>true if the Enemy's Health is gone, false if the Enemy's Health is not gone</returns>
         public bool DamageOnEnemy()
